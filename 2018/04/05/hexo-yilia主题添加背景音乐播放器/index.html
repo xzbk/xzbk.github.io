@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="关于yilia主题添加背景音乐播放器">
+<meta name="description" content="添加音乐添加的网易云音乐，很方便。打开网易云音乐某首歌详情页，点击生成外链播放器，选择iframe插件。选择好尺寸。复制html代码。如： 1&amp;lt;iframe frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=298 height=52 src=&quot;//music.163.com/outchain/player?">
 <meta name="keywords" content="yilia">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hexo yilia主题添加背景音乐播放器">
 <meta property="og:url" content="http://yoursite.com/2018/04/05/hexo-yilia主题添加背景音乐播放器/index.html">
 <meta property="og:site_name" content="Xiao Z">
-<meta property="og:description" content="关于yilia主题添加背景音乐播放器">
+<meta property="og:description" content="添加音乐添加的网易云音乐，很方便。打开网易云音乐某首歌详情页，点击生成外链播放器，选择iframe插件。选择好尺寸。复制html代码。如： 1&amp;lt;iframe frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=298 height=52 src=&quot;//music.163.com/outchain/player?">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-05-07T03:51:12.352Z">
+<meta property="og:updated_time" content="2018-05-09T16:24:19.441Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo yilia主题添加背景音乐播放器">
-<meta name="twitter:description" content="关于yilia主题添加背景音乐播放器">
+<meta name="twitter:description" content="添加音乐添加的网易云音乐，很方便。打开网易云音乐某首歌详情页，点击生成外链播放器，选择iframe插件。选择好尺寸。复制html代码。如： 1&amp;lt;iframe frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=298 height=52 src=&quot;//music.163.com/outchain/player?">
 
 
 
@@ -322,8 +322,7 @@
       
 
       
-        <p>关于yilia主题添加背景音乐播放器<br><a id="more"></a></p>
-<h2 id="添加音乐"><a href="#添加音乐" class="headerlink" title="添加音乐"></a>添加音乐</h2><p>添加的网易云音乐，很方便。<br>打开网易云音乐某首歌详情页，点击生成外链播放器，选择iframe插件。选择好尺寸。复制html代码。如：</p>
+        <h2 id="添加音乐"><a href="#添加音乐" class="headerlink" title="添加音乐"></a>添加音乐</h2><p>添加的网易云音乐，很方便。<br>打开网易云音乐某首歌详情页，点击生成外链播放器，选择iframe插件。选择好尺寸。复制html代码。如：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;iframe frameborder=<span class="string">"no"</span> border=<span class="string">"0"</span> marginwidth=<span class="string">"0"</span> marginheight=<span class="string">"0"</span> width=298 height=52 src=<span class="string">"//music.163.com/outchain/player?type=2&amp;id=4940455&amp;auto=1&amp;height=32"</span>&gt;&lt;/iframe&gt;</span><br></pre></td></tr></table></figure>
 <p>这里手动修改width为”100%”,再添上class。然后把下面这段代码复制到<br><code>themes\yilia\layout\_partial\left-col.ejs</code><br>里，代码：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;nav class=<span class="string">"header-music"</span>&gt;</span><br><span class="line">&lt;iframe frameborder=<span class="string">"no"</span> border=<span class="string">"0"</span> marginwidth=<span class="string">"0"</span> marginheight=<span class="string">"0"</span> width=298 height=52 src=<span class="string">"//music.163.com/outchain/player?type=2&amp;id=4940455&amp;auto=1&amp;height=32"</span>&gt;&lt;/iframe&gt;</span><br><span class="line">&lt;/nav&gt;</span><br></pre></td></tr></table></figure>
