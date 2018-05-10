@@ -163,15 +163,15 @@ function setSidebarMarginTop (headerOffset) {
     return $('.header-inner').height() + CONFIG.sidebar.offset;
   }
   window.onload=function(){
-    var subtitle = "没人能让你输，除非你不想赢W人生没有彩排，每一场都是直播";
-     var mytitle = subtitle.split("W");
+    var subtitle = "没人能让你输，除非你不想赢#人生没有彩排，每一场都是直播";
+     var mytitle = subtitle.split("#");
      var max = mytitle.length-1;
      var index = GetRandomNum(0,max);
      var text = mytitle[index];
      $("#helloTitle").html(text);
      var headOffset = getHeaderOffset();
      setSidebarMarginTop(headOffset);
-   // alert(getHeaderOffset());
+    alert(getHeaderOffset());
   }
 </script>
 <!--���˽ű�����-->
@@ -187,7 +187,7 @@ function setSidebarMarginTop (headerOffset) {
       </a>
     </div>
       
-        <p class="site-subtitle">没人能让你输，除非你不想赢W人生没有彩排，每一场都是直播</p>
+        <p class="site-subtitle">没人能让你输，除非你不想赢#人生没有彩排，每一场都是直播</p>
       
   </div>
 
