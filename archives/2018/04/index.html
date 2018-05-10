@@ -167,7 +167,7 @@ function setSidebarMarginTop (headerOffset) {
      var max = mytitle.length-1;
      var index = GetRandomNum(0,max);
      var text = mytitle[index];
-     $("#helloTitle").html(text);
+     $(".site-subtitle").html(text);
      var headOffset = getHeaderOffset();
      setSidebarMarginTop(headOffset);
     alert(getHeaderOffset());
@@ -524,9 +524,9 @@ function setSidebarMarginTop (headerOffset) {
             
               <img class="site-author-image" itemprop="image"
                 src="/images/header.png"
-                alt="Xiao Z" />
+                alt="<font color="red">Xiao Z</font>" />
             
-              <p class="site-author-name" itemprop="name">Xiao Z</p>
+              <p class="site-author-name" itemprop="name"><font color="red">Xiao Z</font></p>
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
@@ -633,7 +633,7 @@ function setSidebarMarginTop (headerOffset) {
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Xiao Z</span>
+  <span class="author" itemprop="copyrightHolder"><font color="red">Xiao Z</font></span>
 
   
 </div>
