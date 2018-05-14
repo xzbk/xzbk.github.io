@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Xiao Z">
 <meta property="og:description" content="Git基本命令 git init——————初始化git仓库，出现.git文件(将文件夹初始化成git仓库)  git add——————将文件从工作区添加到暂存区(对文件进行追踪) 123git add filename    将文件添加到暂存区git add .           将工作目录下所有修改的文件添加到暂存区  git commit——————将暂存区的文件添加到版本库 123gi">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-14T04:58:12.988Z">
+<meta property="og:updated_time" content="2018-05-14T05:07:54.906Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git入门详解">
 <meta name="twitter:description" content="Git基本命令 git init——————初始化git仓库，出现.git文件(将文件夹初始化成git仓库)  git add——————将文件从工作区添加到暂存区(对文件进行追踪) 123git add filename    将文件添加到暂存区git add .           将工作目录下所有修改的文件添加到暂存区  git commit——————将暂存区的文件添加到版本库 123gi">
@@ -360,7 +360,7 @@
 <li><p><code>git config</code>——————对git进行配置</p>
 </li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">- git config --global user.name xzbk                  配置用户名</span><br><span class="line"></span><br><span class="line">- git config --global user.email 1063175795@qq.com    配置用户邮箱</span><br><span class="line"></span><br><span class="line">- git config --list                                   查看git配置信息</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name xzbk                  配置用户名</span><br><span class="line"></span><br><span class="line">git config --global user.email 1063175795@qq.com    配置用户邮箱</span><br><span class="line"></span><br><span class="line">git config --list                                   查看git配置信息</span><br></pre></td></tr></table></figure>
 <h2 id="Git结构和状态"><a href="#Git结构和状态" class="headerlink" title="Git结构和状态"></a>Git结构和状态</h2><h3 id="Git的3层结构"><a href="#Git的3层结构" class="headerlink" title="Git的3层结构"></a>Git的3层结构</h3><ul>
 <li><code>wording directory</code>——————工作区</li>
 <li><p><code>staging index</code>——————暂存区</p>
@@ -386,16 +386,11 @@
 </li>
 </ul>
 <h2 id="Git文件删除"><a href="#Git文件删除" class="headerlink" title="Git文件删除"></a>Git文件删除</h2><ul>
-<li><code>git rm filename</code>——————删除工作区及暂存区中的该文件，相当于删除文件后执行<code>git add</code><ul>
-<li><code>git rm -cached filename</code>——————在不小心将不需要追踪的文件添加到暂存区，想删除暂存区的文件但不是删除工作区的文件很有用</li>
-<li><code>git rm -f filename</code>——————当工作区或者暂存区文件修改了</li>
-<li><code>glob</code>模式</li>
-</ul>
+<li><p><code>git rm filename</code>——————删除工作区及暂存区中的该文件，相当于删除文件后执行<code>git add</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git rm -cached filename	在不小心将不需要追踪的文件添加到暂存区，想删除暂存区的文件但不是删除工作区的文件很有用</span><br><span class="line"></span><br><span class="line">git rm -f filename	当工作区或者暂存区文件修改了</span><br><span class="line"></span><br><span class="line">glob`模式</span><br></pre></td></tr></table></figure>
 </li>
-<li><code>git mv filename</code><ul>
-<li>相当于：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mv oldname newname</span><br><span class="line"></span><br><span class="line">git rm oldname</span><br><span class="line"></span><br><span class="line">git add newname</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
+<li><p><code>git mv filename</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mv oldname newname</span><br><span class="line"></span><br><span class="line">git rm oldname</span><br><span class="line"></span><br><span class="line">git add newname</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 
