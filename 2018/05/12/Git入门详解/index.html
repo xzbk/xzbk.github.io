@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Xiao Z">
 <meta property="og:description" content="Git基本命令 git init——————初始化git仓库，出现.git文件(将文件夹初始化成git仓库)  git add——————将文件从工作区添加到暂存区(对文件进行追踪) 123git add filename    将文件添加到暂存区git add .           将工作目录下所有修改的文件添加到暂存区  git commit——————将暂存区的文件添加到版本库 123gi">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-15T05:30:26.197Z">
+<meta property="og:updated_time" content="2018-05-15T09:06:05.367Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git入门详解">
 <meta name="twitter:description" content="Git基本命令 git init——————初始化git仓库，出现.git文件(将文件夹初始化成git仓库)  git add——————将文件从工作区添加到暂存区(对文件进行追踪) 123git add filename    将文件添加到暂存区git add .           将工作目录下所有修改的文件添加到暂存区  git commit——————将暂存区的文件添加到版本库 123gi">
@@ -433,6 +433,26 @@
 <li><code>git stash apply stash@num</code>——————将暂存拉回(stash@{number}：暂存的名称)</li>
 <li><code>git stash drop stash@num</code>——————删除对应的暂存</li>
 </ul>
+<h2 id="Git远程仓库"><a href="#Git远程仓库" class="headerlink" title="Git远程仓库"></a>Git远程仓库</h2><h3 id="github上的仓库"><a href="#github上的仓库" class="headerlink" title="github上的仓库"></a>github上的仓库</h3><ul>
+<li>创建仓库</li>
+<li><code>clone</code>——————克隆仓库到本地</li>
+<li><code>push</code>——————上传本地仓库</li>
+<li><code>pull</code>——————拉取代码到本地</li>
+<li><code>ignoring files</code></li>
+</ul>
+<h3 id="远程服务器上的仓库"><a href="#远程服务器上的仓库" class="headerlink" title="远程服务器上的仓库"></a>远程服务器上的仓库</h3><ul>
+<li>用<code>taskmanager</code>来演示</li>
+<li><code>git init --bare</code>——————</li>
+<li><code>git remote add name path</code>——————</li>
+<li><code>git remote rm name</code>——————</li>
+<li><code>git remote rename oldname newname</code>——————</li>
+<li><code>git fetch</code>——————</li>
+</ul>
+<h3 id="Git-ssh免秘钥登录"><a href="#Git-ssh免秘钥登录" class="headerlink" title="Git ssh免秘钥登录"></a>Git ssh免秘钥登录</h3><ul>
+<li><code>ssh-keygen</code>——————获取ssh秘钥(公钥，在<code>c/administrator/.ssh</code>文件夹中)</li>
+<li><code>ssh-copy-id user@host</code>——————将本机的公钥复制到远程服务器的authorized_keys文件中</li>
+<li>如果不是自己的服务器可以将本地公钥发送给服务器管理员，添加爱authorized_keys中</li>
+</ul>
 
       
     </div>
@@ -642,7 +662,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Git基本命令"><span class="nav-number">1.</span> <span class="nav-text">Git基本命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git结构和状态"><span class="nav-number">2.</span> <span class="nav-text">Git结构和状态</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Git的3层结构"><span class="nav-number">2.1.</span> <span class="nav-text">Git的3层结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Git中文件的四种状态"><span class="nav-number">2.2.</span> <span class="nav-text">Git中文件的四种状态</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git撤销操作"><span class="nav-number">3.</span> <span class="nav-text">Git撤销操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git文件删除"><span class="nav-number">4.</span> <span class="nav-text">Git文件删除</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git分支"><span class="nav-number">5.</span> <span class="nav-text">Git分支</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#git分支的创建、修改、切换、删除"><span class="nav-number">5.1.</span> <span class="nav-text">git分支的创建、修改、切换、删除</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分支的合并"><span class="nav-number">5.2.</span> <span class="nav-text">分支的合并</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#储存变更"><span class="nav-number">5.3.</span> <span class="nav-text">储存变更</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Git基本命令"><span class="nav-number">1.</span> <span class="nav-text">Git基本命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git结构和状态"><span class="nav-number">2.</span> <span class="nav-text">Git结构和状态</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Git的3层结构"><span class="nav-number">2.1.</span> <span class="nav-text">Git的3层结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Git中文件的四种状态"><span class="nav-number">2.2.</span> <span class="nav-text">Git中文件的四种状态</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git撤销操作"><span class="nav-number">3.</span> <span class="nav-text">Git撤销操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git文件删除"><span class="nav-number">4.</span> <span class="nav-text">Git文件删除</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git分支"><span class="nav-number">5.</span> <span class="nav-text">Git分支</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#git分支的创建、修改、切换、删除"><span class="nav-number">5.1.</span> <span class="nav-text">git分支的创建、修改、切换、删除</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分支的合并"><span class="nav-number">5.2.</span> <span class="nav-text">分支的合并</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#储存变更"><span class="nav-number">5.3.</span> <span class="nav-text">储存变更</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git远程仓库"><span class="nav-number">6.</span> <span class="nav-text">Git远程仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#github上的仓库"><span class="nav-number">6.1.</span> <span class="nav-text">github上的仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#远程服务器上的仓库"><span class="nav-number">6.2.</span> <span class="nav-text">远程服务器上的仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Git-ssh免秘钥登录"><span class="nav-number">6.3.</span> <span class="nav-text">Git ssh免秘钥登录</span></a></li></ol></li></ol></div>
             
 
           </div>
