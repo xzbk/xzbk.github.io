@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Xiao Z">
 <meta property="og:description" content="Git基本命令 git init——————初始化git仓库，出现.git文件(将文件夹初始化成git仓库)  git add——————将文件从工作区添加到暂存区(对文件进行追踪) 123git add filename    将文件添加到暂存区git add .           将工作目录下所有修改的文件添加到暂存区  git commit——————将暂存区的文件添加到版本库 123gi">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-14T06:25:36.290Z">
+<meta property="og:updated_time" content="2018-05-15T05:30:26.197Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git入门详解">
 <meta name="twitter:description" content="Git基本命令 git init——————初始化git仓库，出现.git文件(将文件夹初始化成git仓库)  git add——————将文件从工作区添加到暂存区(对文件进行追踪) 123git add filename    将文件添加到暂存区git add .           将工作目录下所有修改的文件添加到暂存区  git commit——————将暂存区的文件添加到版本库 123gi">
@@ -415,6 +415,24 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mv oldname newname</span><br><span class="line"></span><br><span class="line">git rm oldname</span><br><span class="line"></span><br><span class="line">git add newname</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
+<h2 id="Git分支"><a href="#Git分支" class="headerlink" title="Git分支"></a>Git分支</h2><h3 id="git分支的创建、修改、切换、删除"><a href="#git分支的创建、修改、切换、删除" class="headerlink" title="git分支的创建、修改、切换、删除"></a>git分支的创建、修改、切换、删除</h3><ul>
+<li><code>git branch</code>——————查看分支口</li>
+<li><code>git branch branchname</code>——————创建分支</li>
+<li><code>git branch -m oldname newname</code>——————修改分支名称</li>
+<li><code>git checkout [-b] branchname</code>——————切换分支[创建并切换分支]</li>
+<li><code>git branch -d branchname</code>——————删除分支</li>
+</ul>
+<h3 id="分支的合并"><a href="#分支的合并" class="headerlink" title="分支的合并"></a>分支的合并</h3><ul>
+<li><code>HEAD</code>——————分支的指针，指针HEAD指向当前工作分支，在切换分支时执行新的分支</li>
+<li><code>git diff</code>——————比较差异<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git diff			比较工作区与暂存区文件的差异</span><br><span class="line"></span><br><span class="line">git diff --staged		比较暂存区与版本库文件的差异</span><br><span class="line"></span><br><span class="line">git diff version1 version2	比较分支内两个版本号的差异</span><br><span class="line"></span><br><span class="line">git diff branch1 branch2	比较两个分支的差异</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="储存变更"><a href="#储存变更" class="headerlink" title="储存变更"></a>储存变更</h3><ul>
+<li><code>git stash</code>——————暂存文件的修改(切换分支前需要暂存，否则切换失败)</li>
+<li><code>git stash list</code>——————查看暂存列表</li>
+<li><code>git stash apply stash@num</code>——————将暂存拉回(stash@{number}：暂存的名称)</li>
+<li><code>git stash drop stash@num</code>——————删除对应的暂存</li>
+</ul>
 
       
     </div>
@@ -624,7 +642,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Git基本命令"><span class="nav-number">1.</span> <span class="nav-text">Git基本命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git结构和状态"><span class="nav-number">2.</span> <span class="nav-text">Git结构和状态</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Git的3层结构"><span class="nav-number">2.1.</span> <span class="nav-text">Git的3层结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Git中文件的四种状态"><span class="nav-number">2.2.</span> <span class="nav-text">Git中文件的四种状态</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git撤销操作"><span class="nav-number">3.</span> <span class="nav-text">Git撤销操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git文件删除"><span class="nav-number">4.</span> <span class="nav-text">Git文件删除</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Git基本命令"><span class="nav-number">1.</span> <span class="nav-text">Git基本命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git结构和状态"><span class="nav-number">2.</span> <span class="nav-text">Git结构和状态</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Git的3层结构"><span class="nav-number">2.1.</span> <span class="nav-text">Git的3层结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Git中文件的四种状态"><span class="nav-number">2.2.</span> <span class="nav-text">Git中文件的四种状态</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git撤销操作"><span class="nav-number">3.</span> <span class="nav-text">Git撤销操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git文件删除"><span class="nav-number">4.</span> <span class="nav-text">Git文件删除</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git分支"><span class="nav-number">5.</span> <span class="nav-text">Git分支</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#git分支的创建、修改、切换、删除"><span class="nav-number">5.1.</span> <span class="nav-text">git分支的创建、修改、切换、删除</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分支的合并"><span class="nav-number">5.2.</span> <span class="nav-text">分支的合并</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#储存变更"><span class="nav-number">5.3.</span> <span class="nav-text">储存变更</span></a></li></ol></li></ol></div>
             
 
           </div>
