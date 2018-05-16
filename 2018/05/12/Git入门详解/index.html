@@ -89,7 +89,8 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/img/Git/github_pointer.png">
 <meta property="og:image" content="http://yoursite.com/img/Git/github_branch.png">
-<meta property="og:updated_time" content="2018-05-15T11:30:55.660Z">
+<meta property="og:image" content="http://yoursite.com/img/Git/document.png">
+<meta property="og:updated_time" content="2018-05-16T04:20:56.864Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git入门详解">
 <meta name="twitter:description" content="Git基本命令 git init——————初始化git仓库，出现.git文件(将文件夹初始化成git仓库)  git add——————将文件从工作区添加到暂存区(对文件进行追踪) 123git add filename    将文件添加到暂存区git add .           将工作目录下所有修改的文件添加到暂存区  git commit——————将暂存区的文件添加到版本库 123gi">
@@ -407,7 +408,9 @@
 </li>
 <li><p><code>git checkout -- filename</code>——————拉取暂存区的文件并将其替换工作区的文件(如果暂存区没有则去版本库中获)</p>
 </li>
-<li><p><code>git reset HEAD -- filename</code>——————拉取最近一次提交的版本库中的这个文件到暂存区，该操作不影响工作区</p>
+<li><p><code>git reset HEAD filename</code>——————拉取最近一次提交的版本库中的这个文件到暂存区，该操作不影响工作区</p>
+</li>
+<li><code>git reset --option(版本号)</code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git reset --head 版本号		将暂存区工作区强行回退到相应版本</span><br><span class="line"></span><br><span class="line">git reset --mixed 版本号	将版本库和暂存区回退到相应版本，工作区不受影响</span><br><span class="line"></span><br><span class="line">git reset --soft 版本号		将版本库回退到相应版本</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h2 id="Git文件删除"><a href="#Git文件删除" class="headerlink" title="Git文件删除"></a>Git文件删除</h2><ul>
@@ -427,7 +430,10 @@
 </ul>
 <h3 id="分支的合并"><a href="#分支的合并" class="headerlink" title="分支的合并"></a>分支的合并</h3><ul>
 <li><code>HEAD</code>——————分支的指针，指针HEAD指向当前工作分支，在切换分支时执行新的分支<br><img src="/img/Git/github_pointer.png" alt=""></li>
-<li><code>git diff</code>——————比较差异<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git diff			比较工作区与暂存区文件的差异</span><br><span class="line"></span><br><span class="line">git diff --staged		比较暂存区与版本库文件的差异</span><br><span class="line"></span><br><span class="line">git diff version1 version2	比较分支内两个版本号的差异</span><br><span class="line"></span><br><span class="line">git diff branch1 branch2	比较两个分支的差异</span><br></pre></td></tr></table></figure>
+<li><p><code>git diff</code>——————比较差异</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git diff			比较工作区与暂存区文件的差异</span><br><span class="line"></span><br><span class="line">git diff --staged		比较暂存区与版本库文件的差异</span><br><span class="line"></span><br><span class="line">git diff version1 version2	比较分支内两个版本号的差异</span><br><span class="line"></span><br><span class="line">git diff branch1 branch2	比较两个分支的差异</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>git merge branchname</code>——————将branchname分支合并到当前所在分支</p>
 </li>
 </ul>
 <h3 id="储存变更"><a href="#储存变更" class="headerlink" title="储存变更"></a>储存变更</h3><ul>
@@ -459,6 +465,27 @@
 <li><code>ssh-copy-id user@host</code>——————将本机的公钥复制到远程服务器的authorized_keys文件中</li>
 <li>如果不是自己的服务器可以将本地公钥发送给服务器管理员，添加爱authorized_keys中</li>
 </ul>
+<h2 id="Git的glob匹配模式"><a href="#Git的glob匹配模式" class="headerlink" title="Git的glob匹配模式"></a>Git的glob匹配模式</h2><ul>
+<li>星号(*)匹配零个或多个任意字符</li>
+<li>[abc]匹配任何一个列在括号中的字符</li>
+<li>问号(?)只匹配一个人义字符</li>
+<li>[0-9]、[a-z]匹配范围</li>
+</ul>
+<h2 id="Git跳过追踪"><a href="#Git跳过追踪" class="headerlink" title="Git跳过追踪"></a>Git跳过追踪</h2><ul>
+<li>在项目目录下新建<code>.gitignore</code>文件</li>
+<li>将要忽略的文件配置到<code>.gitignore</code>文件中</li>
+<li><p>如果被忽略的文件刘改了，会自动提交到暂存区，需使用<code>git rm --cached filename</code>来使文件被忽略</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">例:</span><br><span class="line">   .gitignore</span><br><span class="line">   index.html</span><br><span class="line">   index.*</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>也可以使用glob匹配模式进行配置</p>
+</li>
+</ul>
+<h2 id="Git帮助文档的使用"><a href="#Git帮助文档的使用" class="headerlink" title="Git帮助文档的使用"></a>Git帮助文档的使用</h2><ul>
+<li><code>git help</code>——————查看帮助文档</li>
+<li><code>git help command</code>——————查看command命令的使用文档</li>
+<li>帮助文档官方地址：<a href="https://git-scm.com/docs" target="_blank" rel="noopener">https://git-scm.com/docs</a></li>
+</ul>
+<h2 id="Git流程图"><a href="#Git流程图" class="headerlink" title="Git流程图"></a>Git流程图</h2><p><img src="/img/Git/document.png" alt=""></p>
 
       
     </div>
@@ -668,7 +695,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Git基本命令"><span class="nav-number">1.</span> <span class="nav-text">Git基本命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git结构和状态"><span class="nav-number">2.</span> <span class="nav-text">Git结构和状态</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Git的3层结构"><span class="nav-number">2.1.</span> <span class="nav-text">Git的3层结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Git中文件的四种状态"><span class="nav-number">2.2.</span> <span class="nav-text">Git中文件的四种状态</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git撤销操作"><span class="nav-number">3.</span> <span class="nav-text">Git撤销操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git文件删除"><span class="nav-number">4.</span> <span class="nav-text">Git文件删除</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git分支"><span class="nav-number">5.</span> <span class="nav-text">Git分支</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#git分支的创建、修改、切换、删除"><span class="nav-number">5.1.</span> <span class="nav-text">git分支的创建、修改、切换、删除</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分支的合并"><span class="nav-number">5.2.</span> <span class="nav-text">分支的合并</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#储存变更"><span class="nav-number">5.3.</span> <span class="nav-text">储存变更</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git远程仓库"><span class="nav-number">6.</span> <span class="nav-text">Git远程仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#github上的仓库"><span class="nav-number">6.1.</span> <span class="nav-text">github上的仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#远程服务器上的仓库"><span class="nav-number">6.2.</span> <span class="nav-text">远程服务器上的仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Git-ssh免秘钥登录"><span class="nav-number">6.3.</span> <span class="nav-text">Git ssh免秘钥登录</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Git基本命令"><span class="nav-number">1.</span> <span class="nav-text">Git基本命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git结构和状态"><span class="nav-number">2.</span> <span class="nav-text">Git结构和状态</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Git的3层结构"><span class="nav-number">2.1.</span> <span class="nav-text">Git的3层结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Git中文件的四种状态"><span class="nav-number">2.2.</span> <span class="nav-text">Git中文件的四种状态</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git撤销操作"><span class="nav-number">3.</span> <span class="nav-text">Git撤销操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git文件删除"><span class="nav-number">4.</span> <span class="nav-text">Git文件删除</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git分支"><span class="nav-number">5.</span> <span class="nav-text">Git分支</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#git分支的创建、修改、切换、删除"><span class="nav-number">5.1.</span> <span class="nav-text">git分支的创建、修改、切换、删除</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分支的合并"><span class="nav-number">5.2.</span> <span class="nav-text">分支的合并</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#储存变更"><span class="nav-number">5.3.</span> <span class="nav-text">储存变更</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git远程仓库"><span class="nav-number">6.</span> <span class="nav-text">Git远程仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#github上的仓库"><span class="nav-number">6.1.</span> <span class="nav-text">github上的仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#远程服务器上的仓库"><span class="nav-number">6.2.</span> <span class="nav-text">远程服务器上的仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Git-ssh免秘钥登录"><span class="nav-number">6.3.</span> <span class="nav-text">Git ssh免秘钥登录</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git的glob匹配模式"><span class="nav-number">7.</span> <span class="nav-text">Git的glob匹配模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git跳过追踪"><span class="nav-number">8.</span> <span class="nav-text">Git跳过追踪</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git帮助文档的使用"><span class="nav-number">9.</span> <span class="nav-text">Git帮助文档的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git流程图"><span class="nav-number">10.</span> <span class="nav-text">Git流程图</span></a></li></ol></div>
             
 
           </div>
