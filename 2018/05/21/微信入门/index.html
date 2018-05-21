@@ -79,15 +79,27 @@
 
 
 
+<meta name="description" content="注册 打开微信公众平台点击小程序注册查看详情 在小程序注册页面点击注册开始注册 注册 注册完成后返回微信公众平台登录即可 登录小程序复制AppID以备开发者工具的使用  开发者工具 下载开发者工具:开发者工具 打开开发者工具将上一步复制的AppID填入开始项目开发  小程序结构整体结构图JS 交互逻辑 在小程序里边，我们就通过编写 JS 脚本文件来处理用户的操作。 可以在 JS 中调用小程序提供的">
 <meta name="keywords" content="博客">
 <meta property="og:type" content="article">
 <meta property="og:title" content="微信入门">
 <meta property="og:url" content="http://yoursite.com/2018/05/21/微信入门/index.html">
 <meta property="og:site_name" content="Xiao Z">
+<meta property="og:description" content="注册 打开微信公众平台点击小程序注册查看详情 在小程序注册页面点击注册开始注册 注册 注册完成后返回微信公众平台登录即可 登录小程序复制AppID以备开发者工具的使用  开发者工具 下载开发者工具:开发者工具 打开开发者工具将上一步复制的AppID填入开始项目开发  小程序结构整体结构图JS 交互逻辑 在小程序里边，我们就通过编写 JS 脚本文件来处理用户的操作。 可以在 JS 中调用小程序提供的">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-21T02:59:57.995Z">
+<meta property="og:image" content="http://yoursite.com/img/WeiXin/pre_1.png">
+<meta property="og:image" content="http://yoursite.com/img/WeiXin/pre_2.png">
+<meta property="og:image" content="http://yoursite.com/img/WeiXin/pre_3.png">
+<meta property="og:image" content="http://yoursite.com/img/WeiXin/pre_4.png">
+<meta property="og:image" content="http://yoursite.com/img/WeiXin/pre_5.png">
+<meta property="og:image" content="http://yoursite.com/img/WeiXin/download.png">
+<meta property="og:image" content="http://yoursite.com/img/WeiXin/pre_6.png">
+<meta property="og:image" content="http://yoursite.com/img/WeiXin/glob.png">
+<meta property="og:updated_time" content="2018-05-21T03:13:33.256Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="微信入门">
+<meta name="twitter:description" content="注册 打开微信公众平台点击小程序注册查看详情 在小程序注册页面点击注册开始注册 注册 注册完成后返回微信公众平台登录即可 登录小程序复制AppID以备开发者工具的使用  开发者工具 下载开发者工具:开发者工具 打开开发者工具将上一步复制的AppID填入开始项目开发  小程序结构整体结构图JS 交互逻辑 在小程序里边，我们就通过编写 JS 脚本文件来处理用户的操作。 可以在 JS 中调用小程序提供的">
+<meta name="twitter:image" content="http://yoursite.com/img/WeiXin/pre_1.png">
 
 
 
@@ -341,7 +353,64 @@
       
 
       
-        
+        <h2 id="注册"><a href="#注册" class="headerlink" title="注册"></a>注册</h2><ol>
+<li>打开<a href="https://mp.weixin.qq.com/" target="_blank" rel="noopener">微信公众平台</a>点击小程序注册查看详情<img src="/img/WeiXin/pre_1.png" alt=""></li>
+<li>在<a href="https://mp.weixin.qq.com/cgi-bin/wx" target="_blank" rel="noopener">小程序注册页面</a>点击注册开始注册<img src="/img/WeiXin/pre_2.png" alt=""></li>
+<li>注册<img src="/img/WeiXin/pre_3.png" alt=""></li>
+<li>注册完成后返回微信公众平台登录即可<img src="/img/WeiXin/pre_4.png" alt=""></li>
+<li>登录小程序复制AppID以备开发者工具的使用<img src="/img/WeiXin/pre_5.png" alt=""></li>
+</ol>
+<h2 id="开发者工具"><a href="#开发者工具" class="headerlink" title="开发者工具"></a>开发者工具</h2><ul>
+<li>下载开发者工具:<a href="https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html" target="_blank" rel="noopener">开发者工具</a><img src="/img/WeiXin/download.png" alt=""></li>
+<li>打开开发者工具将上一步复制的AppID填入开始项目开发<img src="/img/WeiXin/pre_6.png" alt=""></li>
+</ul>
+<h2 id="小程序结构"><a href="#小程序结构" class="headerlink" title="小程序结构"></a>小程序结构</h2><h3 id="整体结构图"><a href="#整体结构图" class="headerlink" title="整体结构图"></a>整体结构图<img src="/img/WeiXin/glob.png" alt=""></h3><h3 id="JS-交互逻辑"><a href="#JS-交互逻辑" class="headerlink" title="JS 交互逻辑"></a>JS 交互逻辑</h3><ul>
+<li>在小程序里边，我们就通过编写 JS 脚本文件来处理用户的操作。</li>
+<li>可以在 JS 中调用小程序提供的丰富的 API，利用这些 API 可以很方便的调起微信提供的能力</li>
+</ul>
+<h3 id="JSON配置"><a href="#JSON配置" class="headerlink" title="JSON配置"></a>JSON配置</h3><p>app.json 是对当前小程序的全局配置，包括了小程序的所有页面路径、界面表现、网络超时时间、底部 tab 等<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;pages&quot;:[</span><br><span class="line">    &quot;pages/index/index&quot;,</span><br><span class="line">    &quot;pages/logs/logs&quot;</span><br><span class="line">  ],</span><br><span class="line">  &quot;window&quot;:&#123;</span><br><span class="line">    &quot;backgroundTextStyle&quot;:&quot;light&quot;,</span><br><span class="line">    &quot;navigationBarBackgroundColor&quot;: &quot;#fff&quot;,</span><br><span class="line">    &quot;navigationBarTitleText&quot;: &quot;WeChat&quot;,</span><br><span class="line">    &quot;navigationBarTextStyle&quot;:&quot;black&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>pages字段 —— 用于描述当前小程序所有页面路径，这是为了让微信客户端知道当前你的小程序页面定义在哪个目录。<ul>
+<li>通过在app.json的pages字段中添加类似于<code>pages/new/new</code>字段即可添加新页面</li>
+</ul>
+</li>
+<li>window字段 —— 小程序所有页面的顶部背景颜色，文字颜色定义在这里的。</li>
+</ul>
+<h3 id="WXML模板"><a href="#WXML模板" class="headerlink" title="WXML模板"></a>WXML模板</h3><p>WXML 充当的就是类似 HTML 的角色，用于显示界面内容。打开 pages/index/index.wxml，你会看到以下的内容:</p>
+<ul>
+<li>仅仅通过数据绑定还不够完整的描述状态和界面的关系，还需要 if/else, for等控制能力，在小程序里边，这些控制能力都用 wx: 开头的属性来表达</li>
+</ul>
+<h3 id="WXSS样式"><a href="#WXSS样式" class="headerlink" title="WXSS样式"></a>WXSS样式</h3><p>WXSS 具有 CSS 大部分的特性，小程序在 WXSS 也做了一些扩充和修改</p>
+<h2 id="常用api"><a href="#常用api" class="headerlink" title="常用api"></a>常用api</h2><ul>
+<li><p><code>App()</code>注册一个小程序(全局app.js中)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//app.js</span><br><span class="line">App(&#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>Page()</code>注册一个页面(单页.js中)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Page(&#123;</span><br><span class="line">   ...</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>getApp()</code>页面中获取全局的app</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const app = getApp();</span><br><span class="line">Page(&#123;</span><br><span class="line">  test: function()&#123;</span><br><span class="line">    //获取app全局文件中的数据</span><br><span class="line">    app.obj</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>this.data.msg</code>获取当前实时数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Page(&#123;</span><br><span class="line">  data: &#123;</span><br><span class="line"></span><br><span class="line">    msg: &apos;Hello World&apos;</span><br><span class="line">  &#125;</span><br><span class="line">  ,	</span><br><span class="line">  test: function()&#123;</span><br><span class="line">    //获取当前data中的msg</span><br><span class="line">    console.log(this.data.msg)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>this.setData({})</code>设置当前实时数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Page(&#123;</span><br><span class="line">  data: &#123;</span><br><span class="line"></span><br><span class="line">    msg: &apos;Hello World&apos;</span><br><span class="line">  &#125;</span><br><span class="line">  ,	</span><br><span class="line">  test: function()&#123;</span><br><span class="line">    //设置当前data中的msg为hello</span><br><span class="line">    this.setData(&#123;</span><br><span class="line">       msg: &apos;hello&apos;	</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>事件绑定</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- .wxml代码:用bindtap绑定单击事件 --&gt;</span><br><span class="line">&lt;button size=&quot;mini&quot; type=&apos;primary&apos; bindtap=&apos;nav&apos;&gt;注册单机事件&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">//.js代码:</span><br><span class="line">Page(&#123;</span><br><span class="line"></span><br><span class="line">  nav: function()&#123;</span><br><span class="line"></span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>页面跳转的两种方式</p>
+<ol>
+<li><p>标签方式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- .wxml代码: --&gt;</span><br><span class="line">&lt;navigator url=&apos;../news/news&apos;&gt;第一种跳转方式&lt;/navigator&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>js单击事件跳转方式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- .wxml代码: --&gt;</span><br><span class="line">&lt;button size=&quot;mini&quot; type=&apos;primary&apos; bindtap=&apos;nav&apos;&gt;第二种跳转方式&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">//.js代码:</span><br><span class="line">Page(&#123;</span><br><span class="line"></span><br><span class="line">  nav: function()&#123;</span><br><span class="line"></span><br><span class="line">    wx.navigateTo(&#123;</span><br><span class="line"></span><br><span class="line">      url: &apos;/pages/news/news&apos;</span><br><span class="line"></span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ul>
+
       
     </div>
     
@@ -430,8 +499,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -525,6 +603,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#注册"><span class="nav-number">1.</span> <span class="nav-text">注册</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开发者工具"><span class="nav-number">2.</span> <span class="nav-text">开发者工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小程序结构"><span class="nav-number">3.</span> <span class="nav-text">小程序结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#整体结构图"><span class="nav-number">3.1.</span> <span class="nav-text">整体结构图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JS-交互逻辑"><span class="nav-number">3.2.</span> <span class="nav-text">JS 交互逻辑</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSON配置"><span class="nav-number">3.3.</span> <span class="nav-text">JSON配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WXML模板"><span class="nav-number">3.4.</span> <span class="nav-text">WXML模板</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WXSS样式"><span class="nav-number">3.5.</span> <span class="nav-text">WXSS样式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用api"><span class="nav-number">4.</span> <span class="nav-text">常用api</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
