@@ -95,7 +95,7 @@
 <meta property="og:image" content="http://yoursite.com/img/WeiXin/download.png">
 <meta property="og:image" content="http://yoursite.com/img/WeiXin/pre_6.png">
 <meta property="og:image" content="http://yoursite.com/img/WeiXin/glob.png">
-<meta property="og:updated_time" content="2018-05-21T03:45:04.970Z">
+<meta property="og:updated_time" content="2018-05-21T03:47:41.898Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="微信开发入门">
 <meta name="twitter:description" content="注册 打开微信公众平台点击小程序注册查看详情 在小程序注册页面点击注册开始注册 注册 注册完成后返回微信公众平台登录即可 登录小程序复制AppID以备开发者工具的使用  开发者工具 下载开发者工具:开发者工具 打开开发者工具将上一步复制的AppID填入开始项目开发  小程序结构整体结构图JS 交互逻辑 在小程序里边，我们就通过编写 JS 脚本文件来处理用户的操作。 可以在 JS 中调用小程序提供的">
@@ -442,11 +442,20 @@
 </li>
 </ol>
 </li>
-<li><p><code>wx:if</code>条件渲染<br>在框架中，使用 wx:if来判断是否需要渲染(显示)该代码块：</p>
+<li><p><code>wx:if</code>条件渲染</p>
+<ul>
+<li><p>在框架中，使用 wx:if来判断是否需要渲染(显示)该代码块：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- .wxml代码 --&gt;</span><br><span class="line">&lt;view wx:if=&quot;&#123;&#123;condition&#125; &#125;&quot;&gt; True &lt;/view&gt;</span><br></pre></td></tr></table></figure>
 </li>
+<li><p>也可以用<code>wx:elif</code>和<code>wx:else</code>来添加一个 else 块：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- .wxml代码 --&gt;</span><br><span class="line">&lt;view wx:if=&quot;&#123;&#123;length &gt; 5&#125; &#125;&quot;&gt; 1 &lt;/view&gt;</span><br><span class="line">&lt;view wx:elif=&quot;&#123;&#123;length &gt; 2&#125; &#125;&quot;&gt; 2 &lt;/view&gt;</span><br><span class="line">&lt;view wx:else&gt; 3 &lt;/view&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果要一次性判断多个组件标签，可以使用一个 <block> 标签将多个组件包装起来，并在上边使用 wx:if 控制属性。</block></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- .wxml代码 --&gt;</span><br><span class="line">&lt;block wx:if=&quot;&#123;&#123;true&#125;&#125;&quot;&gt;</span><br><span class="line">  &lt;view&gt; view1 &lt;/view&gt;</span><br><span class="line">  &lt;view&gt; view2 &lt;/view&gt;</span><br><span class="line">&lt;/block&gt;</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-<p>也可以用<code>wx:elif</code>和<code>wx:else</code>来添加一个 else 块：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;view wx:if=&quot;&#123;&#123;length &gt; 5&#125; &#125;&quot;&gt; 1 &lt;/view&gt;</span><br><span class="line">&lt;view wx:elif=&quot;&#123;&#123;length &gt; 2&#125; &#125;&quot;&gt; 2 &lt;/view&gt;</span><br><span class="line">&lt;view wx:else&gt; 3 &lt;/view&gt;</span><br></pre></td></tr></table></figure></p>
+</li>
+</ul>
 
       
     </div>
