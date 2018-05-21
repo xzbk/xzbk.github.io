@@ -95,7 +95,7 @@
 <meta property="og:image" content="http://yoursite.com/img/WeiXin/download.png">
 <meta property="og:image" content="http://yoursite.com/img/WeiXin/pre_6.png">
 <meta property="og:image" content="http://yoursite.com/img/WeiXin/glob.png">
-<meta property="og:updated_time" content="2018-05-21T03:47:41.898Z">
+<meta property="og:updated_time" content="2018-05-21T03:52:44.043Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="微信开发入门">
 <meta name="twitter:description" content="注册 打开微信公众平台点击小程序注册查看详情 在小程序注册页面点击注册开始注册 注册 注册完成后返回微信公众平台登录即可 登录小程序复制AppID以备开发者工具的使用  开发者工具 下载开发者工具:开发者工具 打开开发者工具将上一步复制的AppID填入开始项目开发  小程序结构整体结构图JS 交互逻辑 在小程序里边，我们就通过编写 JS 脚本文件来处理用户的操作。 可以在 JS 中调用小程序提供的">
@@ -445,15 +445,18 @@
 <li><p><code>wx:if</code>条件渲染</p>
 <ul>
 <li><p>在框架中，使用 wx:if来判断是否需要渲染(显示)该代码块：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- .wxml代码 --&gt;</span><br><span class="line">&lt;view wx:if=&quot;&#123;&#123;condition&#125; &#125;&quot;&gt; True &lt;/view&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- .wxml代码 --&gt;</span><br><span class="line">&lt;view wx:if=&quot;&#123;&#123;condition&#125;&#125;&quot;&gt; True &lt;/view&gt;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>也可以用<code>wx:elif</code>和<code>wx:else</code>来添加一个 else 块：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- .wxml代码 --&gt;</span><br><span class="line">&lt;view wx:if=&quot;&#123;&#123;length &gt; 5&#125; &#125;&quot;&gt; 1 &lt;/view&gt;</span><br><span class="line">&lt;view wx:elif=&quot;&#123;&#123;length &gt; 2&#125; &#125;&quot;&gt; 2 &lt;/view&gt;</span><br><span class="line">&lt;view wx:else&gt; 3 &lt;/view&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- .wxml代码 --&gt;</span><br><span class="line">&lt;view wx:if=&quot;&#123;&#123;length &gt; 5&#125;&#125;&quot;&gt; 1 &lt;/view&gt;</span><br><span class="line">&lt;view wx:elif=&quot;&#123;&#123;length &gt; 2&#125;&#125;&quot;&gt; 2 &lt;/view&gt;</span><br><span class="line">&lt;view wx:else&gt; 3 &lt;/view&gt;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>如果要一次性判断多个组件标签，可以使用一个 <block> 标签将多个组件包装起来，并在上边使用 wx:if 控制属性。</block></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- .wxml代码 --&gt;</span><br><span class="line">&lt;block wx:if=&quot;&#123;&#123;true&#125;&#125;&quot;&gt;</span><br><span class="line">  &lt;view&gt; view1 &lt;/view&gt;</span><br><span class="line">  &lt;view&gt; view2 &lt;/view&gt;</span><br><span class="line">&lt;/block&gt;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
+</li>
+<li><p><code>wx:for</code>列个表渲染<br>在组件上使用 wx:for 控制属性绑定一个数组，即可使用数组中各项的数据重复渲染该组件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- .wxml代码 --&gt;</span><br><span class="line">&lt;view wx:for=&quot;&#123;&#123;array&#125;&#125;&quot;&gt;</span><br><span class="line">  &#123;&#123;index&#125;&#125;: &#123;&#123;item.message&#125;&#125;</span><br><span class="line">&lt;/view&gt;</span><br><span class="line">//.js代码</span><br><span class="line">//默认数组的当前项的下标变量名默认为 index</span><br><span class="line">//数组当前项的变量名默认为 item</span><br><span class="line">Page(&#123;</span><br><span class="line">  data: &#123;</span><br><span class="line">    array: [&#123;</span><br><span class="line">      message: &apos;foo&apos;,</span><br><span class="line">    &#125;, &#123;</span><br><span class="line">      message: &apos;bar&apos;</span><br><span class="line">    &#125;]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 
