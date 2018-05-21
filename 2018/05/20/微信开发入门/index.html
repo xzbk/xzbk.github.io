@@ -95,7 +95,7 @@
 <meta property="og:image" content="http://yoursite.com/img/WeiXin/download.png">
 <meta property="og:image" content="http://yoursite.com/img/WeiXin/pre_6.png">
 <meta property="og:image" content="http://yoursite.com/img/WeiXin/glob.png">
-<meta property="og:updated_time" content="2018-05-21T03:56:57.740Z">
+<meta property="og:updated_time" content="2018-05-21T04:01:21.517Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="微信开发入门">
 <meta name="twitter:description" content="注册 打开微信公众平台点击小程序注册查看详情 在小程序注册页面点击注册开始注册 注册 注册完成后返回微信公众平台登录即可 登录小程序复制AppID以备开发者工具的使用  开发者工具 下载开发者工具:开发者工具 打开开发者工具将上一步复制的AppID填入开始项目开发  小程序结构整体结构图JS 交互逻辑 在小程序里边，我们就通过编写 JS 脚本文件来处理用户的操作。 可以在 JS 中调用小程序提供的">
@@ -394,13 +394,14 @@
 <ul>
 <li>pages字段 —— 用于描述当前小程序所有页面路径，这是为了让微信客户端知道当前你的小程序页面定义在哪个目录。<ul>
 <li>通过在app.json的pages字段中添加类似于<code>pages/new/new</code>字段即可添加新页面</li>
+<li>第一个字段为自动加载的主页面字段</li>
 </ul>
 </li>
 <li>window字段 —— 小程序所有页面的顶部背景颜色，文字颜色定义在这里的。</li>
 </ul>
 <h3 id="WXML模板"><a href="#WXML模板" class="headerlink" title="WXML模板"></a>WXML模板</h3><p>WXML 充当的就是类似 HTML 的角色，用于显示界面内容。</p>
 <ul>
-<li>通过<code></code>的语法把一个变量绑定到界面上，我们称为数据绑定。</li>
+<li>通过‘’的语法把一个变量绑定到界面上，我们称为数据绑定。</li>
 <li>仅仅通过数据绑定还不够完整的描述状态和界面的关系，还需要 if/else, for等控制能力，在小程序里边，这些控制能力都用 wx: 开头的属性来表达</li>
 </ul>
 <h3 id="WXSS样式"><a href="#WXSS样式" class="headerlink" title="WXSS样式"></a>WXSS样式</h3><p>WXSS 具有 CSS 大部分的特性，小程序在 WXSS 也做了一些扩充和修改</p>
