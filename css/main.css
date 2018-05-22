@@ -1659,6 +1659,12 @@ pre .javascript .function {
 .rtl.post-title {
   font-family: UKIJ Ekran;
 }
+.post-body p a {
+  color: #42b983;
+}
+.post-body p a:hover {
+  color: #077041;
+}
 .sidebar {
   position: fixed;
   right: 0;
@@ -1823,7 +1829,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #17fc7f;
+  background: #ff0fc8;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2663,5 +2669,4 @@ embed {
 }
 code {
   color: #ed7f00;
-  background-color: #f8f8f8;
 }
