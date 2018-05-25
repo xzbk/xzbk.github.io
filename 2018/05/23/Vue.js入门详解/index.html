@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="❉注意(非常重要)❉： 指令中获取数据不需要加双大括号 正常html位置中获取数据需要加双大括号 当页面Vue.js语法使用错误或数据名称书写错误时,页面一般显示为空白 注意Vue实例写在文档加载函数中，否则可能绑定数据等不成功    Vue.js是什么Vue(读音 /vjuː/，类似于 view) 是一套用于构建用户界面的渐进式框架。与其它大型框架不同的是，Vue被设计为可以自底向上逐层应用。V">
+<meta name="description" content="❉注意(非常重要)❉：  指令中获取数据不需要加双大括号 正常html位置中获取数据需要加双大括号 当页面Vue.js语法使用错误或数据名称书写错误时,页面一般显示为空白 注意Vue实例写在文档加载函数中，否则可能绑定数据等不成功 语法错误和指令名书写错没响应(v-model 缺少逗号等) 关键字和数据名称书写错页面空白(el data methods Vue new true false等)">
 <meta name="keywords" content="Vue.js">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Vue.js入门详解">
 <meta property="og:url" content="http://yoursite.com/2018/05/23/Vue.js入门详解/index.html">
 <meta property="og:site_name" content="Xiao Z">
-<meta property="og:description" content="❉注意(非常重要)❉： 指令中获取数据不需要加双大括号 正常html位置中获取数据需要加双大括号 当页面Vue.js语法使用错误或数据名称书写错误时,页面一般显示为空白 注意Vue实例写在文档加载函数中，否则可能绑定数据等不成功    Vue.js是什么Vue(读音 /vjuː/，类似于 view) 是一套用于构建用户界面的渐进式框架。与其它大型框架不同的是，Vue被设计为可以自底向上逐层应用。V">
+<meta property="og:description" content="❉注意(非常重要)❉：  指令中获取数据不需要加双大括号 正常html位置中获取数据需要加双大括号 当页面Vue.js语法使用错误或数据名称书写错误时,页面一般显示为空白 注意Vue实例写在文档加载函数中，否则可能绑定数据等不成功 语法错误和指令名书写错没响应(v-model 缺少逗号等) 关键字和数据名称书写错页面空白(el data methods Vue new true false等)">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-25T05:55:50.030Z">
+<meta property="og:updated_time" content="2018-05-25T14:03:05.574Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue.js入门详解">
-<meta name="twitter:description" content="❉注意(非常重要)❉： 指令中获取数据不需要加双大括号 正常html位置中获取数据需要加双大括号 当页面Vue.js语法使用错误或数据名称书写错误时,页面一般显示为空白 注意Vue实例写在文档加载函数中，否则可能绑定数据等不成功    Vue.js是什么Vue(读音 /vjuː/，类似于 view) 是一套用于构建用户界面的渐进式框架。与其它大型框架不同的是，Vue被设计为可以自底向上逐层应用。V">
+<meta name="twitter:description" content="❉注意(非常重要)❉：  指令中获取数据不需要加双大括号 正常html位置中获取数据需要加双大括号 当页面Vue.js语法使用错误或数据名称书写错误时,页面一般显示为空白 注意Vue实例写在文档加载函数中，否则可能绑定数据等不成功 语法错误和指令名书写错没响应(v-model 缺少逗号等) 关键字和数据名称书写错页面空白(el data methods Vue new true false等)">
 
 
 
@@ -401,11 +401,14 @@
       
 
       
-        <h1 id="❉注意-非常重要-❉："><a href="#❉注意-非常重要-❉：" class="headerlink" title="❉注意(非常重要)❉："></a><font style="color:blue">❉注意(非常重要)❉</font>：</h1><ul>
+        <p><strong style="color:blue">❉注意(非常重要)❉</strong>：</p>
+<ul>
 <li><font style="color:red">指令中获取数据不需要加双大括号</font></li>
 <li><font style="color:red">正常html位置中获取数据需要加双大括号</font></li>
 <li><font style="color:red">当页面Vue.js语法使用错误或数据名称书写错误时,页面一般显示为空白</font></li>
-<li><font style="color:red">注意Vue实例写在文档加载函数中，否则可能绑定数据等不成功</font>
+<li><font style="color:red">注意Vue实例写在文档加载函数中，否则可能绑定数据等不成功</font></li>
+<li><font style="color:red">语法错误和指令名书写错没响应(v-model 缺少逗号等)</font></li>
+<li><font style="color:red">关键字和数据名称书写错页面空白(el data methods Vue new true false等)</font>
 
 </li>
 </ul>
@@ -696,7 +699,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#❉注意-非常重要-❉："><span class="nav-number">1.</span> <span class="nav-text">❉注意(非常重要)❉：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue-js是什么"><span class="nav-number">1.1.</span> <span class="nav-text">Vue.js是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">1.2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本实例模型"><span class="nav-number">1.3.</span> <span class="nav-text">基本实例模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模板语法"><span class="nav-number">1.4.</span> <span class="nav-text">模板语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#插值"><span class="nav-number">1.4.1.</span> <span class="nav-text">插值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指令"><span class="nav-number">1.4.2.</span> <span class="nav-text">指令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#条件与循环"><span class="nav-number">1.5.</span> <span class="nav-text">条件与循环</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#条件-v-if-v-show"><span class="nav-number">1.5.1.</span> <span class="nav-text">条件(v-if/v-show)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#循环-v-for"><span class="nav-number">1.5.2.</span> <span class="nav-text">循环(v-for)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件监听"><span class="nav-number">1.6.</span> <span class="nav-text">事件监听</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注册监听"><span class="nav-number">1.6.1.</span> <span class="nav-text">注册监听</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件修饰符"><span class="nav-number">1.6.2.</span> <span class="nav-text">事件修饰符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#按键修饰符"><span class="nav-number">1.6.3.</span> <span class="nav-text">按键修饰符</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#属性绑定"><span class="nav-number">1.7.</span> <span class="nav-text">属性绑定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据双向绑定"><span class="nav-number">1.8.</span> <span class="nav-text">数据双向绑定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络请求-ajax"><span class="nav-number">1.9.</span> <span class="nav-text">网络请求(ajax)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#get方式"><span class="nav-number">1.9.1.</span> <span class="nav-text">get方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#post方式"><span class="nav-number">1.9.2.</span> <span class="nav-text">post方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jsonp跨域请求"><span class="nav-number">1.9.3.</span> <span class="nav-text">jsonp跨域请求</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#组件化应用构建"><span class="nav-number">1.10.</span> <span class="nav-text">组件化应用构建</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue-js是什么"><span class="nav-number">1.</span> <span class="nav-text">Vue.js是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本实例模型"><span class="nav-number">3.</span> <span class="nav-text">基本实例模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模板语法"><span class="nav-number">4.</span> <span class="nav-text">模板语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#插值"><span class="nav-number">4.1.</span> <span class="nav-text">插值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指令"><span class="nav-number">4.2.</span> <span class="nav-text">指令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#条件与循环"><span class="nav-number">5.</span> <span class="nav-text">条件与循环</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#条件-v-if-v-show"><span class="nav-number">5.1.</span> <span class="nav-text">条件(v-if/v-show)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#循环-v-for"><span class="nav-number">5.2.</span> <span class="nav-text">循环(v-for)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件监听"><span class="nav-number">6.</span> <span class="nav-text">事件监听</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注册监听"><span class="nav-number">6.1.</span> <span class="nav-text">注册监听</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件修饰符"><span class="nav-number">6.2.</span> <span class="nav-text">事件修饰符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#按键修饰符"><span class="nav-number">6.3.</span> <span class="nav-text">按键修饰符</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#属性绑定"><span class="nav-number">7.</span> <span class="nav-text">属性绑定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据双向绑定"><span class="nav-number">8.</span> <span class="nav-text">数据双向绑定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络请求-ajax"><span class="nav-number">9.</span> <span class="nav-text">网络请求(ajax)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#get方式"><span class="nav-number">9.1.</span> <span class="nav-text">get方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#post方式"><span class="nav-number">9.2.</span> <span class="nav-text">post方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jsonp跨域请求"><span class="nav-number">9.3.</span> <span class="nav-text">jsonp跨域请求</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#组件化应用构建"><span class="nav-number">10.</span> <span class="nav-text">组件化应用构建</span></a></li></ol></div>
             
 
           </div>
