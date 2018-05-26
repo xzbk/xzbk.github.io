@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="❉注意(非常重要)❉：  指令中获取数据不需要加双大括号 正常html位置中获取数据需要加双大括号 当页面Vue.js语法使用错误或数据名称书写错误时,页面一般显示为空白 注意Vue实例写在文档加载函数中，否则可能绑定数据等不成功 语法错误和指令名书写错没响应(v-model 缺少逗号等) 关键字和数据名称书写错页面空白(el data methods Vue new true false等)">
+<meta name="description" content="❉注意(非常重要)❉：  不要将Vue挂载到&amp;lt;html&amp;gt;或&amp;lt;body&amp;gt;,挂载到此两个元素上，数据绑定失败！！！ 指令中获取数据不需要加双大括号 正常html位置中获取数据需要加双大括号 当页面Vue.js语法使用错误或数据名称书写错误时,页面一般显示为空白 注意Vue实例写在文档加载函数中，否则可能绑定数据等不成功 语法错误和指令名书写错将导致数据绑定失败(v-model">
 <meta name="keywords" content="Vue.js">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Vue.js入门详解">
 <meta property="og:url" content="http://yoursite.com/2018/05/23/Vue.js入门详解/index.html">
 <meta property="og:site_name" content="Xiao Z">
-<meta property="og:description" content="❉注意(非常重要)❉：  指令中获取数据不需要加双大括号 正常html位置中获取数据需要加双大括号 当页面Vue.js语法使用错误或数据名称书写错误时,页面一般显示为空白 注意Vue实例写在文档加载函数中，否则可能绑定数据等不成功 语法错误和指令名书写错没响应(v-model 缺少逗号等) 关键字和数据名称书写错页面空白(el data methods Vue new true false等)">
+<meta property="og:description" content="❉注意(非常重要)❉：  不要将Vue挂载到&amp;lt;html&amp;gt;或&amp;lt;body&amp;gt;,挂载到此两个元素上，数据绑定失败！！！ 指令中获取数据不需要加双大括号 正常html位置中获取数据需要加双大括号 当页面Vue.js语法使用错误或数据名称书写错误时,页面一般显示为空白 注意Vue实例写在文档加载函数中，否则可能绑定数据等不成功 语法错误和指令名书写错将导致数据绑定失败(v-model">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-25T14:03:05.574Z">
+<meta property="og:updated_time" content="2018-05-26T03:14:54.273Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue.js入门详解">
-<meta name="twitter:description" content="❉注意(非常重要)❉：  指令中获取数据不需要加双大括号 正常html位置中获取数据需要加双大括号 当页面Vue.js语法使用错误或数据名称书写错误时,页面一般显示为空白 注意Vue实例写在文档加载函数中，否则可能绑定数据等不成功 语法错误和指令名书写错没响应(v-model 缺少逗号等) 关键字和数据名称书写错页面空白(el data methods Vue new true false等)">
+<meta name="twitter:description" content="❉注意(非常重要)❉：  不要将Vue挂载到&amp;lt;html&amp;gt;或&amp;lt;body&amp;gt;,挂载到此两个元素上，数据绑定失败！！！ 指令中获取数据不需要加双大括号 正常html位置中获取数据需要加双大括号 当页面Vue.js语法使用错误或数据名称书写错误时,页面一般显示为空白 注意Vue实例写在文档加载函数中，否则可能绑定数据等不成功 语法错误和指令名书写错将导致数据绑定失败(v-model">
 
 
 
@@ -403,12 +403,13 @@
       
         <p><strong style="color:blue">❉注意(非常重要)❉</strong>：</p>
 <ul>
+<li><font style="color:red">不要将Vue挂载到<code>&lt;html&gt;</code>或<code>&lt;body&gt;</code>,挂载到此两个元素上，数据绑定失败！！！</font></li>
 <li><font style="color:red">指令中获取数据不需要加双大括号</font></li>
 <li><font style="color:red">正常html位置中获取数据需要加双大括号</font></li>
 <li><font style="color:red">当页面Vue.js语法使用错误或数据名称书写错误时,页面一般显示为空白</font></li>
 <li><font style="color:red">注意Vue实例写在文档加载函数中，否则可能绑定数据等不成功</font></li>
-<li><font style="color:red">语法错误和指令名书写错没响应(v-model 缺少逗号等)</font></li>
-<li><font style="color:red">关键字和数据名称书写错页面空白(el data methods Vue new true false等)</font>
+<li><font style="color:red">语法错误和指令名书写错将导致数据绑定失败(v-model 缺少逗号等)</font></li>
+<li><font style="color:red">关键字和数据名称书写错将导致页面空白(el data methods Vue new true false等)</font>
 
 </li>
 </ul>
