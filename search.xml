@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[linux中mysql登录失败]]></title>
+    <url>%2F2018%2F05%2F27%2Flinux%E4%B8%ADmysql%E7%99%BB%E5%BD%95%E5%A4%B1%E8%B4%A5%2F</url>
+    <content type="text"><![CDATA[提示：ERROR 1044 (42000): Access denied for user ‘‘@’localhost’ to database ‘mysql’。前两天也出现过这个问题，网上找了一个比较流行的方法（见方法一），搞定了。今天又用这个试了试，却搞不定，在网上找了半天，终于发现是因为mysql数据库的user表里，存在用户名为空的账户即匿名账户，导致登录的时候是虽然用的是root，但实际是匿名登录的，通过错误提示里的‘‘@’localhost’可以看出来，于是解决办法见方法二。 方法一： 关闭mysql 1# service mysqld stop 屏蔽权限 123# mysqld_safe --skip-grant-table 屏幕出现： Starting demo from ..... 新开起一个终端输入 1234# mysql -u root mysql mysql&gt; UPDATE user SET Password=PASSWORD('newpassword') where USER='root'; mysql&gt; FLUSH PRIVILEGES;//记得要这句话，否则如果关闭先前的终端，又会出现原来的错误 mysql&gt; exit 方法二： 关闭mysql 1# service mysqld stop 屏蔽权限 123# mysqld_safe --skip-grant-table 屏幕出现： Starting demo from ..... 新开起一个终端输入 1234# mysql -u root mysql mysql&gt; delete from user where USER=''; mysql&gt; FLUSH PRIVILEGES;//记得要这句话，否则如果关闭先前的终端，又会出现原来的错误 mysql&gt; exit]]></content>
+      <categories>
+        <category>关于技术的深入浅出</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Next主题目录结构]]></title>
     <url>%2F2018%2F05%2F23%2FNext%E4%B8%BB%E9%A2%98%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%2F</url>
     <content type="text"><![CDATA[主题目录结构图:代码高亮兼容图:12]]></content>
