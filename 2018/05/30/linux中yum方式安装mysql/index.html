@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="下载mysql的repo源 1$ wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm  安装mysql-community-release-el7-5.noarch.rpm包 1$ sudo rpm -ivh mysql-community-release-el7-5.noarch.rpm   安装这个包后，会获">
+<meta name="description" content="1.下载mysql的repo源1$ wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm 2.安装mysql-community-release-el7-5.noarch.rpm包1$ sudo rpm -ivh mysql-community-release-el7-5.noarch.rpm 安装这个包后，会获得两">
 <meta name="keywords" content="linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="linux中yum方式安装mysql">
 <meta property="og:url" content="http://yoursite.com/2018/05/30/linux中yum方式安装mysql/index.html">
 <meta property="og:site_name" content="Xiao Z">
-<meta property="og:description" content="下载mysql的repo源 1$ wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm  安装mysql-community-release-el7-5.noarch.rpm包 1$ sudo rpm -ivh mysql-community-release-el7-5.noarch.rpm   安装这个包后，会获">
+<meta property="og:description" content="1.下载mysql的repo源1$ wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm 2.安装mysql-community-release-el7-5.noarch.rpm包1$ sudo rpm -ivh mysql-community-release-el7-5.noarch.rpm 安装这个包后，会获得两">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-30T03:47:41.402Z">
+<meta property="og:updated_time" content="2018-05-30T06:14:20.063Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux中yum方式安装mysql">
-<meta name="twitter:description" content="下载mysql的repo源 1$ wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm  安装mysql-community-release-el7-5.noarch.rpm包 1$ sudo rpm -ivh mysql-community-release-el7-5.noarch.rpm   安装这个包后，会获">
+<meta name="twitter:description" content="1.下载mysql的repo源1$ wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm 2.安装mysql-community-release-el7-5.noarch.rpm包1$ sudo rpm -ivh mysql-community-release-el7-5.noarch.rpm 安装这个包后，会获得两">
 
 
 
@@ -401,25 +401,11 @@
       
 
       
-        <ol>
-<li><p>下载mysql的repo源</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>安装mysql-community-release-el7-5.noarch.rpm包</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo rpm -ivh mysql-community-release-el7-5.noarch.rpm</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>安装这个包后，会获得两个mysql的yum repo源：<br><code>/etc/yum.repos.d/mysql-community.repo</code><br><code>/etc/yum.repos.d/mysql-community-source.repo</code></p>
-<ol start="3">
-<li>安装mysql<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo yum install mysql-server</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>根据提示安装就可以登录了,不过安装完成后没有密码,需要重置密码</p>
-<ol start="4">
-<li>重置mysql密码<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> mysql -u root</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>登录时有可能报这样的错：<br><code>ERROR 2002 (HY000): Can‘t connect to local MySQL server through socket ‘/var/lib/mysql/mysql.sock‘</code><br>原因是<code>/var/lib/mysql</code>的访问权限问题。下面的命令把<code>/var/lib/mysql</code>的拥有者改为当前用户：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo chown -R root:root /var/lib/mysql</span><br></pre></td></tr></table></figure></p>
+        <p>1.下载mysql的repo源<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm</span><br></pre></td></tr></table></figure></p>
+<p>2.安装mysql-community-release-el7-5.noarch.rpm包<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo rpm -ivh mysql-community-release-el7-5.noarch.rpm</span><br></pre></td></tr></table></figure></p>
+<p>安装这个包后，会获得两个mysql的yum repo源：<br><code>/etc/yum.repos.d/mysql-community.repo</code><br><code>/etc/yum.repos.d/mysql-community-source.repo</code><br>3.安装mysql<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo yum install mysql-server</span><br></pre></td></tr></table></figure></p>
+<p>根据提示安装就可以登录了,不过安装完成后没有密码,需要重置密码<br>4.重置mysql密码<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> mysql -u root</span></span><br></pre></td></tr></table></figure></p>
+<p>登录时有可能报这样的错：<br><code>ERROR 2002 (HY000): Can‘t connect to local MySQL server through socket ‘/var/lib/mysql/mysql.sock‘</code><br>原因是<code>/var/lib/mysql</code>的访问权限问题。<br>下面的命令把<code>/var/lib/mysql</code>的拥有者改为当前用户：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo chown -R root:root /var/lib/mysql</span><br></pre></td></tr></table></figure></p>
 <p>重启mysql服务:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ service mysqld restart</span><br></pre></td></tr></table></figure></p>
 <p>接下来登录重置密码：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ mysql -u root</span><br><span class="line">mysql &gt; use mysql;</span><br><span class="line">mysql &gt; update user <span class="built_in">set</span> password=password(<span class="string">'123456'</span>) <span class="built_in">where</span> user=<span class="string">'root'</span>;</span><br><span class="line">mysql &gt; flush privileges;//强制权限设置</span><br><span class="line">mysql &gt; <span class="built_in">exit</span>;</span><br></pre></td></tr></table></figure></p>
 
