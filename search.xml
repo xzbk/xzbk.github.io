@@ -4,6 +4,12 @@
     <title><![CDATA[linux使用Nginx高性能Web服务器]]></title>
     <url>%2F2018%2F06%2F01%2Flinux%E4%BD%BF%E7%94%A8Nginx%E9%AB%98%E6%80%A7%E8%83%BDWeb%E6%9C%8D%E5%8A%A1%E5%99%A8%2F</url>
     <content type="text"><![CDATA[安装 下载nginx归档压缩文件包:nginx 安装开发套件: 1# yum groupinstall -y "Development Tools" 解压缩归档压缩文件 1# tar -xzvf nginx-1.14.0.tar.gz 检查编译环境、相关的库文件以及配置参数并生成makefile 12# cd nginx-1.14.0# ./configure 如果有依赖的库文件没安装则进行此步骤，安装依赖的库文件,安装完成后继续运行./configure命令直到生成makefile文件: 12# yum install -y pcre-devel# yum install -y zlib-devel 对源代码进行编译，生成可执行文件 1# make 将生成的可执行文件安装到计算机中,默认安装目录为/usr/local/nginx 1# make install 启动服务器启动nginx服务,默认使用80端口号12# cd /usr/local/nginx/sbin# ./nginx 使用netstat -tupln | grep 80命令查看80端口的使用情况nginx默认主页面配置信息123456789101112server &#123; listen 80;//端口 server_name localhost; #charset koi8-r; #access_log logs/host.access.log main; location / &#123; root html;//主页位置，可以放一个绝对路径文件 index index.html index.htm; &#125; 关闭nginx服务器 通过ps aux | grep nginx命令查看nginx的进程id 关闭1# kill -s QUIT 14011(进程id)]]></content>
+      <categories>
+        <category>关于技术的深入浅出</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[linux中yum方式安装mysql]]></title>
