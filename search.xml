@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[linux使用Nginx高性能Web服务器]]></title>
+    <url>%2F2018%2F06%2F01%2Flinux%E4%BD%BF%E7%94%A8Nginx%E9%AB%98%E6%80%A7%E8%83%BDWeb%E6%9C%8D%E5%8A%A1%E5%99%A8%2F</url>
+    <content type="text"><![CDATA[安装 下载nginx归档压缩文件包:nginx 安装开发套件: 1# yum groupinstall -y "Development Tools" 解压缩归档压缩文件 1# tar -xzvf nginx-1.14.0.tar.gz 检查编译环境、相关的库文件以及配置参数并生成makefile 12# cd nginx-1.14.0# ./configure 如果有依赖的库文件没安装则进行此步骤，安装依赖的库文件,安装完成后继续运行./configure命令直到生成makefile文件: 12# yum install -y pcre-devel# yum install -y zlib-devel 对源代码进行编译，生成可执行文件 1# make 将生成的可执行文件安装到计算机中,默认安装目录为/usr/local/nginx 1# make install 启动服务器启动nginx服务,默认使用80端口号12# cd /usr/local/nginx/sbin# ./nginx 使用netstat -tupln | grep 80命令查看80端口的使用情况nginx默认主页面配置信息123456789101112server &#123; listen 80;//端口 server_name localhost; #charset koi8-r; #access_log logs/host.access.log main; location / &#123; root html;//主页位置，可以放一个绝对路径文件 index index.html index.htm; &#125; 关闭nginx服务器 通过ps aux | grep nginx命令查看nginx的进程id 关闭1# kill -s QUIT 14011(进程id)]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[linux中yum方式安装mysql]]></title>
     <url>%2F2018%2F05%2F30%2Flinux%E4%B8%ADyum%E6%96%B9%E5%BC%8F%E5%AE%89%E8%A3%85mysql%2F</url>
     <content type="text"><![CDATA[1.下载mysql的repo源1$ wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm 2.安装mysql-community-release-el7-5.noarch.rpm包1$ sudo rpm -ivh mysql-community-release-el7-5.noarch.rpm 安装这个包后，会获得两个mysql的yum repo源：/etc/yum.repos.d/mysql-community.repo/etc/yum.repos.d/mysql-community-source.repo3.安装mysql1$ sudo yum install mysql-server 根据提示安装就可以登录了,不过安装完成后没有密码,需要重置密码4.重置mysql密码1$ mysql -u root 登录时有可能报这样的错：ERROR 2002 (HY000): Can‘t connect to local MySQL server through socket ‘/var/lib/mysql/mysql.sock‘原因是/var/lib/mysql的访问权限问题。下面的命令把/var/lib/mysql的拥有者改为当前用户：1$ sudo chown -R root:root /var/lib/mysql 重启mysql服务:1$ service mysqld restart 接下来登录重置密码：12345$ mysql -u rootmysql &gt; use mysql;mysql &gt; update user set password=password('123456') where user='root';mysql &gt; flush privileges;//强制权限设置mysql &gt; exit;]]></content>
