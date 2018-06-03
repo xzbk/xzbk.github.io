@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="常用的压力测试工具:Apache Benchmark(ab)LoadRunner  查看ab命令的位置，默认路径为usr/bin/ab  没有则安装相关软件包，有则忽略此步骤 1# yum install -y httpd-tools  使用ab命令进行压力测试 1# ab -c 1 -n 10000 http://.....    -c——模拟多个客户端同时进行访问 -n——本次压力测试要完成的">
+<meta name="description" content="常用的压力测试工具:Apache Benchmark(ab)LoadRunner  查看ab命令的位置，默认路径为usr/bin/ab 1# whick ab  没有则安装相关软件包，有则忽略此步骤 1# yum install -y httpd-tools  使用ab命令进行压力测试 1# ab -c 1 -n 10000 http://.....    -c——模拟多个客户端同时进行访问 -n">
 <meta name="keywords" content="linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="linux下使用ab对web服务进行压力测试">
 <meta property="og:url" content="http://yoursite.com/2018/06/03/linux下使用ab对web服务进行压力测试/index.html">
 <meta property="og:site_name" content="Xiao Z">
-<meta property="og:description" content="常用的压力测试工具:Apache Benchmark(ab)LoadRunner  查看ab命令的位置，默认路径为usr/bin/ab  没有则安装相关软件包，有则忽略此步骤 1# yum install -y httpd-tools  使用ab命令进行压力测试 1# ab -c 1 -n 10000 http://.....    -c——模拟多个客户端同时进行访问 -n——本次压力测试要完成的">
+<meta property="og:description" content="常用的压力测试工具:Apache Benchmark(ab)LoadRunner  查看ab命令的位置，默认路径为usr/bin/ab 1# whick ab  没有则安装相关软件包，有则忽略此步骤 1# yum install -y httpd-tools  使用ab命令进行压力测试 1# ab -c 1 -n 10000 http://.....    -c——模拟多个客户端同时进行访问 -n">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-03T10:45:10.922Z">
+<meta property="og:updated_time" content="2018-06-03T10:51:29.098Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux下使用ab对web服务进行压力测试">
-<meta name="twitter:description" content="常用的压力测试工具:Apache Benchmark(ab)LoadRunner  查看ab命令的位置，默认路径为usr/bin/ab  没有则安装相关软件包，有则忽略此步骤 1# yum install -y httpd-tools  使用ab命令进行压力测试 1# ab -c 1 -n 10000 http://.....    -c——模拟多个客户端同时进行访问 -n——本次压力测试要完成的">
+<meta name="twitter:description" content="常用的压力测试工具:Apache Benchmark(ab)LoadRunner  查看ab命令的位置，默认路径为usr/bin/ab 1# whick ab  没有则安装相关软件包，有则忽略此步骤 1# yum install -y httpd-tools  使用ab命令进行压力测试 1# ab -c 1 -n 10000 http://.....    -c——模拟多个客户端同时进行访问 -n">
 
 
 
@@ -404,6 +404,7 @@
         <p>常用的压力测试工具:<br><code>Apache Benchmark(ab)</code><br><code>LoadRunner</code></p>
 <ol>
 <li><p>查看ab命令的位置，默认路径为<code>usr/bin/ab</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># whick ab</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>没有则安装相关软件包，有则忽略此步骤</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yum install -y httpd-tools</span></span><br></pre></td></tr></table></figure>

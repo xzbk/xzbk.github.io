@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[linux下使用ab对web服务进行压力测试]]></title>
     <url>%2F2018%2F06%2F03%2Flinux%E4%B8%8B%E4%BD%BF%E7%94%A8ab%E5%AF%B9web%E6%9C%8D%E5%8A%A1%E8%BF%9B%E8%A1%8C%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95%2F</url>
-    <content type="text"><![CDATA[常用的压力测试工具:Apache Benchmark(ab)LoadRunner 查看ab命令的位置，默认路径为usr/bin/ab 没有则安装相关软件包，有则忽略此步骤 1# yum install -y httpd-tools 使用ab命令进行压力测试 1# ab -c 1 -n 10000 http://..... -c——模拟多个客户端同时进行访问 -n——本次压力测试要完成的请求个数]]></content>
+    <content type="text"><![CDATA[常用的压力测试工具:Apache Benchmark(ab)LoadRunner 查看ab命令的位置，默认路径为usr/bin/ab 1# whick ab 没有则安装相关软件包，有则忽略此步骤 1# yum install -y httpd-tools 使用ab命令进行压力测试 1# ab -c 1 -n 10000 http://..... -c——模拟多个客户端同时进行访问 -n——本次压力测试要完成的请求个数]]></content>
       <categories>
         <category>关于技术的深入浅出</category>
       </categories>
