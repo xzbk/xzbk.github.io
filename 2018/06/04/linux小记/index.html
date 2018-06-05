@@ -79,18 +79,21 @@
 
 
 
-<meta name="description" content="linux下使用ab对web服务进行压力测试常用的压力测试工具:Apache Benchmark(ab)LoadRunner  查看ab命令的软件依赖包是否安装,ab命令默认位置为/usr/bin/ab 1# rpm -qa | grep httpd-tools  没有则安装相关软件包，有则忽略此步骤 1# yum install -y httpd-tools  使用ab命令进行压力测试 1# a">
+<meta name="description" content="使用ab对web服务进行压力测试常用的压力测试工具:Apache Benchmark(ab)LoadRunner  查看ab命令的软件依赖包是否安装,ab命令默认位置为/usr/bin/ab 1# rpm -qa | grep httpd-tools  没有则安装相关软件包，有则忽略此步骤 1# yum install -y httpd-tools  使用ab命令进行压力测试 1# ab -c 1">
 <meta name="keywords" content="linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="linux小记">
 <meta property="og:url" content="http://yoursite.com/2018/06/04/linux小记/index.html">
 <meta property="og:site_name" content="Xiao Z">
-<meta property="og:description" content="linux下使用ab对web服务进行压力测试常用的压力测试工具:Apache Benchmark(ab)LoadRunner  查看ab命令的软件依赖包是否安装,ab命令默认位置为/usr/bin/ab 1# rpm -qa | grep httpd-tools  没有则安装相关软件包，有则忽略此步骤 1# yum install -y httpd-tools  使用ab命令进行压力测试 1# a">
+<meta property="og:description" content="使用ab对web服务进行压力测试常用的压力测试工具:Apache Benchmark(ab)LoadRunner  查看ab命令的软件依赖包是否安装,ab命令默认位置为/usr/bin/ab 1# rpm -qa | grep httpd-tools  没有则安装相关软件包，有则忽略此步骤 1# yum install -y httpd-tools  使用ab命令进行压力测试 1# ab -c 1">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-05T06:25:22.212Z">
+<meta property="og:image" content="http://yoursite.com/img/mount-ntfs.png">
+<meta property="og:image" content="http://yoursite.com/img/mount-ntfs.png">
+<meta property="og:updated_time" content="2018-06-05T08:06:10.661Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux小记">
-<meta name="twitter:description" content="linux下使用ab对web服务进行压力测试常用的压力测试工具:Apache Benchmark(ab)LoadRunner  查看ab命令的软件依赖包是否安装,ab命令默认位置为/usr/bin/ab 1# rpm -qa | grep httpd-tools  没有则安装相关软件包，有则忽略此步骤 1# yum install -y httpd-tools  使用ab命令进行压力测试 1# a">
+<meta name="twitter:description" content="使用ab对web服务进行压力测试常用的压力测试工具:Apache Benchmark(ab)LoadRunner  查看ab命令的软件依赖包是否安装,ab命令默认位置为/usr/bin/ab 1# rpm -qa | grep httpd-tools  没有则安装相关软件包，有则忽略此步骤 1# yum install -y httpd-tools  使用ab命令进行压力测试 1# ab -c 1">
+<meta name="twitter:image" content="http://yoursite.com/img/mount-ntfs.png">
 
 
 
@@ -390,7 +393,7 @@
       
 
       
-        <h2 id="linux下使用ab对web服务进行压力测试"><a href="#linux下使用ab对web服务进行压力测试" class="headerlink" title="linux下使用ab对web服务进行压力测试"></a>linux下使用ab对web服务进行压力测试</h2><p>常用的压力测试工具:<br><code>Apache Benchmark(ab)</code><br><code>LoadRunner</code></p>
+        <h2 id="使用ab对web服务进行压力测试"><a href="#使用ab对web服务进行压力测试" class="headerlink" title="使用ab对web服务进行压力测试"></a>使用ab对web服务进行压力测试</h2><p>常用的压力测试工具:<br><code>Apache Benchmark(ab)</code><br><code>LoadRunner</code></p>
 <ol>
 <li><p>查看ab命令的软件依赖包是否安装,ab命令默认位置为<code>/usr/bin/ab</code></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># rpm -qa | grep httpd-tools</span></span><br></pre></td></tr></table></figure>
@@ -406,7 +409,7 @@
 <li><code>-c</code>——模拟多个客户端同时进行访问</li>
 <li><code>-n</code>——本次压力测试要完成的请求个数</li>
 </ul>
-<h2 id="linux使用Nginx高性能Web服务器"><a href="#linux使用Nginx高性能Web服务器" class="headerlink" title="linux使用Nginx高性能Web服务器"></a>linux使用Nginx高性能Web服务器</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><ol>
+<h2 id="使用Nginx高性能Web服务器"><a href="#使用Nginx高性能Web服务器" class="headerlink" title="使用Nginx高性能Web服务器"></a>使用Nginx高性能Web服务器</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><ol>
 <li>下载nginx归档压缩文件包:<a href="http://nginx.org/en/download.html" target="_blank" rel="noopener">nginx</a></li>
 <li><p>安装开发套件:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yum groupinstall -y "Development Tools"</span></span><br></pre></td></tr></table></figure>
@@ -431,7 +434,46 @@
 <p>使用<code>netstat -tupln | grep 80</code>命令查看80端口的使用情况<br>nginx默认主页面配置信息<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       80;//端口</span><br><span class="line">    server_name  localhost;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#charset koi8-r;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#access_log  logs/host.access.log  main;</span></span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        root   html;//主页位置，可以放一个绝对路径文件</span><br><span class="line">        index  index.html index.htm;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
 <h3 id="关闭nginx服务器"><a href="#关闭nginx服务器" class="headerlink" title="关闭nginx服务器"></a>关闭nginx服务器</h3><ol>
 <li>通过<code>ps aux | grep nginx</code>命令查看nginx的进程id</li>
-<li>关闭<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># kill -s QUIT 14011(进程id)</span></span><br></pre></td></tr></table></figure></li>
+<li>关闭<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># kill -s QUIT 14011(进程id)</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="创建定时任务"><a href="#创建定时任务" class="headerlink" title="创建定时任务"></a>创建定时任务</h2><p>linux下常用用于创建定时任务的服务(linux中的服务常以<code>d</code>结尾):<br><code>atd</code>服务<br><code>crond</code>服务(常用)</p>
+<ol>
+<li><p>查看相关文件<br>使用<code>cat /etc/crontab</code>命令可查看创建定时任务的语法,相应字段对应着相应的含义<br>使用<code>ls -ld /etc/cron*</code>命令可查看任务相关的文件及文件夹,将脚本放到相应的文件中则会相应的周期性运行脚本</p>
+</li>
+<li><p>创建定时任务<br>创建一个每分钟输出一次<code>hello linux</code>的定时任务(默认进入vi编辑器，保存并退出即可创建定时任务):</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># crontab -e</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">* * * * * root <span class="built_in">echo</span> <span class="string">"hello linux"</span></span><br><span class="line">~</span><br><span class="line">~</span><br><span class="line">~</span><br><span class="line">:x</span><br><span class="line">```相关字段用含义如下:</span><br><span class="line">```bash</span><br><span class="line"> .---------------- minute (0 - 59)</span><br><span class="line"> |  .------------- hour (0 - 23)</span><br><span class="line"> |  |  .---------- day of month (1 - 31)</span><br><span class="line"> |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...</span><br><span class="line"> |  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat</span><br><span class="line"> |  |  |  |  |</span><br><span class="line"> *  *  *  *  * user-name  <span class="built_in">command</span> to be executed</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>查看当前用户的定时任务列表<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># crontab -l</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="使用iotop实时监控系统磁盘IO"><a href="#使用iotop实时监控系统磁盘IO" class="headerlink" title="使用iotop实时监控系统磁盘IO"></a>使用iotop实时监控系统磁盘IO</h2><p>此命令类似于window中的任务管理器</p>
+<ol>
+<li><p>查看相关的软件包</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yun list iotop</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装相关的命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yum install -y iotop</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看相关的IO状况(命令类似于系统自带的<code>top</code>命令)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> iotop</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="Linux下挂载FAT文件系统"><a href="#Linux下挂载FAT文件系统" class="headerlink" title="Linux下挂载FAT文件系统"></a>Linux下挂载FAT文件系统</h1><ol>
+<li>到网址<code>repoforge.org/use/</code>下载下图文件:<br><img src="/img/mount-ntfs.png" alt="挂载相关图片"><br>相关文件下载网址：<a href="http://repoforge.org/use/" target="_blank" rel="noopener">rpmforge-release-0.5.3-1.el6.rf.i686.rpm</a></li>
+<li>到rpm文件包所在的目录运行<code>rpm -ivh rpmfilename</code>命令安装相关的库文件</li>
+<li>使用<code>yum list | grep ntfs</code>命令查看库中包含的rpm安装包文件<br>使用<code>yum install fuse-ntfs-3g</code>命令安装相关驱动模块,至此已经可以自动挂载FAT格式磁盘</li>
+<li>运行<code>mount</code>命令查看所有已挂载的文件系统</li>
+<li>挂载FAT文件系统的磁盘:<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># moun.ntfs 挂载点 需挂载磁盘</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="使用压缩PNG图片工具"><a href="#使用压缩PNG图片工具" class="headerlink" title="使用压缩PNG图片工具"></a>使用压缩PNG图片工具</h2><ol>
+<li>到相应的网址<code>repoforge.org/use/</code>下载yum源的rpm包使用命令<code>rpm -ivh rpmfilename</code>进行安装：<br><img src="/img/mount-ntfs.png" alt="挂载相关图片"><br>相关文件下载网址：<a href="http://repoforge.org/use/" target="_blank" rel="noopener">rpmforge-release-0.5.3-1.el6.rf.i686.rpm</a></li>
+<li>使用<code>yum install -y optipng</code>命令进行软件安装</li>
+<li>安装完成后使用<code>optipng filename</code>命令即可进行png格式图片压缩</li>
 </ol>
 
       
@@ -583,7 +625,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -674,7 +716,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#linux下使用ab对web服务进行压力测试"><span class="nav-number">1.</span> <span class="nav-text">linux下使用ab对web服务进行压力测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#linux使用Nginx高性能Web服务器"><span class="nav-number">2.</span> <span class="nav-text">linux使用Nginx高性能Web服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">2.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动服务器"><span class="nav-number">2.2.</span> <span class="nav-text">启动服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关闭nginx服务器"><span class="nav-number">2.3.</span> <span class="nav-text">关闭nginx服务器</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用ab对web服务进行压力测试"><span class="nav-number">1.</span> <span class="nav-text">使用ab对web服务进行压力测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用Nginx高性能Web服务器"><span class="nav-number">2.</span> <span class="nav-text">使用Nginx高性能Web服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">2.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动服务器"><span class="nav-number">2.2.</span> <span class="nav-text">启动服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关闭nginx服务器"><span class="nav-number">2.3.</span> <span class="nav-text">关闭nginx服务器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建定时任务"><span class="nav-number">3.</span> <span class="nav-text">创建定时任务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用iotop实时监控系统磁盘IO"><span class="nav-number">4.</span> <span class="nav-text">使用iotop实时监控系统磁盘IO</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux下挂载FAT文件系统"><span class="nav-number"></span> <span class="nav-text">Linux下挂载FAT文件系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用压缩PNG图片工具"><span class="nav-number">1.</span> <span class="nav-text">使用压缩PNG图片工具</span></a></li></ol></div>
             
 
           </div>
