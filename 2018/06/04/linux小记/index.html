@@ -89,7 +89,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/img/mount-ntfs.png">
 <meta property="og:image" content="http://yoursite.com/img/mount-ntfs.png">
-<meta property="og:updated_time" content="2018-06-05T08:06:10.661Z">
+<meta property="og:updated_time" content="2018-06-05T08:11:36.189Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux小记">
 <meta name="twitter:description" content="使用ab对web服务进行压力测试常用的压力测试工具:Apache Benchmark(ab)LoadRunner  查看ab命令的软件依赖包是否安装,ab命令默认位置为/usr/bin/ab 1# rpm -qa | grep httpd-tools  没有则安装相关软件包，有则忽略此步骤 1# yum install -y httpd-tools  使用ab命令进行压力测试 1# ab -c 1">
@@ -462,7 +462,7 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> iotop</span></span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<h1 id="Linux下挂载FAT文件系统"><a href="#Linux下挂载FAT文件系统" class="headerlink" title="Linux下挂载FAT文件系统"></a>Linux下挂载FAT文件系统</h1><ol>
+<h2 id="Linux下挂载FAT文件系统"><a href="#Linux下挂载FAT文件系统" class="headerlink" title="Linux下挂载FAT文件系统"></a>Linux下挂载FAT文件系统</h2><ol>
 <li>到网址<code>repoforge.org/use/</code>下载下图文件:<br><img src="/img/mount-ntfs.png" alt="挂载相关图片"><br>相关文件下载网址：<a href="http://repoforge.org/use/" target="_blank" rel="noopener">rpmforge-release-0.5.3-1.el6.rf.i686.rpm</a></li>
 <li>到rpm文件包所在的目录运行<code>rpm -ivh rpmfilename</code>命令安装相关的库文件</li>
 <li>使用<code>yum list | grep ntfs</code>命令查看库中包含的rpm安装包文件<br>使用<code>yum install fuse-ntfs-3g</code>命令安装相关驱动模块,至此已经可以自动挂载FAT格式磁盘</li>
@@ -716,7 +716,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用ab对web服务进行压力测试"><span class="nav-number">1.</span> <span class="nav-text">使用ab对web服务进行压力测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用Nginx高性能Web服务器"><span class="nav-number">2.</span> <span class="nav-text">使用Nginx高性能Web服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">2.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动服务器"><span class="nav-number">2.2.</span> <span class="nav-text">启动服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关闭nginx服务器"><span class="nav-number">2.3.</span> <span class="nav-text">关闭nginx服务器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建定时任务"><span class="nav-number">3.</span> <span class="nav-text">创建定时任务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用iotop实时监控系统磁盘IO"><span class="nav-number">4.</span> <span class="nav-text">使用iotop实时监控系统磁盘IO</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux下挂载FAT文件系统"><span class="nav-number"></span> <span class="nav-text">Linux下挂载FAT文件系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用压缩PNG图片工具"><span class="nav-number">1.</span> <span class="nav-text">使用压缩PNG图片工具</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用ab对web服务进行压力测试"><span class="nav-number">1.</span> <span class="nav-text">使用ab对web服务进行压力测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用Nginx高性能Web服务器"><span class="nav-number">2.</span> <span class="nav-text">使用Nginx高性能Web服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">2.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动服务器"><span class="nav-number">2.2.</span> <span class="nav-text">启动服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关闭nginx服务器"><span class="nav-number">2.3.</span> <span class="nav-text">关闭nginx服务器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建定时任务"><span class="nav-number">3.</span> <span class="nav-text">创建定时任务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用iotop实时监控系统磁盘IO"><span class="nav-number">4.</span> <span class="nav-text">使用iotop实时监控系统磁盘IO</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux下挂载FAT文件系统"><span class="nav-number">5.</span> <span class="nav-text">Linux下挂载FAT文件系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用压缩PNG图片工具"><span class="nav-number">6.</span> <span class="nav-text">使用压缩PNG图片工具</span></a></li></ol></div>
             
 
           </div>
