@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[linux下创建定时任务]]></title>
+    <url>%2F2018%2F06%2F05%2Flinux%E4%B8%8B%E5%88%9B%E5%BB%BA%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%2F</url>
+    <content type="text"><![CDATA[linux下常用用于创建定时任务的服务(linux中的服务常以d结尾):atd服务crond服务(常用) 查看相关文件使用cat /etc/crontab命令可查看创建定时任务的语法,相应字段对应着相应的含义使用ls -ld /etc/cron*命令可查看任务相关的文件及文件夹,将脚本放到相应的文件中则会相应的周期性运行脚本 创建定时任务创建一个每分钟输出一次hello linux的定时任务 12# crontab -e# * * * * * echo "hello linux" 相关字段用含义如下:1234567.---------------- minute (0 - 59)| .------------- hour (0 - 23)| | .---------- day of month (1 - 31)| | | .------- month (1 - 12) OR jan,feb,mar,apr ...| | | | .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat| | | | |* * * * * user-name command to be executed 查看当前用户的定时任务列表1# crontab -l]]></content>
+      <categories>
+        <category>关于技术的深入浅出</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[linux小记]]></title>
     <url>%2F2018%2F06%2F04%2Flinux%E5%B0%8F%E8%AE%B0%2F</url>
     <content type="text"><![CDATA[linux下使用ab对web服务进行压力测试常用的压力测试工具:Apache Benchmark(ab)LoadRunner 查看ab命令的软件依赖包是否安装,ab命令默认位置为/usr/bin/ab 1# rpm -qa | grep httpd-tools 没有则安装相关软件包，有则忽略此步骤 1# yum install -y httpd-tools 使用ab命令进行压力测试 1# ab -c 1 -n 10000 http://..... -c——模拟多个客户端同时进行访问 -n——本次压力测试要完成的请求个数 linux使用Nginx高性能Web服务器安装 下载nginx归档压缩文件包:nginx 安装开发套件: 1# yum groupinstall -y "Development Tools" 解压缩归档压缩文件 1# tar -xzvf nginx-1.14.0.tar.gz 检查编译环境、相关的库文件以及配置参数并生成makefile 12# cd nginx-1.14.0# ./configure 如果有依赖的库文件没安装则进行此步骤，安装依赖的库文件,安装完成后继续运行./configure命令直到生成makefile文件: 12# yum install -y pcre-devel# yum install -y zlib-devel 对源代码进行编译，生成可执行文件 1# make 将生成的可执行文件安装到计算机中,默认安装目录为/usr/local/nginx 1# make install 启动服务器启动nginx服务,默认使用80端口号12# cd /usr/local/nginx/sbin# ./nginx 使用netstat -tupln | grep 80命令查看80端口的使用情况nginx默认主页面配置信息123456789101112server &#123; listen 80;//端口 server_name localhost; #charset koi8-r; #access_log logs/host.access.log main; location / &#123; root html;//主页位置，可以放一个绝对路径文件 index index.html index.htm; &#125; 关闭nginx服务器 通过ps aux | grep nginx命令查看nginx的进程id 关闭1# kill -s QUIT 14011(进程id)]]></content>
