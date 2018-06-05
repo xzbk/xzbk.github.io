@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="linux下常用用于创建定时任务的服务(linux中的服务常以d结尾):atd服务crond服务(常用)  查看相关文件使用cat /etc/crontab命令可查看创建定时任务的语法,相应字段对应着相应的含义使用ls -ld /etc/cron*命令可查看任务相关的文件及文件夹,将脚本放到相应的文件中则会相应的周期性运行脚本  创建定时任务创建一个每分钟输出一次hello linux的定时任务">
+<meta name="description" content="linux下常用用于创建定时任务的服务(linux中的服务常以d结尾):atd服务crond服务(常用)  查看相关文件使用cat /etc/crontab命令可查看创建定时任务的语法,相应字段对应着相应的含义使用ls -ld /etc/cron*命令可查看任务相关的文件及文件夹,将脚本放到相应的文件中则会相应的周期性运行脚本  创建定时任务创建一个每分钟输出一次hello linux的定时任务(">
 <meta name="keywords" content="linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="linux下创建定时任务">
 <meta property="og:url" content="http://yoursite.com/2018/06/05/linux下创建定时任务/index.html">
 <meta property="og:site_name" content="Xiao Z">
-<meta property="og:description" content="linux下常用用于创建定时任务的服务(linux中的服务常以d结尾):atd服务crond服务(常用)  查看相关文件使用cat /etc/crontab命令可查看创建定时任务的语法,相应字段对应着相应的含义使用ls -ld /etc/cron*命令可查看任务相关的文件及文件夹,将脚本放到相应的文件中则会相应的周期性运行脚本  创建定时任务创建一个每分钟输出一次hello linux的定时任务">
+<meta property="og:description" content="linux下常用用于创建定时任务的服务(linux中的服务常以d结尾):atd服务crond服务(常用)  查看相关文件使用cat /etc/crontab命令可查看创建定时任务的语法,相应字段对应着相应的含义使用ls -ld /etc/cron*命令可查看任务相关的文件及文件夹,将脚本放到相应的文件中则会相应的周期性运行脚本  创建定时任务创建一个每分钟输出一次hello linux的定时任务(">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-05T07:29:59.629Z">
+<meta property="og:updated_time" content="2018-06-05T07:38:54.622Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux下创建定时任务">
-<meta name="twitter:description" content="linux下常用用于创建定时任务的服务(linux中的服务常以d结尾):atd服务crond服务(常用)  查看相关文件使用cat /etc/crontab命令可查看创建定时任务的语法,相应字段对应着相应的含义使用ls -ld /etc/cron*命令可查看任务相关的文件及文件夹,将脚本放到相应的文件中则会相应的周期性运行脚本  创建定时任务创建一个每分钟输出一次hello linux的定时任务">
+<meta name="twitter:description" content="linux下常用用于创建定时任务的服务(linux中的服务常以d结尾):atd服务crond服务(常用)  查看相关文件使用cat /etc/crontab命令可查看创建定时任务的语法,相应字段对应着相应的含义使用ls -ld /etc/cron*命令可查看任务相关的文件及文件夹,将脚本放到相应的文件中则会相应的周期性运行脚本  创建定时任务创建一个每分钟输出一次hello linux的定时任务(">
 
 
 
@@ -394,11 +394,11 @@
 <ol>
 <li><p>查看相关文件<br>使用<code>cat /etc/crontab</code>命令可查看创建定时任务的语法,相应字段对应着相应的含义<br>使用<code>ls -ld /etc/cron*</code>命令可查看任务相关的文件及文件夹,将脚本放到相应的文件中则会相应的周期性运行脚本</p>
 </li>
-<li><p>创建定时任务<br>创建一个每分钟输出一次<code>hello linux</code>的定时任务</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># crontab -e</span></span><br><span class="line"><span class="comment"># * * * * * echo "hello linux"</span></span><br></pre></td></tr></table></figure>
+<li><p>创建定时任务<br>创建一个每分钟输出一次<code>hello linux</code>的定时任务(默认进入vi编辑器，保存并退出即可创建定时任务):</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># crontab -e</span></span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<p>相关字段用含义如下:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.---------------- minute (0 - 59)</span><br><span class="line">|  .------------- hour (0 - 23)</span><br><span class="line">|  |  .---------- day of month (1 - 31)</span><br><span class="line">|  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...</span><br><span class="line">|  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat</span><br><span class="line">|  |  |  |  |</span><br><span class="line">*  *  *  *  * user-name  <span class="built_in">command</span> to be executed</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">* * * * * root <span class="built_in">echo</span> <span class="string">"hello linux"</span></span><br><span class="line">~</span><br><span class="line">~</span><br><span class="line">~</span><br><span class="line">:x</span><br><span class="line">```相关字段用含义如下:</span><br><span class="line">```bash</span><br><span class="line"> .---------------- minute (0 - 59)</span><br><span class="line"> |  .------------- hour (0 - 23)</span><br><span class="line"> |  |  .---------- day of month (1 - 31)</span><br><span class="line"> |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...</span><br><span class="line"> |  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat</span><br><span class="line"> |  |  |  |  |</span><br><span class="line"> *  *  *  *  * user-name  <span class="built_in">command</span> to be executed</span><br></pre></td></tr></table></figure>
 <ol start="3">
 <li>查看当前用户的定时任务列表<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># crontab -l</span></span><br></pre></td></tr></table></figure></li>
 </ol>

@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[linux下创建定时任务]]></title>
     <url>%2F2018%2F06%2F05%2Flinux%E4%B8%8B%E5%88%9B%E5%BB%BA%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%2F</url>
-    <content type="text"><![CDATA[linux下常用用于创建定时任务的服务(linux中的服务常以d结尾):atd服务crond服务(常用) 查看相关文件使用cat /etc/crontab命令可查看创建定时任务的语法,相应字段对应着相应的含义使用ls -ld /etc/cron*命令可查看任务相关的文件及文件夹,将脚本放到相应的文件中则会相应的周期性运行脚本 创建定时任务创建一个每分钟输出一次hello linux的定时任务 12# crontab -e# * * * * * echo "hello linux" 相关字段用含义如下:1234567.---------------- minute (0 - 59)| .------------- hour (0 - 23)| | .---------- day of month (1 - 31)| | | .------- month (1 - 12) OR jan,feb,mar,apr ...| | | | .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat| | | | |* * * * * user-name command to be executed 查看当前用户的定时任务列表1# crontab -l]]></content>
+    <content type="text"><![CDATA[linux下常用用于创建定时任务的服务(linux中的服务常以d结尾):atd服务crond服务(常用) 查看相关文件使用cat /etc/crontab命令可查看创建定时任务的语法,相应字段对应着相应的含义使用ls -ld /etc/cron*命令可查看任务相关的文件及文件夹,将脚本放到相应的文件中则会相应的周期性运行脚本 创建定时任务创建一个每分钟输出一次hello linux的定时任务(默认进入vi编辑器，保存并退出即可创建定时任务): 1# crontab -e 1234567891011121314* * * * * root echo "hello linux"~~~:x```相关字段用含义如下:```bash .---------------- minute (0 - 59) | .------------- hour (0 - 23) | | .---------- day of month (1 - 31) | | | .------- month (1 - 12) OR jan,feb,mar,apr ... | | | | .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat | | | | | * * * * * user-name command to be executed 查看当前用户的定时任务列表1# crontab -l]]></content>
       <categories>
         <category>关于技术的深入浅出</category>
       </categories>
