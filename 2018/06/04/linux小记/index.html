@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Xiao Z">
 <meta property="og:description" content="linux下使用ab对web服务进行压力测试常用的压力测试工具:Apache Benchmark(ab)LoadRunner  查看ab命令的软件依赖包是否安装,ab命令默认位置为/usr/bin/ab 1# rpm -qa | grep httpd-tools  没有则安装相关软件包，有则忽略此步骤 1# yum install -y httpd-tools  使用ab命令进行压力测试 1# a">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-04T13:54:50.758Z">
+<meta property="og:updated_time" content="2018-06-05T06:25:22.212Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux小记">
 <meta name="twitter:description" content="linux下使用ab对web服务进行压力测试常用的压力测试工具:Apache Benchmark(ab)LoadRunner  查看ab命令的软件依赖包是否安装,ab命令默认位置为/usr/bin/ab 1# rpm -qa | grep httpd-tools  没有则安装相关软件包，有则忽略此步骤 1# yum install -y httpd-tools  使用ab命令进行压力测试 1# a">
@@ -431,7 +431,7 @@
 <p>使用<code>netstat -tupln | grep 80</code>命令查看80端口的使用情况<br>nginx默认主页面配置信息<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       80;//端口</span><br><span class="line">    server_name  localhost;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#charset koi8-r;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#access_log  logs/host.access.log  main;</span></span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        root   html;//主页位置，可以放一个绝对路径文件</span><br><span class="line">        index  index.html index.htm;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
 <h3 id="关闭nginx服务器"><a href="#关闭nginx服务器" class="headerlink" title="关闭nginx服务器"></a>关闭nginx服务器</h3><ol>
 <li>通过<code>ps aux | grep nginx</code>命令查看nginx的进程id</li>
-<li>关闭<br><code>`</code>bash<h1 id="kill-s-QUIT-14011-进程id"><a href="#kill-s-QUIT-14011-进程id" class="headerlink" title="kill -s QUIT 14011(进程id)"></a>kill -s QUIT 14011(进程id)</h1></li>
+<li>关闭<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># kill -s QUIT 14011(进程id)</span></span><br></pre></td></tr></table></figure></li>
 </ol>
 
       
@@ -670,7 +670,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#linux下使用ab对web服务进行压力测试"><span class="nav-number">1.</span> <span class="nav-text">linux下使用ab对web服务进行压力测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#linux使用Nginx高性能Web服务器"><span class="nav-number">2.</span> <span class="nav-text">linux使用Nginx高性能Web服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">2.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动服务器"><span class="nav-number">2.2.</span> <span class="nav-text">启动服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关闭nginx服务器"><span class="nav-number">2.3.</span> <span class="nav-text">关闭nginx服务器</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#kill-s-QUIT-14011-进程id"><span class="nav-number"></span> <span class="nav-text">kill -s QUIT 14011(进程id)</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#linux下使用ab对web服务进行压力测试"><span class="nav-number">1.</span> <span class="nav-text">linux下使用ab对web服务进行压力测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#linux使用Nginx高性能Web服务器"><span class="nav-number">2.</span> <span class="nav-text">linux使用Nginx高性能Web服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">2.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动服务器"><span class="nav-number">2.2.</span> <span class="nav-text">启动服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关闭nginx服务器"><span class="nav-number">2.3.</span> <span class="nav-text">关闭nginx服务器</span></a></li></ol></li></ol></div>
             
 
           </div>
