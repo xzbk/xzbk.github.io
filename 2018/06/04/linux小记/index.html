@@ -89,7 +89,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/img/mount-ntfs.png">
 <meta property="og:image" content="http://yoursite.com/img/mount-ntfs.png">
-<meta property="og:updated_time" content="2018-06-05T08:11:36.189Z">
+<meta property="og:updated_time" content="2018-06-07T10:45:06.385Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux小记">
 <meta name="twitter:description" content="使用ab对web服务进行压力测试常用的压力测试工具:Apache Benchmark(ab)LoadRunner  查看ab命令的软件依赖包是否安装,ab命令默认位置为/usr/bin/ab 1# rpm -qa | grep httpd-tools  没有则安装相关软件包，有则忽略此步骤 1# yum install -y httpd-tools  使用ab命令进行压力测试 1# ab -c 1">
@@ -369,6 +369,17 @@
 
           
             
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2018/06/04/linux小记/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2018/06/04/linux小记/" itemprop="commentsCount"></span>
+                </a>
+              
+            
           
 
           
@@ -445,7 +456,8 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># crontab -e</span></span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">* * * * * root <span class="built_in">echo</span> <span class="string">"hello linux"</span></span><br><span class="line">~</span><br><span class="line">~</span><br><span class="line">~</span><br><span class="line">:x</span><br><span class="line">```相关字段用含义如下:</span><br><span class="line">```bash</span><br><span class="line"> .---------------- minute (0 - 59)</span><br><span class="line"> |  .------------- hour (0 - 23)</span><br><span class="line"> |  |  .---------- day of month (1 - 31)</span><br><span class="line"> |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...</span><br><span class="line"> |  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat</span><br><span class="line"> |  |  |  |  |</span><br><span class="line"> *  *  *  *  * user-name  <span class="built_in">command</span> to be executed</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">* * * * * root <span class="built_in">echo</span> <span class="string">"hello linux"</span></span><br><span class="line">~</span><br><span class="line">~</span><br><span class="line">~</span><br><span class="line">:x</span><br></pre></td></tr></table></figure>
+<p> 相关字段用含义如下:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.---------------- minute (0 - 59)</span><br><span class="line">|  .------------- hour (0 - 23)</span><br><span class="line">|  |  .---------- day of month (1 - 31)</span><br><span class="line">|  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...</span><br><span class="line">|  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat</span><br><span class="line">|  |  |  |  |</span><br><span class="line">*  *  *  *  * user-name  <span class="built_in">command</span> to be executed</span><br></pre></td></tr></table></figure></p>
 <ol start="3">
 <li>查看当前用户的定时任务列表<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># crontab -l</span></span><br></pre></td></tr></table></figure>
 </li>
@@ -505,8 +517,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/06/03/linux下使用ab对web服务进行压力测试/" rel="next" title="linux下使用ab对web服务进行压力测试">
-                <i class="fa fa-chevron-left"></i> linux下使用ab对web服务进行压力测试
+              <a href="/2018/05/30/linux中yum方式安装mysql/" rel="next" title="linux中yum方式安装mysql">
+                <i class="fa fa-chevron-left"></i> linux中yum方式安装mysql
               </a>
             
           </div>
@@ -514,10 +526,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/06/05/linux下创建定时任务/" rel="prev" title="linux下创建定时任务">
-                linux下创建定时任务 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -603,7 +611,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -903,6 +911,21 @@
 
 
 
+
+  
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cytxGqJh7';
+      var conf = 'aa634b97b5a38076d0c3c4eeddfdff62';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
 
 
 
