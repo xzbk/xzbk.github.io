@@ -89,7 +89,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/img/mount-ntfs.png">
 <meta property="og:image" content="http://yoursite.com/img/mount-ntfs.png">
-<meta property="og:updated_time" content="2018-06-07T13:33:45.398Z">
+<meta property="og:updated_time" content="2018-06-07T13:46:20.419Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux小记">
 <meta name="twitter:description" content="使用ab对web服务进行压力测试常用的压力测试工具:Apache Benchmark(ab)LoadRunner  查看ab命令的软件依赖包是否安装,ab命令默认位置为/usr/bin/ab 1# rpm -qa | grep httpd-tools  没有则安装相关软件包，有则忽略此步骤 1# yum install -y httpd-tools  使用ab命令进行压力测试 1# ab -c 1">
@@ -465,7 +465,7 @@
 <h2 id="使用iotop实时监控系统磁盘IO"><a href="#使用iotop实时监控系统磁盘IO" class="headerlink" title="使用iotop实时监控系统磁盘IO"></a>使用iotop实时监控系统磁盘IO</h2><p>此命令类似于window中的任务管理器</p>
 <ol>
 <li><p>查看相关的软件包</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yun list iotop</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yum list iotop</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>安装相关的命令</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yum install -y iotop</span></span><br></pre></td></tr></table></figure>
@@ -486,6 +486,15 @@
 <li>到相应的网址<code>repoforge.org/use/</code>下载yum源的rpm包使用命令<code>rpm -ivh rpmfilename</code>进行安装：<br><img src="/img/mount-ntfs.png" alt="挂载相关图片"><br>相关文件下载网址：<a href="http://repoforge.org/use/" target="_blank" rel="noopener">rpmforge-release-0.5.3-1.el6.rf.i686.rpm</a></li>
 <li>使用<code>yum install -y optipng</code>命令进行软件安装</li>
 <li>安装完成后使用<code>optipng filename</code>命令即可进行png格式图片压缩</li>
+</ol>
+<h2 id="监控系统当前监听使用的端口"><a href="#监控系统当前监听使用的端口" class="headerlink" title="监控系统当前监听使用的端口"></a>监控系统当前监听使用的端口</h2><ol>
+<li>第一种方式<br>查看当前的网络状态<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># netstat -tupln</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><code>-tupln</code>——列出当前系统上所有正在监听的端口</p>
+<ol start="2">
+<li>第二种方式<br>列出所有正在监听的端口<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># lsof -i</span></span><br></pre></td></tr></table></figure>
+</li>
 </ol>
 
       
@@ -732,7 +741,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用ab对web服务进行压力测试"><span class="nav-number">1.</span> <span class="nav-text">使用ab对web服务进行压力测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用Nginx高性能Web服务器"><span class="nav-number">2.</span> <span class="nav-text">使用Nginx高性能Web服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">2.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动服务器"><span class="nav-number">2.2.</span> <span class="nav-text">启动服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关闭nginx服务器"><span class="nav-number">2.3.</span> <span class="nav-text">关闭nginx服务器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建定时任务"><span class="nav-number">3.</span> <span class="nav-text">创建定时任务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用iotop实时监控系统磁盘IO"><span class="nav-number">4.</span> <span class="nav-text">使用iotop实时监控系统磁盘IO</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux下挂载FAT文件系统"><span class="nav-number">5.</span> <span class="nav-text">Linux下挂载FAT文件系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用压缩PNG图片工具"><span class="nav-number">6.</span> <span class="nav-text">使用压缩PNG图片工具</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用ab对web服务进行压力测试"><span class="nav-number">1.</span> <span class="nav-text">使用ab对web服务进行压力测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用Nginx高性能Web服务器"><span class="nav-number">2.</span> <span class="nav-text">使用Nginx高性能Web服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">2.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动服务器"><span class="nav-number">2.2.</span> <span class="nav-text">启动服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关闭nginx服务器"><span class="nav-number">2.3.</span> <span class="nav-text">关闭nginx服务器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建定时任务"><span class="nav-number">3.</span> <span class="nav-text">创建定时任务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用iotop实时监控系统磁盘IO"><span class="nav-number">4.</span> <span class="nav-text">使用iotop实时监控系统磁盘IO</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux下挂载FAT文件系统"><span class="nav-number">5.</span> <span class="nav-text">Linux下挂载FAT文件系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用压缩PNG图片工具"><span class="nav-number">6.</span> <span class="nav-text">使用压缩PNG图片工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#监控系统当前监听使用的端口"><span class="nav-number">7.</span> <span class="nav-text">监控系统当前监听使用的端口</span></a></li></ol></div>
             
 
           </div>
