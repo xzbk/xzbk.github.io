@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Xiao Z">
 <meta property="og:description" content="Oracle常用函数关于伪表伪表，对每一个数据库用户而言都存在一个表名叫做dual的表。用作日常查询，用来计算，显示日期，转换日期，所有这些操作都不涉及到我们自己定义的表。1234--请计算9999*88+888=？select 9999*88+888 from dual;--显示当前日期SELECT SYSDATE FROM dual; 字符串类单行函数：1.upper范例：观察转大写的函数1S">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-03T02:36:45.868Z">
+<meta property="og:updated_time" content="2018-08-03T03:31:24.148Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Oracle常用函数">
 <meta name="twitter:description" content="Oracle常用函数关于伪表伪表，对每一个数据库用户而言都存在一个表名叫做dual的表。用作日常查询，用来计算，显示日期，转换日期，所有这些操作都不涉及到我们自己定义的表。1234--请计算9999*88+888=？select 9999*88+888 from dual;--显示当前日期SELECT SYSDATE FROM dual; 字符串类单行函数：1.upper范例：观察转大写的函数1S">
@@ -404,7 +404,8 @@
         <h2 id="Oracle常用函数"><a href="#Oracle常用函数" class="headerlink" title="Oracle常用函数"></a>Oracle常用函数</h2><h3 id="关于伪表"><a href="#关于伪表" class="headerlink" title="关于伪表"></a>关于伪表</h3><p>伪表，对每一个数据库用户而言都存在一个表名叫做dual的表。<br>用作日常查询，用来计算，显示日期，转换日期，所有这些操作都不涉及到我们自己定义的表。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--请计算9999*88+888=？</span></span><br><span class="line"><span class="keyword">select</span> <span class="number">9999</span>*<span class="number">88</span>+<span class="number">888</span> <span class="keyword">from</span> dual;</span><br><span class="line"><span class="comment">--显示当前日期</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">SYSDATE</span> <span class="keyword">FROM</span> dual;</span><br></pre></td></tr></table></figure></p>
 <h3 id="字符串类单行函数："><a href="#字符串类单行函数：" class="headerlink" title="字符串类单行函数："></a>字符串类单行函数：</h3><p>1.<code>upper</code>范例：观察转大写的函数<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">UPPER</span>(<span class="string">'hello'</span>) <span class="keyword">FROM</span> dual;</span><br></pre></td></tr></table></figure></p>
 <p>2.<code>lower</code>范例：观察转小写的操作，将所有的雇员姓名按照小写字母返回<br><figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">LOWER</span>(ename) <span class="keyword">FROM</span> emp;</span><br></pre></td></tr></table></figure></p>
-<p>3.<code>length</code>范例：查询出每个雇员姓名的长度<br><code>SELECT ename,LENGTH(ename) FROM emp;</code><br>4.<code>replace</code>范例：使用字母“_”替换掉姓名中的所有字母“A”<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">REPLACE</span>(ename,<span class="string">'A'</span>,<span class="string">'_'</span>) <span class="keyword">FROM</span> emp;</span><br></pre></td></tr></table></figure></p>
+<p>3.<code>length</code>范例：查询出每个雇员姓名的长度<br><figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> ename,<span class="built_in">LENGTH</span>(ename) <span class="keyword">FROM</span> emp;</span><br></pre></td></tr></table></figure></p>
+<p>4.<code>replace</code>范例：使用字母“_”替换掉姓名中的所有字母“A”<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">REPLACE</span>(ename,<span class="string">'A'</span>,<span class="string">'_'</span>) <span class="keyword">FROM</span> emp;</span><br></pre></td></tr></table></figure></p>
 <p>5.<code>substr</code>字符串截取操作有两种语法<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--从开始第三个字符截取到结尾</span></span><br><span class="line"><span class="keyword">SELECT</span> ename,<span class="keyword">SUBSTR</span>(ename,<span class="number">3</span>) <span class="keyword">FROM</span> emp;</span><br><span class="line"><span class="comment">--从开始第三个字符截取到第五个</span></span><br><span class="line"><span class="keyword">SELECT</span> ename,<span class="keyword">SUBSTR</span>(ename,<span class="number">3</span>,<span class="number">5</span>) <span class="keyword">FROM</span> emp;</span><br></pre></td></tr></table></figure></p>
 <h3 id="数字类单行函数："><a href="#数字类单行函数：" class="headerlink" title="数字类单行函数："></a>数字类单行函数：</h3><p>1.验证round()函数<br>round(n,[m]) 该函数用于执行四舍五入，如果省掉m，则四舍五入到整数。<br>如果m是正数，则四舍五入到小数点的m位后。<br>如果m是负数，则四舍五入到小数点的m位前。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">round</span>(<span class="number">23.75123</span>) <span class="keyword">FROM</span> dual; <span class="comment">--返回24</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">round</span>(<span class="number">23.75123</span>, <span class="number">1</span>) <span class="keyword">FROM</span> dual; <span class="comment">--返回23.8</span></span><br></pre></td></tr></table></figure></p>
 <h3 id="日期类函数"><a href="#日期类函数" class="headerlink" title="日期类函数"></a>日期类函数</h3><p>如果现在要想进行日期的操作，则首先有一个必须要解决的问题，就是如何取得当前的日期，这个当前日期可以使用“SYSDATE”取得，代码如下：<br><code>SELECT SYSDATE FROM dual;</code><br>除了以上的当前日期之外，在日期中也可以进行若干计算：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--日期 + 数字 = 日期，表示若干天之后的日期；</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">SYSDATE</span> + <span class="number">3</span>,<span class="keyword">SYSDATE</span> + <span class="number">300</span> <span class="keyword">FROM</span> dual;</span><br><span class="line"><span class="comment">--日期 – 数字 = 日期，表示若干天前的日期；</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">SYSDATE</span> - <span class="number">3</span>,<span class="keyword">SYSDATE</span> - <span class="number">300</span> <span class="keyword">FROM</span> dual;</span><br><span class="line"><span class="comment">--日期 – 日期</span></span><br></pre></td></tr></table></figure></p>
@@ -450,6 +451,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/03/Oracle之plSql/" rel="prev" title="Oracle之plSql">
+                Oracle之plSql <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -535,7 +540,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
