@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="oracle," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Xiao Z" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="存储过程和存储函数存储在数据库中供所有用户程序调用的子程序叫做存储过程,存储函数.由于通过out参数,存储过程也可以返回函数值.所以存储过程和存储函数已经没有太大的区别了.而存储函数仍然存在,是由于oracle不断升级,需要实现向下兼容,所以存储函数就一直存留着.区别:是否可以通过return返回函数值.存储函数可以通过return返回函数值,而存储过程不可以. 存储过程1.创建和使用存储过程用c">
+<meta name="keywords" content="oracle">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Oracle存储过程与存储函数">
+<meta property="og:url" content="http://yoursite.com/2018/08/22/Oracle存储过程与存储函数/index.html">
+<meta property="og:site_name" content="Xiao Z">
+<meta property="og:description" content="存储过程和存储函数存储在数据库中供所有用户程序调用的子程序叫做存储过程,存储函数.由于通过out参数,存储过程也可以返回函数值.所以存储过程和存储函数已经没有太大的区别了.而存储函数仍然存在,是由于oracle不断升级,需要实现向下兼容,所以存储函数就一直存留着.区别:是否可以通过return返回函数值.存储函数可以通过return返回函数值,而存储过程不可以. 存储过程1.创建和使用存储过程用c">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-08-22T14:15:20.859Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Oracle存储过程与存储函数">
+<meta name="twitter:description" content="存储过程和存储函数存储在数据库中供所有用户程序调用的子程序叫做存储过程,存储函数.由于通过out参数,存储过程也可以返回函数值.所以存储过程和存储函数已经没有太大的区别了.而存储函数仍然存在,是由于oracle不断升级,需要实现向下兼容,所以存储函数就一直存留着.区别:是否可以通过return返回函数值.存储函数可以通过return返回函数值,而存储过程不可以. 存储过程1.创建和使用存储过程用c">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/08/22/Oracle存储过程与存储函数/"/>
+
+
+
+
+
+  <title>Oracle存储过程与存储函数 | Xiao Z</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <!--fork me on github-->
+    <a href="https://github.com/xzbk"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png" alt="Fork me on GitHub"></a>
+    <!--fork me on github over-->
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Xiao Z</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">命是弱者的借口,运是强者的谦辞</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/22/Oracle存储过程与存储函数/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Xiao Z">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/header.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Xiao Z">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Oracle存储过程与存储函数</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-22T22:13:54+08:00">
+                2018-08-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2018/08/22/Oracle存储过程与存储函数/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2018/08/22/Oracle存储过程与存储函数/" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>存储过程和存储函数</strong><br>存储在数据库中供所有用户程序调用的子程序叫做<code>存储过程,存储函数</code>.<br>由于通过out参数,存储过程也可以返回函数值.所以存储过程和存储函数已经没有太大的区别了.而存储函数仍然存在,是由于oracle不断升级,需要实现向下兼容,所以存储函数就一直存留着.<br><strong>区别:</strong><br>是否可以通过return返回函数值.存储函数可以通过return返回函数值,而存储过程不可以.</p>
+<h2 id="存储过程"><a href="#存储过程" class="headerlink" title="存储过程"></a>存储过程</h2><h3 id="1-创建和使用存储过程"><a href="#1-创建和使用存储过程" class="headerlink" title="1.创建和使用存储过程"></a>1.创建和使用存储过程</h3><p>用create procedure命令建立存储过程和存储函数.<br>语法:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> [<span class="keyword">or</span> <span class="keyword">replace</span>] <span class="keyword">procedure</span> 过程名(参数列表)</span><br><span class="line"><span class="keyword">as</span></span><br><span class="line">PLSQL子程序体;</span><br></pre></td></tr></table></figure></p>
+<p><strong>注意事项:</strong><br>(1)存储过程或者存储函数,只能创建或者替换.<br>(2)参数可以带也可以不带.<br>(3)as相当于PLSQL语句中的declare,用来声明变量,游标等,但是不可以省略.</p>
+<h3 id="2-入门案例"><a href="#2-入门案例" class="headerlink" title="2.入门案例:"></a>2.入门案例:</h3><p>不带参数的存储过程:不用带括号<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">or</span> <span class="keyword">replace</span> <span class="keyword">procedure</span> sayHello</span><br><span class="line"><span class="keyword">as</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">   dbms_output.put_line(<span class="string">'HelloWorld'</span>);</span><br><span class="line"><span class="keyword">end</span>;</span><br></pre></td></tr></table></figure></p>
+<p><strong>调用方式:</strong><br>(1) 使用execute;<br>(2) 使用PLSQL语句调用;</p>
+<h3 id="3-带参数的存储过程"><a href="#3-带参数的存储过程" class="headerlink" title="3.带参数的存储过程:"></a>3.带参数的存储过程:</h3><p>给指定的员工涨100元工资,并且打印涨前和涨后的薪水:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">or</span> <span class="keyword">replace</span> <span class="keyword">procedure</span> addSal(pempno <span class="keyword">in</span> emp.empno%<span class="keyword">type</span>)</span><br><span class="line"><span class="keyword">as</span></span><br><span class="line">  pename emp.ename%<span class="keyword">type</span>;</span><br><span class="line">  beforesal emp.sal%type;</span><br><span class="line">  aftersal emp.sal%type;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  <span class="keyword">select</span> ename,sal <span class="keyword">into</span> pename,beforesal <span class="keyword">from</span> emp <span class="keyword">where</span> empno=pempno;</span><br><span class="line">  aftersal:=beforesal+100;</span><br><span class="line">  <span class="keyword">update</span> emp <span class="keyword">set</span> sal=aftersal <span class="keyword">where</span> empno=pempno; </span><br><span class="line">  dbms_output.put_line('姓名: '||pename||' 涨前工资:'||beforesal||'涨后工资:'||aftersal);</span><br><span class="line"><span class="keyword">end</span>;</span><br></pre></td></tr></table></figure></p>
+<p><strong>注意:</strong><br>(1)要说明,参数是输入参数(in)还是输出参数(out);<br>(2)为保证调用多个存储过程中处在同一个事务中,所以一般不在存储过程或者存储函数中,commit或rollback;</p>
+<h3 id="4-调试存储过程"><a href="#4-调试存储过程" class="headerlink" title="4.调试存储过程:"></a>4.调试存储过程:</h3><p><strong>注意:</strong><br>(1) oracle数据库和PLSQL工具都是放在同一个机器上;<br>(2) 在开启调试时,可能会报出权限不够的错误信息,通过下面方式进行授权:</p>
+<h2 id="存储函数"><a href="#存储函数" class="headerlink" title="存储函数"></a>存储函数</h2><h3 id="1-存储函数"><a href="#1-存储函数" class="headerlink" title="1.存储函数:"></a>1.存储函数:</h3><p><code>函数(Function)</code>为一命名的存储程序,可带参数,并返回一计算值.<br>函数和过程的结构类似,但必须有一个return子句,用于返回函数值.</p>
+<h3 id="2-创建存储函数的语法"><a href="#2-创建存储函数的语法" class="headerlink" title="2.创建存储函数的语法:"></a>2.创建存储函数的语法:</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> [<span class="keyword">or</span> <span class="keyword">replace</span>] <span class="keyword">function</span> 函数名(参数列表)</span><br><span class="line"><span class="keyword">return</span> 函数值类型</span><br><span class="line"><span class="keyword">as</span></span><br><span class="line">PLSQL子程序体;</span><br></pre></td></tr></table></figure>
+<p><strong>注意事项:</strong><br>(1) 与存储过程注意事项类似,不同的是,必须有个返回值;<br>(2) 参数列表可以有,也可以没有.当没有时,函数名后面不要带括号.<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">or</span> <span class="keyword">replace</span> <span class="keyword">function</span> queryempannal(pempno <span class="keyword">in</span> <span class="built_in">number</span>)</span><br><span class="line"><span class="keyword">return</span> <span class="built_in">number</span></span><br><span class="line"><span class="keyword">as</span></span><br><span class="line">  psal emp.sal%<span class="keyword">type</span>;</span><br><span class="line">  pcomm emp.comm%type;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  <span class="keyword">select</span> sal,comm <span class="keyword">into</span> psal,pcomm <span class="keyword">from</span> emp <span class="keyword">where</span> empno=pempno;</span><br><span class="line">  return psal*12+nvl(pcomm,0);</span><br><span class="line"><span class="keyword">end</span>;</span><br></pre></td></tr></table></figure></p>
+<h2 id="in和out参数"><a href="#in和out参数" class="headerlink" title="in和out参数"></a>in和out参数</h2><h3 id="1-概述"><a href="#1-概述" class="headerlink" title="1.概述"></a>1.概述</h3><p>(1)一般来讲,存储过程和存储函数的区别在于存储函数可以有一个返回值;而存储过程没有返回值.<br>(2)过程和函数都可以通过out指定一个或多个输出参数.我们可以利用out参数,在过程和函数中实现返回多个值.<br>a. 存储过程和存储函数都可以有out参数;<br>b. 存储过程和存储函数都可以有多个out参数;<br>c. 存储过程可以通过out参数来实现返回值;<br>(3)什么时候用存储过程/存储函数?<br>原则:如果只有一个返回值,用存储函数;否则,就用存储过程.<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">or</span> <span class="keyword">replace</span> <span class="keyword">procedure</span> queryempinform(eno <span class="keyword">in</span> <span class="built_in">number</span>,</span><br><span class="line">                                           pename <span class="keyword">out</span> varchar2,</span><br><span class="line">                                           psal <span class="keyword">out</span> <span class="built_in">number</span>,</span><br><span class="line">                                           pjob <span class="keyword">out</span> varchar2 )</span><br><span class="line"><span class="keyword">as</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">  <span class="keyword">select</span> ename,sal,job <span class="keyword">into</span> pename,psal,pjob <span class="keyword">from</span> emp <span class="keyword">where</span> empno=eno;</span><br><span class="line"><span class="keyword">end</span>;</span><br></pre></td></tr></table></figure></p>
+<h2 id="在应用程序中访问存储过程和存储函数"><a href="#在应用程序中访问存储过程和存储函数" class="headerlink" title="在应用程序中访问存储过程和存储函数"></a>在应用程序中访问存储过程和存储函数</h2><h3 id="1-访问存储过程"><a href="#1-访问存储过程" class="headerlink" title="1.访问存储过程"></a>1.访问存储过程</h3><p><strong>工具类 JDBCUtils:</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> test.oracle.utils;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.sql.Connection;</span><br><span class="line"><span class="keyword">import</span> java.sql.DriverManager;</span><br><span class="line"><span class="keyword">import</span> java.sql.ResultSet;</span><br><span class="line"><span class="keyword">import</span> java.sql.SQLException;</span><br><span class="line"><span class="keyword">import</span> java.sql.Statement;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JDBCUtils</span> </span>&#123;</span><br><span class="line">       <span class="keyword">private</span> <span class="keyword">static</span> String driver= <span class="string">"oracle.jdbc.OracleDriver"</span> ;</span><br><span class="line">       <span class="keyword">private</span> <span class="keyword">static</span> String url =<span class="string">"jdbc:oracle:thin:@192.168.56.6:1521:orcl"</span> ;</span><br><span class="line">       <span class="keyword">private</span> <span class="keyword">static</span> String user= <span class="string">"scott"</span> ;</span><br><span class="line">       <span class="keyword">private</span> <span class="keyword">static</span> String password= <span class="string">"tiger"</span> ;</span><br><span class="line"></span><br><span class="line">       <span class="comment">//注册数据库的驱动</span></span><br><span class="line">       <span class="keyword">static</span> &#123;</span><br><span class="line">             <span class="keyword">try</span> &#123;</span><br><span class="line">                  Class. forName( driver);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (ClassNotFoundException e ) &#123;</span><br><span class="line">                   e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">       <span class="comment">//获取数据库连接</span></span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Connection <span class="title">getConnection</span><span class="params">()</span></span>&#123;</span><br><span class="line">             <span class="keyword">try</span> &#123;</span><br><span class="line">                   <span class="keyword">return</span> DriverManager.getConnection( url , user , password );</span><br><span class="line">            &#125; <span class="keyword">catch</span> (SQLException e ) &#123;</span><br><span class="line">                   e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">             <span class="keyword">return</span> <span class="keyword">null</span> ;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">       <span class="comment">//释放数据库资源</span></span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">release</span><span class="params">(Connection conn,Statement sta ,ResultSet rst )</span></span>&#123;</span><br><span class="line">             <span class="keyword">if</span> (conn != <span class="keyword">null</span>) &#123;</span><br><span class="line">                   <span class="keyword">try</span> &#123;</span><br><span class="line">                         conn .close();</span><br><span class="line">                  &#125; <span class="keyword">catch</span> (SQLException e ) &#123;</span><br><span class="line">                         e.printStackTrace();</span><br><span class="line">                  &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">                         conn =<span class="keyword">null</span> ;</span><br><span class="line">                  &#125;</span><br><span class="line">            &#125;</span><br><span class="line">             <span class="keyword">if</span> (sta != <span class="keyword">null</span>) &#123;</span><br><span class="line">                   <span class="keyword">try</span> &#123;</span><br><span class="line">                         sta .close();</span><br><span class="line">                  &#125; <span class="keyword">catch</span> (SQLException e ) &#123;</span><br><span class="line">                         e.printStackTrace();</span><br><span class="line">                  &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">                         sta =<span class="keyword">null</span> ;</span><br><span class="line">                  &#125;</span><br><span class="line">            &#125;</span><br><span class="line">             <span class="keyword">if</span> (rst != <span class="keyword">null</span>) &#123;</span><br><span class="line">                   <span class="keyword">try</span> &#123;</span><br><span class="line">                         rst .close();</span><br><span class="line">                  &#125; <span class="keyword">catch</span> (SQLException e ) &#123;</span><br><span class="line">                         e.printStackTrace();</span><br><span class="line">                  &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">                         rst =<span class="keyword">null</span> ;</span><br><span class="line">                  &#125;</span><br><span class="line">            &#125;</span><br><span class="line">      &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>TestProcedure.class</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> test.oracle.demo;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.sql.CallableStatement;</span><br><span class="line"><span class="keyword">import</span> java.sql.Connection;</span><br><span class="line"><span class="keyword">import</span> java.sql.SQLException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> oracle.jdbc.driver.OracleTypes;</span><br><span class="line"><span class="keyword">import</span> test.oracle.utils.JDBCUtils;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestProcedure</span> </span>&#123;</span><br><span class="line">       <span class="comment">/*</span></span><br><span class="line"><span class="comment">       create or replace procedure queryempinform(eno in number,</span></span><br><span class="line"><span class="comment">                                           pename out varchar2,</span></span><br><span class="line"><span class="comment">                                           psal out number,</span></span><br><span class="line"><span class="comment">                                           pjob out varchar2 )</span></span><br><span class="line"><span class="comment">            as</span></span><br><span class="line"><span class="comment">            begin</span></span><br><span class="line"><span class="comment">              select ename,sal ,job into pename, psal,pjob from emp where empno=eno ;</span></span><br><span class="line"><span class="comment">            end;</span></span><br><span class="line"><span class="comment">            /</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">       */</span></span><br><span class="line">       <span class="meta">@Test</span></span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testProcedure</span><span class="params">()</span></span>&#123;</span><br><span class="line">             <span class="comment">/*</span></span><br><span class="line"><span class="comment">             &#123;call &lt;procedure-name&gt;[(&lt;arg1&gt;,&lt;arg2&gt;, ...)]&#125;</span></span><br><span class="line"><span class="comment">             */</span></span><br><span class="line">            String sql =<span class="string">"&#123;call queryempinform(?,?,?,?)&#125;"</span> ;</span><br><span class="line">            Connection conn =<span class="keyword">null</span> ;</span><br><span class="line">            CallableStatement sta =<span class="keyword">null</span> ;</span><br><span class="line">             <span class="keyword">try</span> &#123;</span><br><span class="line">                   <span class="comment">//获取连接</span></span><br><span class="line">                   conn = JDBCUtils.getConnection();</span><br><span class="line">                   <span class="comment">//通过连接创建statement</span></span><br><span class="line">                   sta =conn .prepareCall( sql);</span><br><span class="line"></span><br><span class="line">                   <span class="comment">//对于in参数,赋值</span></span><br><span class="line">                   sta .setInt(<span class="number">1</span>, <span class="number">7839</span>);</span><br><span class="line">                   <span class="comment">//对于out参数,申明</span></span><br><span class="line">                   sta .registerOutParameter(<span class="number">2</span>, OracleTypes. VARCHAR);</span><br><span class="line">                   sta .registerOutParameter(<span class="number">3</span>, OracleTypes. NUMBER);</span><br><span class="line">                   sta .registerOutParameter(<span class="number">4</span>, OracleTypes. VARCHAR);</span><br><span class="line"></span><br><span class="line">                   <span class="comment">//执行调用</span></span><br><span class="line">                   sta .execute();</span><br><span class="line"></span><br><span class="line">                   <span class="comment">//取出结果</span></span><br><span class="line">                  String name = sta .getString(<span class="number">2</span>);</span><br><span class="line">                   <span class="keyword">double</span> sal = sta.getDouble(<span class="number">3</span>);</span><br><span class="line">                  String job = sta .getString(<span class="number">4</span>);</span><br><span class="line">                  System. out .println(name +<span class="string">"\t"</span> +sal +<span class="string">"\t"</span> +job );</span><br><span class="line">            &#125; <span class="keyword">catch</span> (SQLException e ) &#123;</span><br><span class="line">                   e.printStackTrace();</span><br><span class="line">            &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">                  JDBCUtils. release( conn, sta, <span class="keyword">null</span>);</span><br><span class="line">            &#125;</span><br><span class="line">      &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="2-访问存储函数"><a href="#2-访问存储函数" class="headerlink" title="2.访问存储函数"></a>2.访问存储函数</h3><p><strong>TestFunction.class</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> test.oracle.demo;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.sql.CallableStatement;</span><br><span class="line"><span class="keyword">import</span> java.sql.Connection;</span><br><span class="line"><span class="keyword">import</span> java.sql.SQLException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> oracle.jdbc.driver.OracleTypes;</span><br><span class="line"><span class="keyword">import</span> test.oracle.utils.JDBCUtils;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestFunction</span> </span>&#123;</span><br><span class="line">       <span class="comment">/*</span></span><br><span class="line"><span class="comment">       create or replace function queryempannal(pempno in number)</span></span><br><span class="line"><span class="comment">            return number</span></span><br><span class="line"><span class="comment">            as</span></span><br><span class="line"><span class="comment">              psal emp.sal%type;</span></span><br><span class="line"><span class="comment">              pcomm emp.comm%type;</span></span><br><span class="line"><span class="comment">            begin</span></span><br><span class="line"><span class="comment">              select sal,comm into psal, pcomm from emp where empno=pempno ;</span></span><br><span class="line"><span class="comment">              return psal*12+nvl (pcomm,0);</span></span><br><span class="line"><span class="comment">            end;</span></span><br><span class="line"><span class="comment">       */</span></span><br><span class="line">       <span class="meta">@Test</span></span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testFunction</span><span class="params">()</span></span>&#123;</span><br><span class="line">             <span class="comment">// &#123;?= call &lt;procedure-name&gt;[(&lt;arg1&gt;,&lt;arg2&gt;, ...)]&#125;</span></span><br><span class="line">            String sql =<span class="string">"&#123;?= call queryempannal(?)&#125;"</span> ;</span><br><span class="line">            Connection conn =<span class="keyword">null</span> ;</span><br><span class="line">            CallableStatement call =<span class="keyword">null</span> ;</span><br><span class="line">             <span class="keyword">try</span> &#123;</span><br><span class="line">                   <span class="comment">//获取数据库连接</span></span><br><span class="line">                   conn = JDBCUtils.getConnection();</span><br><span class="line">                   <span class="comment">//通过连接获取statement对象</span></span><br><span class="line">                   call =conn .prepareCall( sql);</span><br><span class="line"></span><br><span class="line">                   <span class="comment">//对于out参数   声明</span></span><br><span class="line">                   call .registerOutParameter(<span class="number">1</span>, OracleTypes. NUMBER);</span><br><span class="line">                   <span class="comment">//对于in参数   赋值</span></span><br><span class="line">                   call .setInt(<span class="number">2</span>, <span class="number">7839</span>);</span><br><span class="line"></span><br><span class="line">                   <span class="comment">//执行调用</span></span><br><span class="line">                   call .execute();</span><br><span class="line">                   <span class="keyword">double</span> income =call .getDouble(<span class="number">1</span>);</span><br><span class="line">                  System. out .println(<span class="string">"该员工的年收入为:"</span> +income );</span><br><span class="line">            &#125; <span class="keyword">catch</span> (SQLException e ) &#123;</span><br><span class="line">                   e.printStackTrace();</span><br><span class="line">            &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">                   <span class="comment">//释放资源</span></span><br><span class="line">                  JDBCUtils. release( conn, call, <span class="keyword">null</span>);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>思考:</strong><br>(1)查询某个员工的所有信息—&gt;out参数太多?<br>(2)查询某个部门中所有员工的所有信息 —&gt;out中返回集合?</p>
+<h2 id="在out参数中使用光标-解决上述问题"><a href="#在out参数中使用光标-解决上述问题" class="headerlink" title="在out参数中使用光标,解决上述问题"></a>在out参数中使用光标,解决上述问题</h2><p>申明包结构 , 包头 ,包体<br>案例:查询某个部门中所有员工的所有信息</p>
+<h3 id="包头"><a href="#包头" class="headerlink" title="包头:"></a>包头:</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">or</span> <span class="keyword">replace</span> <span class="keyword">package</span> mypackage01 <span class="keyword">as</span></span><br><span class="line">     <span class="comment">--使用type关键字,自定义一个光标类型</span></span><br><span class="line">     <span class="keyword">type</span> empcursor <span class="keyword">is</span> <span class="keyword">ref</span> <span class="keyword">cursor</span>;</span><br><span class="line">     procedure queryEmpList(dno in number,empList out empcursor);</span><br><span class="line"><span class="keyword">end</span> mypackage01;</span><br></pre></td></tr></table></figure>
+<h3 id="包体"><a href="#包体" class="headerlink" title="包体:"></a>包体:</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">or</span> <span class="keyword">replace</span> <span class="keyword">package</span> <span class="keyword">body</span> mypackage01 <span class="keyword">as</span></span><br><span class="line">     <span class="keyword">procedure</span> queryEmpList(dno <span class="keyword">in</span> <span class="built_in">number</span>,empList <span class="keyword">out</span> empcursor) <span class="keyword">as</span></span><br><span class="line">     <span class="keyword">begin</span></span><br><span class="line">          <span class="keyword">open</span> empList <span class="keyword">for</span> <span class="keyword">select</span> * <span class="keyword">from</span> emp <span class="keyword">where</span> deptno=dno;</span><br><span class="line">     <span class="keyword">end</span> queryEmpList;</span><br><span class="line"><span class="keyword">end</span> mypackage01;</span><br></pre></td></tr></table></figure>
+<p>在控制台,可以使用desc查看程序包的结构:<br><code>desc mypackage01</code></p>
+<h2 id="在应用中访问包中的存储过程"><a href="#在应用中访问包中的存储过程" class="headerlink" title="在应用中访问包中的存储过程"></a>在应用中访问包中的存储过程</h2><p><strong>注意:</strong>需要带上包名<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> test.oracle.demo;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.sql.CallableStatement;</span><br><span class="line"><span class="keyword">import</span> java.sql.Connection;</span><br><span class="line"><span class="keyword">import</span> java.sql.ResultSet;</span><br><span class="line"><span class="keyword">import</span> java.sql.SQLException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> oracle.jdbc.driver.OracleCallableStatement;</span><br><span class="line"><span class="keyword">import</span> oracle.jdbc.driver.OracleTypes;</span><br><span class="line"><span class="keyword">import</span> test.oracle.utils.JDBCUtils;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestCursor</span> </span>&#123;</span><br><span class="line">       <span class="comment">/*</span></span><br><span class="line"><span class="comment">            CREATE OR REPLACE</span></span><br><span class="line"><span class="comment">            PACKAGE MYPACKAGE01 AS</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">              type empcursor is ref cursor;</span></span><br><span class="line"><span class="comment">              procedure queryEmpList( dno in number,empList out empcursor);</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">            END MYPACKAGE01;</span></span><br><span class="line"><span class="comment">       */</span></span><br><span class="line">       <span class="meta">@Test</span></span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testCursor</span><span class="params">()</span></span>&#123;</span><br><span class="line">             <span class="comment">//&#123;call &lt;procedure-name&gt;[(&lt;arg1&gt;,&lt;arg2&gt;, ...)]&#125;</span></span><br><span class="line">            String sql =<span class="string">"&#123;call MYPACKAGE01.queryEmpList(?,?)&#125;"</span> ;</span><br><span class="line">            Connection conn =<span class="keyword">null</span> ;</span><br><span class="line">            CallableStatement call =<span class="keyword">null</span> ;</span><br><span class="line">            ResultSet rs= <span class="keyword">null</span> ;</span><br><span class="line">             <span class="keyword">try</span> &#123;</span><br><span class="line">                   <span class="comment">//获取数据库连接</span></span><br><span class="line">                   conn =JDBCUtils.getConnection();</span><br><span class="line">                   <span class="comment">//通过连接获取statement</span></span><br><span class="line">                   call =conn .prepareCall( sql);</span><br><span class="line"></span><br><span class="line">                   <span class="comment">//对于in 参数   赋值</span></span><br><span class="line">                   call .setInt(<span class="number">1</span>, <span class="number">10</span>);</span><br><span class="line">                   <span class="comment">//对于out参数 申明</span></span><br><span class="line">                   call.registerOutParameter(<span class="number">2</span>, OracleTypes. CURSOR);</span><br><span class="line"></span><br><span class="line">                   <span class="comment">//执行调用</span></span><br><span class="line">                   call .execute();</span><br><span class="line"></span><br><span class="line">                   <span class="comment">//获取到指定部门的所有的员工的所有信息</span></span><br><span class="line">                   rs=((OracleCallableStatement) call ).getCursor(<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">                   <span class="comment">//遍历结果集</span></span><br><span class="line">                   <span class="keyword">while</span> (rs .next()) &#123;</span><br><span class="line">                         <span class="comment">//获取员工的编号 姓名 薪水 职位</span></span><br><span class="line">                         <span class="keyword">int</span> empno =rs .getInt( <span class="string">"empno"</span>);</span><br><span class="line">                        String ename =rs .getString( <span class="string">"ename"</span>);</span><br><span class="line">                         <span class="keyword">double</span> sal =rs .getDouble( <span class="string">"sal"</span>);</span><br><span class="line">                        String job =rs .getString( <span class="string">"job"</span>);</span><br><span class="line">                        System. out .println(empno +<span class="string">"\t"</span> +ename +<span class="string">"\t"</span> +sal +<span class="string">"\t"</span> +job );</span><br><span class="line"></span><br><span class="line">                  &#125;</span><br><span class="line">            &#125; <span class="keyword">catch</span> (SQLException e ) &#123;</span><br><span class="line">                   <span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">                   e.printStackTrace();</span><br><span class="line">            &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">                  JDBCUtils. release( conn, call, rs);</span><br><span class="line">            &#125;</span><br><span class="line">      &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/oracle/" rel="tag"># oracle</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/21/java封装树型数据结构/" rel="next" title="java封装树型数据结构">
+                <i class="fa fa-chevron-left"></i> java封装树型数据结构
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="SOHUCS"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/header.png"
+                alt="Xiao Z" />
+            
+              <p class="site-author-name" itemprop="name">Xiao Z</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/xzbk" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/u/2961593743/home?topnav=1&wvr=6" target="_blank" title="Weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://fnine59.top/" title="59's Personal Blog" target="_blank">59's Personal Blog</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://jsrun.net/tutorial" title="JSRUN前端教程" target="_blank">JSRUN前端教程</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://pilishen.com/" title="霹雳神教程" target="_blank">霹雳神教程</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://theme-next.iissnan.com/" title="Next使用文档" target="_blank">Next使用文档</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://cn.vuejs.org/" title="Vue.js官网文档" target="_blank">Vue.js官网文档</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://mp.weixin.qq.com/cgi-bin/loginpage" title="微信公众平台" target="_blank">微信公众平台</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://kiritor.github.io/categories/front/" title="仅仅是因为好看" target="_blank">仅仅是因为好看</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://iissnan.com/progit/" title="Pro Git简书" target="_blank">Pro Git简书</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://hexo.io/" title="Hexo官网文档" target="_blank">Hexo官网文档</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://es6.ruanyifeng.com/#README" title="ES6简书" target="_blank">ES6简书</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#存储过程"><span class="nav-number">1.</span> <span class="nav-text">存储过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-创建和使用存储过程"><span class="nav-number">1.1.</span> <span class="nav-text">1.创建和使用存储过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-入门案例"><span class="nav-number">1.2.</span> <span class="nav-text">2.入门案例:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-带参数的存储过程"><span class="nav-number">1.3.</span> <span class="nav-text">3.带参数的存储过程:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-调试存储过程"><span class="nav-number">1.4.</span> <span class="nav-text">4.调试存储过程:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#存储函数"><span class="nav-number">2.</span> <span class="nav-text">存储函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-存储函数"><span class="nav-number">2.1.</span> <span class="nav-text">1.存储函数:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-创建存储函数的语法"><span class="nav-number">2.2.</span> <span class="nav-text">2.创建存储函数的语法:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#in和out参数"><span class="nav-number">3.</span> <span class="nav-text">in和out参数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-概述"><span class="nav-number">3.1.</span> <span class="nav-text">1.概述</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在应用程序中访问存储过程和存储函数"><span class="nav-number">4.</span> <span class="nav-text">在应用程序中访问存储过程和存储函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-访问存储过程"><span class="nav-number">4.1.</span> <span class="nav-text">1.访问存储过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-访问存储函数"><span class="nav-number">4.2.</span> <span class="nav-text">2.访问存储函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在out参数中使用光标-解决上述问题"><span class="nav-number">5.</span> <span class="nav-text">在out参数中使用光标,解决上述问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#包头"><span class="nav-number">5.1.</span> <span class="nav-text">包头:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#包体"><span class="nav-number">5.2.</span> <span class="nav-text">包体:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在应用中访问包中的存储过程"><span class="nav-number">6.</span> <span class="nav-text">在应用中访问包中的存储过程</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+      <!--网易音乐-->
+      <!--<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=554242145&auto=1&height=66"></iframe>-->
+      <!--网易音乐结束-->
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Xiao Z</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cytxGqJh7';
+      var conf = 'aa634b97b5a38076d0c3c4eeddfdff62';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
