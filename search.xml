@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Dos下的java命令]]></title>
+    <url>%2F2018%2F09%2F05%2FDos%E4%B8%8B%E7%9A%84java%E5%91%BD%E4%BB%A4%2F</url>
+    <content type="text"><![CDATA[常用的dos命令：进入DOS的几种方式(win7)：A. 开始菜单——-输入cmd命令，进入dos窗口。B. Shift键+右键—打开命令窗口12345678910111213d: 回车 盘符切换 dir(directory):列出当前目录下的文件以及文件夹 显示这个目录下所有的.docx结尾的文件 dir *.docxmd (make directory) : 创建目录rd (remove directory): 删除目录 ，如果目录内容不为空，rd /s 目录名cd (change directory)改变指定目录(进入指定目录) D:\&gt;cd D:\烟台\Java核心编程\chapter1\codecd.. : 退回到上一级目录 cd/: 退回到根目录del (delete): 删除文件,删除一堆后缀名一样的文件*.txtexit : 退出dos命令行cls : (clear screen)清屏创建文本文档：notepad 文件名。 编译命令javacjava编译命令采用javac,javac后面跟的是java文件名和扩展名,编译后生成.class文件1D:\&gt; javac D:/test/com/action/HelloAction.java 执行命令javajava运行命令采用javac,java命令后面跟的是java的类名,Java运行的时候会用到jdk里面的库包lib。通过java –verbose:class可以清楚看到class加载到内存的全部过程。1234567//假设HelloAction类在d:test目录下的子包中//法一：java –classpath d:/test com.action.HelloAction//法二：//或者先切换到d:/testC:\&gt; cd D:\testD:\test&gt; java com.action.HelloAction 打包命令jarjar命令一般情况下用来压缩class文件。目的：1.保护代码 2。方便调用打包单个.class文件:1D:\&gt;jar cvf result.jar HelloWorld.class //将helloword程序打包 打包一个目录下的所有.class文件：1D:\&gt;jar cvf classes.jar com //Com是指某个包含class文件的目录 生成文档命令javadocjavadoc命令用于生成java的javadoc注释文档电子书1D:\&gt; javadoc -d d:test HelloWorld.java]]></content>
+      <categories>
+        <category>windows</category>
+      </categories>
+      <tags>
+        <tag>dos</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Dos下的java命令]]></title>
+    <url>%2F2018%2F09%2F05%2F%E5%B8%B8%E7%94%A8Dos%E5%91%BD%E4%BB%A4%2F</url>
+    <content type="text"><![CDATA[进入DOS的几种方式(win7)：A. 开始菜单——-输入cmd命令，进入dos窗口。B. Shift键+右键—打开命令窗口 常用的dos命令：12345678910111213d: 回车 盘符切换 dir(directory):列出当前目录下的文件以及文件夹 显示这个目录下所有的.docx结尾的文件 dir *.docxmd (make directory) : 创建目录rd (remove directory): 删除目录 ，如果目录内容不为空，rd /s 目录名cd (change directory)改变指定目录(进入指定目录) D:\&gt;cd D:\烟台\Java核心编程\chapter1\codecd.. : 退回到上一级目录 cd/: 退回到根目录del (delete): 删除文件,删除一堆后缀名一样的文件*.txtexit : 退出dos命令行cls : (clear screen)清屏创建文本文档：notepad 文件名。]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>dos</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[String的不可变]]></title>
     <url>%2F2018%2F09%2F05%2FString%E7%9A%84%E4%B8%8D%E5%8F%AF%E5%8F%98%2F</url>
     <content type="text"><![CDATA[什么是不可变对象？在Java中， String类是不可变的。那么到底什么是不可变的对象呢？ 可以这样认为：如果一个对象，在它创建完成之后，不能再改变它的状态，那么这个对象就是不可变的。不能改变状态的意思是，不能改变对象内的成员变量，包括基本数据类型的值不能改变，引用类型的变量不能指向其他的对象，引用类型指向的对象的状态也不能改变。 区分对象和对象的引用看下面代码：1234String s = "ABCabc";System.out.println("s = " + s);//s = ABCabcs = "123456";System.out.println("s = " + s);//s = 123456 首先创建一个String对象s，然后让s的值为“ABCabc”， 然后又让s的值为“123456”。 从打印结果可以看出，s的值确实改变了。那么怎么还说String对象是不可变的呢？ 其实这里存在一个误区： s只是一个String对象的引用，并不是对象本身。对象在内存中是一块内存区，成员变量越多，这块内存区占的空间越大。引用只是一个4字节的数据，里面存放了它所指向的对象的地址，通过这个地址可以访问对象。 也就是说，s只是一个引用，它指向了一个具体的对象，当s=“123456”; 这句代码执行过之后，又创建了一个新的对象“123456”， 而引用s重新指向了这个新的对象，原来的对象“ABCabc”还在内存中存在，并没有改变。内存结构如下图所示：在Java中不可能直接操作对象本身，所有的对象都由一个引用指向，必须通过这个引用才能访问对象本身，包括获取成员变量的值，改变对象的成员变量，调用对象的方法等。 为什么String对象是不可变的？在JDK1.7中，String类的主要成员变量(源码)就剩下了两个：1234567public final class String implements java.io.Serializable, Comparable&lt;string&gt;, CharSequence &#123; /** The value is used for character storage. */ private final char value[]; /** Cache the hash code for the string */ private int hash; // Default to 0&lt;/string&gt; 由以上的代码可以看出， 在Java中String类其实就是对字符数组的封装,由final修饰符修饰，一旦赋值就不可改变。在Java中，数组也是对象。 所以value也只是一个引用，它指向一个真正的数组对象。 String对象真的不可变吗？从上文可知String的成员变量是private final 的，也就是初始化之后不可改变。那么在这几个成员中， value比较特殊，因为他是一个引用变量，而不是真正的对象。value是final修饰的，也就是说final不能再指向其他数组对象。但是，可以反射出String对象中的value属性， 进而改变通过获得的value引用改变数组的结构。下面是实例代码：123456789101112131415161718192021public static void testReflection() throws Exception &#123; //创建字符串"Hello World"， 并赋给引用s String s = "Hello World"; System.out.println("s = " + s); //Hello World //获取String类中的value字段 Field valueFieldOfString = String.class.getDeclaredField("value"); //改变value属性的访问权限 valueFieldOfString.setAccessible(true); //获取s对象上的value属性的值 char[] value = (char[]) valueFieldOfString.get(s); //改变value所引用的数组中的第5个字符 value[5] = '_'; System.out.println("s = " + s); //Hello_World&#125; 在这个过程中，s始终引用的同一个String对象，但是再反射前后，这个String对象发生了变化， 也就是说，通过反射是可以修改所谓的“不可变”对象的。但是一般我们不这么做。]]></content>
