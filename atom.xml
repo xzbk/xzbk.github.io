@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-09-05T16:34:32.926Z</updated>
+  <updated>2018-09-06T15:25:45.696Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>java数组集合的相互转换</title>
+    <link href="http://yoursite.com/2018/09/06/java%E6%95%B0%E7%BB%84%E9%9B%86%E5%90%88%E7%9A%84%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2/"/>
+    <id>http://yoursite.com/2018/09/06/java数组集合的相互转换/</id>
+    <published>2018-09-06T15:23:30.000Z</published>
+    <updated>2018-09-06T15:25:45.696Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="数组转集合"><a href="#数组转集合" class="headerlink" title="数组转集合"></a>数组转集合</h2><p>对于给定的如下数组，如何转换成List集合？<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String[] array = &#123;<span class="string">"a"</span>,<span class="string">"b"</span>,<span class="string">"c"</span>&#125;;</span><br></pre></td></tr></table></figure></p><h3 id="1-使用原生方式，拆分数组，添加到List"><a href="#1-使用原生方式，拆分数组，添加到List" class="headerlink" title="1.使用原生方式，拆分数组，添加到List"></a>1.使用原生方式，拆分数组，添加到List</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; resultList = <span class="keyword">new</span> ArrayList&lt;&gt;(array.length);</span><br><span class="line"><span class="keyword">for</span> (String s : array) &#123;</span><br><span class="line">    resultList.add(s);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="2-使用Arrays-asList"><a href="#2-使用Arrays-asList" class="headerlink" title="2.使用Arrays.asList()"></a>2.使用Arrays.asList()</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; resultList= <span class="keyword">new</span> ArrayList&lt;&gt;(Arrays.asList(array));</span><br></pre></td></tr></table></figure><p>注意：Arrays.asList()会返回一个ArrayList对象，ArrayList类是Arrays的一个私有静态类，而不是java.util.ArrayList类，java.util.Arrays.ArrayList类有set()、get()、contains()方法，但是没有增加元素的方法，所以它的大小是固定的，想要创建一个真正的ArrayList类，你应该</p><h3 id="3-使用Collections-addAll"><a href="#3-使用Collections-addAll" class="headerlink" title="3.使用Collections.addAll()"></a>3.使用Collections.addAll()</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; resultList = <span class="keyword">new</span> ArrayList&lt;&gt;(array.length);</span><br><span class="line">Collections.addAll(resultList,array);</span><br></pre></td></tr></table></figure><h3 id="4-使用List-of"><a href="#4-使用List-of" class="headerlink" title="4.使用List.of()"></a>4.使用List.of()</h3><p>此方法为 Java9新增方法，定义在List接口内，并且为静态方法，故可以由类名直接调用。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; resultList = List.of(array);</span><br></pre></td></tr></table></figure></p><h2 id="集合转数组"><a href="#集合转数组" class="headerlink" title="集合转数组"></a>集合转数组</h2>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;数组转集合&quot;&gt;&lt;a href=&quot;#数组转集合&quot; class=&quot;headerlink&quot; title=&quot;数组转集合&quot;&gt;&lt;/a&gt;数组转集合&lt;/h2&gt;&lt;p&gt;对于给定的如下数组，如何转换成List集合？&lt;br&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;
+      
+    
+    </summary>
+    
+      <category term="java" scheme="http://yoursite.com/categories/java/"/>
+    
+    
+      <category term="java" scheme="http://yoursite.com/tags/java/"/>
+    
+  </entry>
   
   <entry>
     <title>Dos下的java命令</title>
@@ -493,31 +518,6 @@
     
     
       <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Next主题目录结构</title>
-    <link href="http://yoursite.com/2018/05/23/Next%E4%B8%BB%E9%A2%98%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/"/>
-    <id>http://yoursite.com/2018/05/23/Next主题目录结构/</id>
-    <published>2018-05-23T05:18:03.000Z</published>
-    <updated>2018-05-23T05:24:33.702Z</updated>
-    
-    <content type="html"><![CDATA[<p>主题目录结构图:<img src="/img/next.png" alt=""><br>代码高亮兼容图:<img src="/img/highlight.jpg" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;主题目录结构图:&lt;img src=&quot;/img/next.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;代码高亮兼容图:&lt;img src=&quot;/img/highlight.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;
-      
-    
-    </summary>
-    
-      <category term="主题相关" scheme="http://yoursite.com/categories/%E4%B8%BB%E9%A2%98%E7%9B%B8%E5%85%B3/"/>
-    
-    
-      <category term="Next" scheme="http://yoursite.com/tags/Next/"/>
     
   </entry>
   

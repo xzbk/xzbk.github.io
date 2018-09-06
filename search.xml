@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[java数组集合的相互转换]]></title>
+    <url>%2F2018%2F09%2F06%2Fjava%E6%95%B0%E7%BB%84%E9%9B%86%E5%90%88%E7%9A%84%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2%2F</url>
+    <content type="text"><![CDATA[数组转集合对于给定的如下数组，如何转换成List集合？1String[] array = &#123;"a","b","c"&#125;; 1.使用原生方式，拆分数组，添加到List1234List&lt;String&gt; resultList = new ArrayList&lt;&gt;(array.length);for (String s : array) &#123; resultList.add(s);&#125; 2.使用Arrays.asList()1List&lt;String&gt; resultList= new ArrayList&lt;&gt;(Arrays.asList(array)); 注意：Arrays.asList()会返回一个ArrayList对象，ArrayList类是Arrays的一个私有静态类，而不是java.util.ArrayList类，java.util.Arrays.ArrayList类有set()、get()、contains()方法，但是没有增加元素的方法，所以它的大小是固定的，想要创建一个真正的ArrayList类，你应该 3.使用Collections.addAll()12List&lt;String&gt; resultList = new ArrayList&lt;&gt;(array.length);Collections.addAll(resultList,array); 4.使用List.of()此方法为 Java9新增方法，定义在List接口内，并且为静态方法，故可以由类名直接调用。1List&lt;String&gt; resultList = List.of(array); 集合转数组]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Dos下的java命令]]></title>
     <url>%2F2018%2F09%2F05%2FDos%E4%B8%8B%E7%9A%84java%E5%91%BD%E4%BB%A4%2F</url>
     <content type="text"><![CDATA[常用的dos命令：进入DOS的几种方式(win7)：A. 开始菜单——-输入cmd命令，进入dos窗口。B. Shift键+右键—打开命令窗口12345678910111213d: 回车 盘符切换 dir(directory):列出当前目录下的文件以及文件夹 显示这个目录下所有的.docx结尾的文件 dir *.docxmd (make directory) : 创建目录rd (remove directory): 删除目录 ，如果目录内容不为空，rd /s 目录名cd (change directory)改变指定目录(进入指定目录) D:\&gt;cd D:\烟台\Java核心编程\chapter1\codecd.. : 退回到上一级目录 cd/: 退回到根目录del (delete): 删除文件,删除一堆后缀名一样的文件*.txtexit : 退出dos命令行cls : (clear screen)清屏创建文本文档：notepad 文件名。 编译命令javacjava编译命令采用javac,javac后面跟的是java文件名和扩展名,编译后生成.class文件1D:\&gt; javac D:/test/com/action/HelloAction.java 执行命令javajava运行命令采用javac,java命令后面跟的是java的类名,Java运行的时候会用到jdk里面的库包lib。通过java –verbose:class可以清楚看到class加载到内存的全部过程。1234567//假设HelloAction类在d:test目录下的子包中//法一：java –classpath d:/test com.action.HelloAction//法二：//或者先切换到d:/testC:\&gt; cd D:\testD:\test&gt; java com.action.HelloAction 打包命令jarjar命令一般情况下用来压缩class文件。目的：1.保护代码 2。方便调用打包单个.class文件:1D:\&gt;jar cvf result.jar HelloWorld.class //将helloword程序打包 打包一个目录下的所有.class文件：1D:\&gt;jar cvf classes.jar com //Com是指某个包含class文件的目录 生成文档命令javadocjavadoc命令用于生成java的javadoc注释文档电子书1D:\&gt; javadoc -d d:test HelloWorld.java]]></content>
