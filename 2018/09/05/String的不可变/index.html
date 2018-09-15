@@ -89,12 +89,12 @@
 <meta property="og:site_name" content="Xiao Z">
 <meta property="og:description" content="什么是不可变对象？在Java中， String类是不可变的。那么到底什么是不可变的对象呢？ 可以这样认为：如果一个对象，在它创建完成之后，不能再改变它的状态，那么这个对象就是不可变的。不能改变状态的意思是，不能改变对象内的成员变量，包括基本数据类型的值不能改变，引用类型的变量不能指向其他的对象，引用类型指向的对象的状态也不能改变。 区分对象和对象的引用看下面代码：1234String s = &quot;A">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/javaString/noChangeString.png">
-<meta property="og:updated_time" content="2018-09-14T05:30:51.214Z">
+<meta property="og:image" content="http://yoursite.com/img/javaString/noChangeString.png">
+<meta property="og:updated_time" content="2018-09-14T08:02:52.574Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="String的不可变">
 <meta name="twitter:description" content="什么是不可变对象？在Java中， String类是不可变的。那么到底什么是不可变的对象呢？ 可以这样认为：如果一个对象，在它创建完成之后，不能再改变它的状态，那么这个对象就是不可变的。不能改变状态的意思是，不能改变对象内的成员变量，包括基本数据类型的值不能改变，引用类型的变量不能指向其他的对象，引用类型指向的对象的状态也不能改变。 区分对象和对象的引用看下面代码：1234String s = &quot;A">
-<meta name="twitter:image" content="http://yoursite.com/javaString/noChangeString.png">
+<meta name="twitter:image" content="http://yoursite.com/img/javaString/noChangeString.png">
 
 
 
@@ -407,7 +407,7 @@
       
         <h2 id="什么是不可变对象？"><a href="#什么是不可变对象？" class="headerlink" title="什么是不可变对象？"></a>什么是不可变对象？</h2><p>在Java中， String类是不可变的。那么到底什么是不可变的对象呢？ 可以这样认为：如果一个对象，在它创建完成之后，不能再改变它的状态，那么这个对象就是不可变的。不能改变状态的意思是，不能改变对象内的成员变量，包括基本数据类型的值不能改变，引用类型的变量不能指向其他的对象，引用类型指向的对象的状态也不能改变。</p>
 <h2 id="区分对象和对象的引用"><a href="#区分对象和对象的引用" class="headerlink" title="区分对象和对象的引用"></a>区分对象和对象的引用</h2><p>看下面代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String s = <span class="string">"ABCabc"</span>;</span><br><span class="line">System.out.println(<span class="string">"s = "</span> + s);<span class="comment">//s = ABCabc</span></span><br><span class="line">s = <span class="string">"123456"</span>;</span><br><span class="line">System.out.println(<span class="string">"s = "</span> + s);<span class="comment">//s = 123456</span></span><br></pre></td></tr></table></figure></p>
-<p>首先创建一个String对象s，然后让s的值为“ABCabc”， 然后又让s的值为“123456”。 从打印结果可以看出，s的值确实改变了。那么怎么还说String对象是不可变的呢？ 其实这里存在一个误区： s只是一个String对象的引用，并不是对象本身。对象在内存中是一块内存区，成员变量越多，这块内存区占的空间越大。引用只是一个4字节的数据，里面存放了它所指向的对象的地址，通过这个地址可以访问对象。 也就是说，s只是一个引用，它指向了一个具体的对象，当s=“123456”; 这句代码执行过之后，又创建了一个新的对象“123456”， 而引用s重新指向了这个新的对象，原来的对象“ABCabc”还在内存中存在，并没有改变。内存结构如下图所示：<br><img src="/javaString/noChangeString.png" alt=""><br>在Java中不可能直接操作对象本身，所有的对象都由一个引用指向，必须通过这个引用才能访问对象本身，包括获取成员变量的值，改变对象的成员变量，调用对象的方法等。</p>
+<p>首先创建一个String对象s，然后让s的值为“ABCabc”， 然后又让s的值为“123456”。 从打印结果可以看出，s的值确实改变了。那么怎么还说String对象是不可变的呢？ 其实这里存在一个误区： s只是一个String对象的引用，并不是对象本身。对象在内存中是一块内存区，成员变量越多，这块内存区占的空间越大。引用只是一个4字节的数据，里面存放了它所指向的对象的地址，通过这个地址可以访问对象。 也就是说，s只是一个引用，它指向了一个具体的对象，当s=“123456”; 这句代码执行过之后，又创建了一个新的对象“123456”， 而引用s重新指向了这个新的对象，原来的对象“ABCabc”还在内存中存在，并没有改变。内存结构如下图所示：<br><img src="/img/javaString/noChangeString.png" alt=""><br>在Java中不可能直接操作对象本身，所有的对象都由一个引用指向，必须通过这个引用才能访问对象本身，包括获取成员变量的值，改变对象的成员变量，调用对象的方法等。</p>
 <h2 id="为什么String对象是不可变的？"><a href="#为什么String对象是不可变的？" class="headerlink" title="为什么String对象是不可变的？"></a>为什么String对象是不可变的？</h2><p>在JDK1.7中，String类的主要成员变量(源码)就剩下了两个：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">String</span></span></span><br><span class="line"><span class="class">    <span class="keyword">implements</span> <span class="title">java</span>.<span class="title">io</span>.<span class="title">Serializable</span>, <span class="title">Comparable</span>&lt;<span class="title">string</span>&gt;, <span class="title">CharSequence</span> </span>&#123;</span><br><span class="line">    <span class="comment">/** The value is used for character storage. */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">char</span> value[];</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** Cache the hash code for the string */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> hash; <span class="comment">// Default to 0&lt;/string&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p>由以上的代码可以看出， 在Java中String类其实就是对字符数组的封装,由final修饰符修饰，一旦赋值就不可改变。在Java中，数组也是对象。 所以value也只是一个引用，它指向一个真正的数组对象。</p>
 <h2 id="String对象真的不可变吗？"><a href="#String对象真的不可变吗？" class="headerlink" title="String对象真的不可变吗？"></a>String对象真的不可变吗？</h2><p>从上文可知String的成员变量是private final 的，也就是初始化之后不可改变。那么在这几个成员中， value比较特殊，因为他是一个引用变量，而不是真正的对象。value是final修饰的，也就是说final不能再指向其他数组对象。但是，可以反射出String对象中的value属性， 进而改变通过获得的value引用改变数组的结构。下面是实例代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">testReflection</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">     </span><br><span class="line">    <span class="comment">//创建字符串"Hello World"， 并赋给引用s</span></span><br><span class="line">    String s = <span class="string">"Hello World"</span>; </span><br><span class="line">     </span><br><span class="line">    System.out.println(<span class="string">"s = "</span> + s); <span class="comment">//Hello World</span></span><br><span class="line">     </span><br><span class="line">    <span class="comment">//获取String类中的value字段</span></span><br><span class="line">    Field valueFieldOfString = String.class.getDeclaredField(<span class="string">"value"</span>);</span><br><span class="line">     </span><br><span class="line">    <span class="comment">//改变value属性的访问权限</span></span><br><span class="line">    valueFieldOfString.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">     </span><br><span class="line">    <span class="comment">//获取s对象上的value属性的值</span></span><br><span class="line">    <span class="keyword">char</span>[] value = (<span class="keyword">char</span>[]) valueFieldOfString.get(s);</span><br><span class="line">     </span><br><span class="line">    <span class="comment">//改变value所引用的数组中的第5个字符</span></span><br><span class="line">    value[<span class="number">5</span>] = <span class="string">'_'</span>;</span><br><span class="line">     </span><br><span class="line">    System.out.println(<span class="string">"s = "</span> + s);  <span class="comment">//Hello_World</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
@@ -452,7 +452,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/09/05/常用Dos命令/" rel="prev" title="Dos下的java命令">
+              <a href="/2018/09/05/Dos下的java命令/" rel="prev" title="Dos下的java命令">
                 Dos下的java命令 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -540,7 +540,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">32</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
