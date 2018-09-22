@@ -43,10 +43,10 @@
   </entry>
   <entry>
     <title><![CDATA[Dos下的java命令]]></title>
-    <url>%2F2018%2F09%2F05%2F%E5%B8%B8%E7%94%A8Dos%E5%91%BD%E4%BB%A4%2F</url>
-    <content type="text"><![CDATA[进入DOS的几种方式(win7)：A. 开始菜单——-输入cmd命令，进入dos窗口。B. Shift键+右键—打开命令窗口 常用的dos命令：12345678910111213d: 回车 盘符切换 dir(directory):列出当前目录下的文件以及文件夹 显示这个目录下所有的.docx结尾的文件 dir *.docxmd (make directory) : 创建目录rd (remove directory): 删除目录 ，如果目录内容不为空，rd /s 目录名cd (change directory)改变指定目录(进入指定目录) D:\&gt;cd D:\烟台\Java核心编程\chapter1\codecd.. : 退回到上一级目录 cd/: 退回到根目录del (delete): 删除文件,删除一堆后缀名一样的文件*.txtexit : 退出dos命令行cls : (clear screen)清屏创建文本文档：notepad 文件名。]]></content>
+    <url>%2F2018%2F09%2F05%2FDos%E4%B8%8B%E7%9A%84java%E5%91%BD%E4%BB%A4%2F</url>
+    <content type="text"><![CDATA[常用的dos命令：进入DOS的几种方式(win7)：A. 开始菜单——-输入cmd命令，进入dos窗口。B. Shift键+右键—打开命令窗口12345678910111213d: 回车 盘符切换 dir(directory):列出当前目录下的文件以及文件夹 显示这个目录下所有的.docx结尾的文件 dir *.docxmd (make directory) : 创建目录rd (remove directory): 删除目录 ，如果目录内容不为空，rd /s 目录名cd (change directory)改变指定目录(进入指定目录) D:\&gt;cd D:\烟台\Java核心编程\chapter1\codecd.. : 退回到上一级目录 cd/: 退回到根目录del (delete): 删除文件,删除一堆后缀名一样的文件*.txtexit : 退出dos命令行cls : (clear screen)清屏创建文本文档：notepad 文件名。 编译命令javacjava编译命令采用javac,javac后面跟的是java文件名和扩展名,编译后生成.class文件1D:\&gt; javac D:/test/com/action/HelloAction.java 执行命令javajava运行命令采用javac,java命令后面跟的是java的类名,Java运行的时候会用到jdk里面的库包lib。通过java –verbose:class可以清楚看到class加载到内存的全部过程。1234567//假设HelloAction类在d:test目录下的子包中//法一：java –classpath d:/test com.action.HelloAction//法二：//或者先切换到d:/testC:\&gt; cd D:\testD:\test&gt; java com.action.HelloAction 打包命令jarjar命令一般情况下用来压缩class文件。目的：1.保护代码 2。方便调用打包单个.class文件:1D:\&gt;jar cvf result.jar HelloWorld.class //将helloword程序打包 打包一个目录下的所有.class文件：1D:\&gt;jar cvf classes.jar com //Com是指某个包含class文件的目录 生成文档命令javadocjavadoc命令用于生成java的javadoc注释文档电子书1D:\&gt; javadoc -d d:test HelloWorld.java]]></content>
       <categories>
-        <category>java</category>
+        <category>windows</category>
       </categories>
       <tags>
         <tag>dos</tag>
