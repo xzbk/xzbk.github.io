@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[数据库连接池]]></title>
+    <url>%2F2018%2F09%2F22%2F%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0%2F</url>
+    <content type="text"><![CDATA[dbcpApache基金会下的开源项目DBCP连接池1.导入jar包1234commons-collections-3.2.1.jar(连接池需要用到的)commons-dbcp-1.4.jar(连接池需要用到的)commons-pool-1.6.jar(连接池需要用到的)mysql-connector-java-5.1.18-bin.jar(mysql数据库驱动) 2.在工程中创建配置文件jdbc.properties，在其中配置连接池相关属性1234567891011121314driverClassName=com.mysql.jdbc.Driverurl=jdbc:mysql://localhost:3306/sqlexercisedb?useUnicode=true&amp;characterEncoding=utf-8username=rootpassword=root#初始化连接:连接池启动时创建的初始化连接数量,1.2版本后支持initialSize=3#最大活动连接:连接池在同一时间能够分配的最大活动连接的数量, 如果设置为非正数则表示不限制maxActive=5#最大空闲连接:连接池中容许保持空闲状态的最大连接数量,超过的空闲连接将被释放,如果设置为负数表示不限制#maxIdle=8#最小空闲连接:连接池中容许保持空闲状态的最小连接数量,低于这个数量将创建新的连接,如果设置为0则不创建#minIdle=1#最大等待时间:当没有可用连接时,连接池等待连接被归还的最大时间(以毫秒计数),超过时间则抛出异常,如果设置为-1表示无限等待maxWait=6000 3.封装连接池工具类DbcpUtil1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162package com.group.util;import java.sql.Connection;import java.util.Properties;import javax.sql.DataSource;import org.apache.commons.dbcp.BasicDataSourceFactory;/** * 使用dbcp数据库连接池工具类 * @author Administrator * */public class DbcpUtil &#123; private static DataSource dataSource;//数据源 /** * 静态代码块，初始化配置 */ static &#123; try &#123; //读取配置文件 Properties prop = new Properties(); prop.load(String.class.getResourceAsStream("/dbcp.properties")); //新建数据库连接池 dataSource = BasicDataSourceFactory.createDataSource(prop); &#125; catch (Exception e) &#123; // TODO Auto-generated catch block e.printStackTrace(); &#125; &#125; /** * 通过数据源获取数据库连接 * @return */ public static Connection getConnection() &#123; Connection conn = null; try &#123; conn = dataSource.getConnection(); &#125; catch (Exception e) &#123; // TODO Auto-generated catch block e.printStackTrace(); &#125; return conn; &#125; /** * 释放数据库连接，注意连接并没有关闭，仅仅是被归还到连接池 * @param conn */ public static void releaseConnection(Connection conn) &#123; try &#123; if(conn!=null) &#123; conn.close(); &#125; &#125; catch (Exception e) &#123; // TODO Auto-generated catch block e.printStackTrace(); &#125; &#125;&#125;]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[MySql常用函数]]></title>
     <url>%2F2018%2F09%2F21%2FMySql%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%2F</url>
     <content type="text"><![CDATA[拼接字符串参数个数不限，可拼接任意多个字符串1select concat(username,'----',password) from user; 日期转换为字符串将as前面的日期转换成as后面的类型1select CAST(sysdate() AS char); 转换为规定格式字符串将日期转换为自定义的格式1select date_format(sysdate(),'%Y-%c-%d %H:%i:%s'); 字符串转换成日期将字符串转换为特定的日期格式1select str_to_date('2017-03-30','%Y-%c-%d'); 获取一个随机字符串，这个字符串是唯一的获取一个32位长度的uuid，这串字符是唯一的1select uuid();]]></content>
@@ -31,17 +39,6 @@
       </categories>
       <tags>
         <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Dos下的java命令]]></title>
-    <url>%2F2018%2F09%2F05%2FDos%E4%B8%8B%E7%9A%84java%E5%91%BD%E4%BB%A4%2F</url>
-    <content type="text"><![CDATA[常用的dos命令：进入DOS的几种方式(win7)：A. 开始菜单——-输入cmd命令，进入dos窗口。B. Shift键+右键—打开命令窗口12345678910111213d: 回车 盘符切换 dir(directory):列出当前目录下的文件以及文件夹 显示这个目录下所有的.docx结尾的文件 dir *.docxmd (make directory) : 创建目录rd (remove directory): 删除目录 ，如果目录内容不为空，rd /s 目录名cd (change directory)改变指定目录(进入指定目录) D:\&gt;cd D:\烟台\Java核心编程\chapter1\codecd.. : 退回到上一级目录 cd/: 退回到根目录del (delete): 删除文件,删除一堆后缀名一样的文件*.txtexit : 退出dos命令行cls : (clear screen)清屏创建文本文档：notepad 文件名。 编译命令javacjava编译命令采用javac,javac后面跟的是java文件名和扩展名,编译后生成.class文件1D:\&gt; javac D:/test/com/action/HelloAction.java 执行命令javajava运行命令采用javac,java命令后面跟的是java的类名,Java运行的时候会用到jdk里面的库包lib。通过java –verbose:class可以清楚看到class加载到内存的全部过程。1234567//假设HelloAction类在d:test目录下的子包中//法一：java –classpath d:/test com.action.HelloAction//法二：//或者先切换到d:/testC:\&gt; cd D:\testD:\test&gt; java com.action.HelloAction 打包命令jarjar命令一般情况下用来压缩class文件。目的：1.保护代码 2。方便调用打包单个.class文件:1D:\&gt;jar cvf result.jar HelloWorld.class //将helloword程序打包 打包一个目录下的所有.class文件：1D:\&gt;jar cvf classes.jar com //Com是指某个包含class文件的目录 生成文档命令javadocjavadoc命令用于生成java的javadoc注释文档电子书1D:\&gt; javadoc -d d:test HelloWorld.java]]></content>
-      <categories>
-        <category>windows</category>
-      </categories>
-      <tags>
-        <tag>dos</tag>
       </tags>
   </entry>
   <entry>
