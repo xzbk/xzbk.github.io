@@ -81,21 +81,21 @@
 
 
 
-<meta name="description" content="LVMLVM逻辑卷基本概念传统磁盘管理的问题当磁盘分区不够用时无法扩展其大小，只能通过添加硬盘、创建新的分区来扩充空间，但是新加进来的硬盘是作为独立文件系统存在的，原有的文件系统并没有得到扩充，上层应用很多时候只能访问一个文件系统。只能让现有磁盘下线，在将原始磁盘数据导入。LVM(Logical volume Manager)逻辑卷管理通过将底层物理硬盘抽象封装起来，以逻辑卷的形式展现给上层系统，">
+<meta name="description" content="LVMLVM逻辑卷基本概念传统磁盘管理的问题当磁盘分区不够用时无法扩展其大小，只能通过添加硬盘、创建新的分区来扩充空间，但是新加进来的硬盘是作为独立文件系统存在的，原有的文件系统并没有得到扩充，上层应用很多时候只能访问一个文件系统。只能让现有磁盘下线，在将原始磁盘数据导入。 LVM(Logical volume Manager)**逻辑卷管理通过将底层物理硬盘抽象封装起来，以逻辑卷的形式展现给上层">
 <meta name="keywords" content="linux高级系统管理">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux高级系统管理">
 <meta property="og:url" content="http://yoursite.com/2018/09/24/Linux高级系统管理/index.html">
 <meta property="og:site_name" content="Xiao Z">
-<meta property="og:description" content="LVMLVM逻辑卷基本概念传统磁盘管理的问题当磁盘分区不够用时无法扩展其大小，只能通过添加硬盘、创建新的分区来扩充空间，但是新加进来的硬盘是作为独立文件系统存在的，原有的文件系统并没有得到扩充，上层应用很多时候只能访问一个文件系统。只能让现有磁盘下线，在将原始磁盘数据导入。LVM(Logical volume Manager)逻辑卷管理通过将底层物理硬盘抽象封装起来，以逻辑卷的形式展现给上层系统，">
+<meta property="og:description" content="LVMLVM逻辑卷基本概念传统磁盘管理的问题当磁盘分区不够用时无法扩展其大小，只能通过添加硬盘、创建新的分区来扩充空间，但是新加进来的硬盘是作为独立文件系统存在的，原有的文件系统并没有得到扩充，上层应用很多时候只能访问一个文件系统。只能让现有磁盘下线，在将原始磁盘数据导入。 LVM(Logical volume Manager)**逻辑卷管理通过将底层物理硬盘抽象封装起来，以逻辑卷的形式展现给上层">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/img/linux/LVM/LVM_1.png">
 <meta property="og:image" content="http://yoursite.com/img/linux/LVM/LVM_2.png">
-<meta property="og:image" content="http://yoursite.com/img/linux/LVM/LVM_1.png">
-<meta property="og:updated_time" content="2018-09-24T05:04:30.854Z">
+<meta property="og:image" content="http://yoursite.com/img/linux/LVM/LVM_3.png">
+<meta property="og:updated_time" content="2018-09-24T05:23:00.438Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux高级系统管理">
-<meta name="twitter:description" content="LVMLVM逻辑卷基本概念传统磁盘管理的问题当磁盘分区不够用时无法扩展其大小，只能通过添加硬盘、创建新的分区来扩充空间，但是新加进来的硬盘是作为独立文件系统存在的，原有的文件系统并没有得到扩充，上层应用很多时候只能访问一个文件系统。只能让现有磁盘下线，在将原始磁盘数据导入。LVM(Logical volume Manager)逻辑卷管理通过将底层物理硬盘抽象封装起来，以逻辑卷的形式展现给上层系统，">
+<meta name="twitter:description" content="LVMLVM逻辑卷基本概念传统磁盘管理的问题当磁盘分区不够用时无法扩展其大小，只能通过添加硬盘、创建新的分区来扩充空间，但是新加进来的硬盘是作为独立文件系统存在的，原有的文件系统并没有得到扩充，上层应用很多时候只能访问一个文件系统。只能让现有磁盘下线，在将原始磁盘数据导入。 LVM(Logical volume Manager)**逻辑卷管理通过将底层物理硬盘抽象封装起来，以逻辑卷的形式展现给上层">
 <meta name="twitter:image" content="http://yoursite.com/img/linux/LVM/LVM_1.png">
 
 
@@ -407,7 +407,10 @@
       
 
       
-        <h2 id="LVM"><a href="#LVM" class="headerlink" title="LVM"></a>LVM</h2><h3 id="LVM逻辑卷基本概念"><a href="#LVM逻辑卷基本概念" class="headerlink" title="LVM逻辑卷基本概念"></a>LVM逻辑卷基本概念</h3><p><strong>传统磁盘管理的问题</strong><br>当磁盘分区不够用时无法扩展其大小，只能通过添加硬盘、创建新的分区来扩充空间，但是新加进来的硬盘是作为独立文件系统存在的，原有的文件系统并没有得到扩充，上层应用很多时候只能访问一个文件系统。只能让现有磁盘下线，在将原始磁盘数据导入。<br><img src="/img/linux/LVM/LVM_1.png" alt=""><br><strong>LVM(Logical volume Manager)</strong><br>逻辑卷管理通过将底层物理硬盘抽象封装起来，以逻辑卷的形式展现给上层系统，逻辑卷的大小可以动态调整，而且不会丢失现有数据。新加入的硬盘也不会改变现有上层的逻辑卷。<br>作为一种动态磁盘管理机制，逻辑卷技术大大提高了磁盘管理的灵活性。<br><strong>LVM四个基本概念</strong><br>PE(physical Extend)<br>PV(physical volume)<br>VG(volume group)<br>LV(logical volume)<br><img src="/img/linux/LVM/LVM_2.png" alt=""><br><strong>LVM工作过程：</strong><br>(1)物理磁盘被格式化为PV，空间被分为一个个的PE。<br>(2)不同的PV加入同一个VG，不同PV的PE全部进入VG的PE池内。<br>(3)LV基于PE创建，大小为PE的整数倍，组成LV的PE可能来自不同的磁盘。<br>(4)现在就直接可以格式化后挂载使用了。<br>(5)LV的扩充缩减实际上就是增加或减少组成改LV的PE数量。其过程不丢失原始的数据。<br>最终生成以<code>VG</code>名为文件夹以<code>LV</code>为名称的文件<br><img src="/img/linux/LVM/LVM_1.png" alt=""></p>
+        <h2 id="LVM"><a href="#LVM" class="headerlink" title="LVM"></a>LVM</h2><h3 id="LVM逻辑卷基本概念"><a href="#LVM逻辑卷基本概念" class="headerlink" title="LVM逻辑卷基本概念"></a>LVM逻辑卷基本概念</h3><h4 id="传统磁盘管理的问题"><a href="#传统磁盘管理的问题" class="headerlink" title="传统磁盘管理的问题"></a>传统磁盘管理的问题</h4><p>当磁盘分区不够用时无法扩展其大小，只能通过添加硬盘、创建新的分区来扩充空间，但是新加进来的硬盘是作为独立文件系统存在的，原有的文件系统并没有得到扩充，上层应用很多时候只能访问一个文件系统。只能让现有磁盘下线，在将原始磁盘数据导入。<br><img src="/img/linux/LVM/LVM_1.png" alt=""></p>
+<h4 id="LVM-Logical-volume-Manager"><a href="#LVM-Logical-volume-Manager" class="headerlink" title="LVM(Logical volume Manager)**"></a>LVM(Logical volume Manager)**</h4><p>逻辑卷管理通过将底层物理硬盘抽象封装起来，以逻辑卷的形式展现给上层系统，逻辑卷的大小可以动态调整，而且不会丢失现有数据。新加入的硬盘也不会改变现有上层的逻辑卷。<br>作为一种动态磁盘管理机制，逻辑卷技术大大提高了磁盘管理的灵活性。</p>
+<h4 id="LVM四个基本概念"><a href="#LVM四个基本概念" class="headerlink" title="LVM四个基本概念"></a>LVM四个基本概念</h4><p>PE(physical Extend)<br>PV(physical volume)<br>VG(volume group)<br>LV(logical volume)<br><img src="/img/linux/LVM/LVM_2.png" alt=""></p>
+<h4 id="LVM工作过程"><a href="#LVM工作过程" class="headerlink" title="LVM工作过程"></a>LVM工作过程</h4><p>(1)物理磁盘被格式化为PV，空间被分为一个个的PE。<br>(2)不同的PV加入同一个VG，不同PV的PE全部进入VG的PE池内。<br>(3)LV基于PE创建，大小为PE的整数倍，组成LV的PE可能来自不同的磁盘。<br>(4)现在就直接可以格式化后挂载使用了。<br>(5)LV的扩充缩减实际上就是增加或减少组成改LV的PE数量。其过程不丢失原始的数据。<br>最终生成以<code>VG</code>名为文件夹以<code>LV</code>为名称的文件<br><img src="/img/linux/LVM/LVM_3.png" alt=""></p>
 
       
     </div>
@@ -664,7 +667,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#LVM"><span class="nav-number">1.</span> <span class="nav-text">LVM</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#LVM逻辑卷基本概念"><span class="nav-number">1.1.</span> <span class="nav-text">LVM逻辑卷基本概念</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#LVM"><span class="nav-number">1.</span> <span class="nav-text">LVM</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#LVM逻辑卷基本概念"><span class="nav-number">1.1.</span> <span class="nav-text">LVM逻辑卷基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#传统磁盘管理的问题"><span class="nav-number">1.1.1.</span> <span class="nav-text">传统磁盘管理的问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LVM-Logical-volume-Manager"><span class="nav-number">1.1.2.</span> <span class="nav-text">LVM(Logical volume Manager)**</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LVM四个基本概念"><span class="nav-number">1.1.3.</span> <span class="nav-text">LVM四个基本概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LVM工作过程"><span class="nav-number">1.1.4.</span> <span class="nav-text">LVM工作过程</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

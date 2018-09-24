@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[Linux高级系统管理]]></title>
     <url>%2F2018%2F09%2F24%2FLinux%E9%AB%98%E7%BA%A7%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86%2F</url>
-    <content type="text"><![CDATA[LVMLVM逻辑卷基本概念传统磁盘管理的问题当磁盘分区不够用时无法扩展其大小，只能通过添加硬盘、创建新的分区来扩充空间，但是新加进来的硬盘是作为独立文件系统存在的，原有的文件系统并没有得到扩充，上层应用很多时候只能访问一个文件系统。只能让现有磁盘下线，在将原始磁盘数据导入。LVM(Logical volume Manager)逻辑卷管理通过将底层物理硬盘抽象封装起来，以逻辑卷的形式展现给上层系统，逻辑卷的大小可以动态调整，而且不会丢失现有数据。新加入的硬盘也不会改变现有上层的逻辑卷。作为一种动态磁盘管理机制，逻辑卷技术大大提高了磁盘管理的灵活性。LVM四个基本概念PE(physical Extend)PV(physical volume)VG(volume group)LV(logical volume)LVM工作过程：(1)物理磁盘被格式化为PV，空间被分为一个个的PE。(2)不同的PV加入同一个VG，不同PV的PE全部进入VG的PE池内。(3)LV基于PE创建，大小为PE的整数倍，组成LV的PE可能来自不同的磁盘。(4)现在就直接可以格式化后挂载使用了。(5)LV的扩充缩减实际上就是增加或减少组成改LV的PE数量。其过程不丢失原始的数据。最终生成以VG名为文件夹以LV为名称的文件]]></content>
+    <content type="text"><![CDATA[LVMLVM逻辑卷基本概念传统磁盘管理的问题当磁盘分区不够用时无法扩展其大小，只能通过添加硬盘、创建新的分区来扩充空间，但是新加进来的硬盘是作为独立文件系统存在的，原有的文件系统并没有得到扩充，上层应用很多时候只能访问一个文件系统。只能让现有磁盘下线，在将原始磁盘数据导入。 LVM(Logical volume Manager)**逻辑卷管理通过将底层物理硬盘抽象封装起来，以逻辑卷的形式展现给上层系统，逻辑卷的大小可以动态调整，而且不会丢失现有数据。新加入的硬盘也不会改变现有上层的逻辑卷。作为一种动态磁盘管理机制，逻辑卷技术大大提高了磁盘管理的灵活性。 LVM四个基本概念PE(physical Extend)PV(physical volume)VG(volume group)LV(logical volume) LVM工作过程(1)物理磁盘被格式化为PV，空间被分为一个个的PE。(2)不同的PV加入同一个VG，不同PV的PE全部进入VG的PE池内。(3)LV基于PE创建，大小为PE的整数倍，组成LV的PE可能来自不同的磁盘。(4)现在就直接可以格式化后挂载使用了。(5)LV的扩充缩减实际上就是增加或减少组成改LV的PE数量。其过程不丢失原始的数据。最终生成以VG名为文件夹以LV为名称的文件]]></content>
       <categories>
         <category>linux</category>
       </categories>
