@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="linux高级系统管理," />
 
 
 
@@ -81,18 +81,22 @@
 
 
 
-<meta name="description" content="什么也学不好的。。。。。。    function changeColor(){  var color=&quot;#f00|#c03|#906|#609|#30c|#00f|#0f0|#0c3|#096|#069&quot;;  color=color.split(&quot;|&quot;);  document.getElementById(&quot;blink&quot;).style.color=color[parseInt(Math.rand">
-<meta name="keywords" content="博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="about">
-<meta property="og:url" content="http://yoursite.com/about/index.html">
+<meta name="description" content="LVMLVM逻辑卷基本概念传统磁盘管理的问题当磁盘分区不够用时无法扩展其大小，只能通过添加硬盘、创建新的分区来扩充空间，但是新加进来的硬盘是作为独立文件系统存在的，原有的文件系统并没有得到扩充，上层应用很多时候只能访问一个文件系统。只能让现有磁盘下线，在将原始磁盘数据导入。LVM(Logical volume Manager)逻辑卷管理通过将底层物理硬盘抽象封装起来，以逻辑卷的形式展现给上层系统，">
+<meta name="keywords" content="linux高级系统管理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux高级系统管理">
+<meta property="og:url" content="http://yoursite.com/2018/09/24/Linux高级系统管理/index.html">
 <meta property="og:site_name" content="Xiao Z">
-<meta property="og:description" content="什么也学不好的。。。。。。    function changeColor(){  var color=&quot;#f00|#c03|#906|#609|#30c|#00f|#0f0|#0c3|#096|#069&quot;;  color=color.split(&quot;|&quot;);  document.getElementById(&quot;blink&quot;).style.color=color[parseInt(Math.rand">
+<meta property="og:description" content="LVMLVM逻辑卷基本概念传统磁盘管理的问题当磁盘分区不够用时无法扩展其大小，只能通过添加硬盘、创建新的分区来扩充空间，但是新加进来的硬盘是作为独立文件系统存在的，原有的文件系统并没有得到扩充，上层应用很多时候只能访问一个文件系统。只能让现有磁盘下线，在将原始磁盘数据导入。LVM(Logical volume Manager)逻辑卷管理通过将底层物理硬盘抽象封装起来，以逻辑卷的形式展现给上层系统，">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-25T02:49:15.588Z">
+<meta property="og:image" content="http://yoursite.com/img/linux/LVM/LVM_1.png">
+<meta property="og:image" content="http://yoursite.com/img/linux/LVM/LVM_2.png">
+<meta property="og:image" content="http://yoursite.com/img/linux/LVM/LVM_1.png">
+<meta property="og:updated_time" content="2018-09-24T05:04:30.854Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="about">
-<meta name="twitter:description" content="什么也学不好的。。。。。。    function changeColor(){  var color=&quot;#f00|#c03|#906|#609|#30c|#00f|#0f0|#0c3|#096|#069&quot;;  color=color.split(&quot;|&quot;);  document.getElementById(&quot;blink&quot;).style.color=color[parseInt(Math.rand">
+<meta name="twitter:title" content="Linux高级系统管理">
+<meta name="twitter:description" content="LVMLVM逻辑卷基本概念传统磁盘管理的问题当磁盘分区不够用时无法扩展其大小，只能通过添加硬盘、创建新的分区来扩充空间，但是新加进来的硬盘是作为独立文件系统存在的，原有的文件系统并没有得到扩充，上层应用很多时候只能访问一个文件系统。只能让现有磁盘下线，在将原始磁盘数据导入。LVM(Logical volume Manager)逻辑卷管理通过将底层物理硬盘抽象封装起来，以逻辑卷的形式展现给上层系统，">
+<meta name="twitter:image" content="http://yoursite.com/img/linux/LVM/LVM_1.png">
 
 
 
@@ -122,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/about/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/09/24/Linux高级系统管理/"/>
 
 
 
 
 
-  <title>about | Xiao Z</title>
+  <title>Linux高级系统管理 | Xiao Z</title>
   
 
 
@@ -291,57 +295,177 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/24/Linux高级系统管理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Xiao Z">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/header.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Xiao Z">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">about</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <p><center><marquee><div id="blink">什么也学不好的。。。。。。</div></marquee></center> </p>
-<script type="text/javascript"> 
-function changeColor(){ 
-var color="#f00|#c03|#906|#609|#30c|#00f|#0f0|#0c3|#096|#069"; 
-color=color.split("|"); 
-document.getElementById("blink").style.color=color[parseInt(Math.random() * color.length)]; 
-} 
-setInterval("changeColor()",300); 
-</script>
-
-<ul>
-<li>59’s Personal Blog: <a href="http://fnine59.top/" target="_blank" rel="noopener">http://fnine59.top/</a></li>
-<li>jQuery插件库: <a href="http://www.jq22.com/" target="_blank" rel="noopener">http://www.jq22.com/</a></li>
-<li>霹雳神教程: <a href="http://pilishen.com/" target="_blank" rel="noopener">http://pilishen.com/</a></li>
-<li>Next使用文档: <a href="http://theme-next.iissnan.com/" target="_blank" rel="noopener">http://theme-next.iissnan.com/</a></li>
-<li>Vue.js官网文档: <a href="https://cn.vuejs.org/" target="_blank" rel="noopener">https://cn.vuejs.org/</a></li>
-<li>微信公众平台: <a href="https://mp.weixin.qq.com/cgi-bin/loginpage" target="_blank" rel="noopener">https://mp.weixin.qq.com/cgi-bin/loginpage</a></li>
-<li>仅仅是因为好看: <a href="http://kiritor.github.io/categories/front/" target="_blank" rel="noopener">http://kiritor.github.io/categories/front/</a></li>
-<li>Pro Git简书: <a href="http://iissnan.com/progit/" target="_blank" rel="noopener">http://iissnan.com/progit/</a></li>
-<li>Hexo官网文档: <a href="https://hexo.io/" target="_blank" rel="noopener">https://hexo.io/</a></li>
-<li>JSRUN前端教程: <a href="http://jsrun.net/tutorial" target="_blank" rel="noopener">http://jsrun.net/tutorial</a></li>
-<li>ES6简书: <a href="http://es6.ruanyifeng.com/#README" target="_blank" rel="noopener">http://es6.ruanyifeng.com/#README</a></li>
-<li>Browsersync: <a href="http://www.browsersync.cn/#install" target="_blank" rel="noopener">http://www.browsersync.cn/#install</a> </li>
-</ul>
-
+          <h1 class="post-title" itemprop="name headline">Linux高级系统管理</h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-24T12:18:23+08:00">
+                2018-09-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/linux/" itemprop="url" rel="index">
+                    <span itemprop="name">linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2018/09/24/Linux高级系统管理/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2018/09/24/Linux高级系统管理/" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <h2 id="LVM"><a href="#LVM" class="headerlink" title="LVM"></a>LVM</h2><h3 id="LVM逻辑卷基本概念"><a href="#LVM逻辑卷基本概念" class="headerlink" title="LVM逻辑卷基本概念"></a>LVM逻辑卷基本概念</h3><p><strong>传统磁盘管理的问题</strong><br>当磁盘分区不够用时无法扩展其大小，只能通过添加硬盘、创建新的分区来扩充空间，但是新加进来的硬盘是作为独立文件系统存在的，原有的文件系统并没有得到扩充，上层应用很多时候只能访问一个文件系统。只能让现有磁盘下线，在将原始磁盘数据导入。<br><img src="/img/linux/LVM/LVM_1.png" alt=""><br><strong>LVM(Logical volume Manager)</strong><br>逻辑卷管理通过将底层物理硬盘抽象封装起来，以逻辑卷的形式展现给上层系统，逻辑卷的大小可以动态调整，而且不会丢失现有数据。新加入的硬盘也不会改变现有上层的逻辑卷。<br>作为一种动态磁盘管理机制，逻辑卷技术大大提高了磁盘管理的灵活性。<br><strong>LVM四个基本概念</strong><br>PE(physical Extend)<br>PV(physical volume)<br>VG(volume group)<br>LV(logical volume)<br><img src="/img/linux/LVM/LVM_2.png" alt=""><br><strong>LVM工作过程：</strong><br>(1)物理磁盘被格式化为PV，空间被分为一个个的PE。<br>(2)不同的PV加入同一个VG，不同PV的PE全部进入VG的PE池内。<br>(3)LV基于PE创建，大小为PE的整数倍，组成LV的PE可能来自不同的磁盘。<br>(4)现在就直接可以格式化后挂载使用了。<br>(5)LV的扩充缩减实际上就是增加或减少组成改LV的PE数量。其过程不丢失原始的数据。<br>最终生成以<code>VG</code>名为文件夹以<code>LV</code>为名称的文件<br><img src="/img/linux/LVM/LVM_1.png" alt=""></p>
+
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/linux高级系统管理/" rel="tag"># linux高级系统管理</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/22/数据库连接池/" rel="next" title="数据库连接池">
+                <i class="fa fa-chevron-left"></i> 数据库连接池
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -379,8 +503,17 @@ setInterval("changeColor()",300);
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -521,6 +654,22 @@ setInterval("changeColor()",300);
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#LVM"><span class="nav-number">1.</span> <span class="nav-text">LVM</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#LVM逻辑卷基本概念"><span class="nav-number">1.1.</span> <span class="nav-text">LVM逻辑卷基本概念</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
