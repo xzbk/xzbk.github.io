@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="linux高级系统管理," />
+  <meta name="keywords" content="linux," />
 
 
 
@@ -82,7 +82,7 @@
 
 
 <meta name="description" content="LVM逻辑卷基本概念传统磁盘管理的问题当磁盘分区不够用时无法扩展其大小，只能通过添加硬盘、创建新的分区来扩充空间，但是新加进来的硬盘是作为独立文件系统存在的，原有的文件系统并没有得到扩充，上层应用很多时候只能访问一个文件系统。只能让现有磁盘下线，在将原始磁盘数据导入。 LVM(Logical volume Manager)逻辑卷管理通过将底层物理硬盘抽象封装起来，以逻辑卷的形式展现给上层系统，逻辑">
-<meta name="keywords" content="linux高级系统管理">
+<meta name="keywords" content="linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux高级系统管理">
 <meta property="og:url" content="http://yoursite.com/2018/09/24/Linux高级系统管理/index.html">
@@ -95,7 +95,8 @@
 <meta property="og:image" content="http://yoursite.com/img/linux/LVM/LVM_4.png">
 <meta property="og:image" content="http://yoursite.com/img/linux/LVM/LVM_5.png">
 <meta property="og:image" content="http://yoursite.com/img/linux/LVM/LVM_6.png">
-<meta property="og:updated_time" content="2018-09-28T11:07:45.358Z">
+<meta property="og:image" content="http://yoursite.com/img/linux/ACL/ACL_1.png">
+<meta property="og:updated_time" content="2018-09-29T11:48:03.905Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux高级系统管理">
 <meta name="twitter:description" content="LVM逻辑卷基本概念传统磁盘管理的问题当磁盘分区不够用时无法扩展其大小，只能通过添加硬盘、创建新的分区来扩充空间，但是新加进来的硬盘是作为独立文件系统存在的，原有的文件系统并没有得到扩充，上层应用很多时候只能访问一个文件系统。只能让现有磁盘下线，在将原始磁盘数据导入。 LVM(Logical volume Manager)逻辑卷管理通过将底层物理硬盘抽象封装起来，以逻辑卷的形式展现给上层系统，逻辑">
@@ -362,8 +363,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/linux/" itemprop="url" rel="index">
-                    <span itemprop="name">linux</span>
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
                   </a>
                 </span>
 
@@ -434,15 +435,22 @@
 <h3 id="拉伸一个卷组"><a href="#拉伸一个卷组" class="headerlink" title="拉伸一个卷组"></a>拉伸一个卷组</h3><p>1.将要添加到VG的硬盘格式化为PV<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pvcreate /dev/sdd</span><br></pre></td></tr></table></figure></p>
 <p>2.将新的PV添加到指定卷组中<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vgextend linuxvg /dev/sdd</span><br></pre></td></tr></table></figure></p>
 <p>3.查看扩充后台VG的大小<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vgdisplay</span><br></pre></td></tr></table></figure></p>
-<h3 id="缩小一个卷组"><a href="#缩小一个卷组" class="headerlink" title="缩小一个卷组"></a>缩小一个卷组</h3><p>逻辑卷的缩小操作必须离线，即卸载逻辑卷<br>1.卸载已将挂载的逻辑磁盘<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">umount /dev/linuxvg/linuxlv</span><br></pre></td></tr></table></figure></p>
+<h3 id="缩小一个逻辑卷"><a href="#缩小一个逻辑卷" class="headerlink" title="缩小一个逻辑卷"></a>缩小一个逻辑卷</h3><p>逻辑卷的缩小操作必须离线，即卸载逻辑卷<br>1.卸载已将挂载的逻辑磁盘<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">umount /dev/linuxvg/linuxlv</span><br></pre></td></tr></table></figure></p>
 <p>2.缩小文件系统<br>(此步会提示需要运行fsck检查文件系统)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">resize2fs /dev/linuxvg/linuxlv 1G</span><br></pre></td></tr></table></figure></p>
 <p>3.缩小LV<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lvreduce -L -1G /dev/linuxvg/linuxlv</span><br></pre></td></tr></table></figure></p>
 <p>4.查看缩小后的LV<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lvdisplay</span><br></pre></td></tr></table></figure></p>
 <p>5.重新挂载LV<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount /dev/linuxvg/linuxlv</span><br></pre></td></tr></table></figure></p>
 <p><img src="/img/linux/LVM/LVM_5.png" alt=""></p>
 <h3 id="缩小卷组"><a href="#缩小卷组" class="headerlink" title="缩小卷组"></a>缩小卷组</h3><p>1.将一个PV从指定卷组中移除<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vgreduce linuxvg /dev/sdd</span><br></pre></td></tr></table></figure></p>
-<p>2.查看缩小后的娟阻大小<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vgdisplay</span><br></pre></td></tr></table></figure></p>
+<p>2.查看缩小后的卷组大小<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vgdisplay</span><br></pre></td></tr></table></figure></p>
 <p><img src="/img/linux/LVM/LVM_6.png" alt=""></p>
+<h2 id="Linux高级权限管理-ACL"><a href="#Linux高级权限管理-ACL" class="headerlink" title="Linux高级权限管理-ACL"></a>Linux高级权限管理-ACL</h2><h3 id="传统权限模型的缺点"><a href="#传统权限模型的缺点" class="headerlink" title="传统权限模型的缺点"></a>传统权限模型的缺点</h3><p>传统的UGO权限模型无法应对复杂的权限设置需求，如对于一个文件只能设置一个组，并且对该组进行权限控制，但是如果该文件有多个组会对其进行访问，并且都要进行权限限制时，传统的UGO模型就无法满足需求了。<br>例：<br><img src="/img/linux/ACL/ACL_1.png" alt=""></p>
+<h3 id="ACL"><a href="#ACL" class="headerlink" title="ACL"></a>ACL</h3><p>查看一个文件/文件夹的ACL位置<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">getfacl linux</span><br></pre></td></tr></table></figure></p>
+<p>针对一个用户对文件进行ACL设置或修改<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setfacl -m u:username:rwx linux</span><br></pre></td></tr></table></figure></p>
+<p>针对一个组进行ACL设置或修改<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setfacl -m g:groupname:rwx linux</span><br></pre></td></tr></table></figure></p>
+<p>删除一个ACL设置<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<p><strong>注意：</strong>挂载文件使用ACL权限时需要开启ACL权限设置<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount -o acl /dev/sda1 /mnt</span><br></pre></td></tr></table></figure></p>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>假设Linux用户、组如下:<br>| 组 |用户|<br>| :-: | :-: |<br>| training | nash_su,bob |<br>| market | alice,john |<br>| manage | steve,david |<br>| boss | snake |<br>现要求为各部门、员工建立相应的工作文件夹，要求如下：<br>·所有目录、文件保存在统一的文件夹下<br>·每个部门拥有一个独立文件夹<br>·不同部门之间不可访问各自文件夹<br>·每个员工所在部门文件夹下拥有一个所属文件夹<br>·同部门不同员工之间可以查看各自文件夹内容、但不可修改，用户仅能修改自己的内容<br>·boss组的用户对所有文件均有访问权限(o–&gt;rx)，但无修改权限</p>
 
       
     </div>
@@ -460,7 +468,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/linux高级系统管理/" rel="tag"># linux高级系统管理</a>
+            <a href="/tags/linux/" rel="tag"># linux</a>
           
         </div>
       
@@ -578,7 +586,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -589,7 +597,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -699,7 +707,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#LVM逻辑卷基本概念"><span class="nav-number">1.</span> <span class="nav-text">LVM逻辑卷基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#传统磁盘管理的问题"><span class="nav-number">1.1.</span> <span class="nav-text">传统磁盘管理的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#LVM-Logical-volume-Manager"><span class="nav-number">1.1.1.</span> <span class="nav-text">LVM(Logical volume Manager)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LVM四个基本概念"><span class="nav-number">1.2.</span> <span class="nav-text">LVM四个基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LVM工作过程"><span class="nav-number">1.3.</span> <span class="nav-text">LVM工作过程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LVM逻辑卷的基本操作"><span class="nav-number">2.</span> <span class="nav-text">LVM逻辑卷的基本操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建LVM"><span class="nav-number">2.1.</span> <span class="nav-text">创建LVM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看LVM"><span class="nav-number">2.2.</span> <span class="nav-text">查看LVM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除LVM"><span class="nav-number">2.3.</span> <span class="nav-text">删除LVM</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LVM逻辑卷的拉伸与缩小"><span class="nav-number">3.</span> <span class="nav-text">LVM逻辑卷的拉伸与缩小</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#拉伸一个逻辑卷"><span class="nav-number">3.1.</span> <span class="nav-text">拉伸一个逻辑卷</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拉伸一个卷组"><span class="nav-number">3.2.</span> <span class="nav-text">拉伸一个卷组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缩小一个卷组"><span class="nav-number">3.3.</span> <span class="nav-text">缩小一个卷组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缩小卷组"><span class="nav-number">3.4.</span> <span class="nav-text">缩小卷组</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#LVM逻辑卷基本概念"><span class="nav-number">1.</span> <span class="nav-text">LVM逻辑卷基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#传统磁盘管理的问题"><span class="nav-number">1.1.</span> <span class="nav-text">传统磁盘管理的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#LVM-Logical-volume-Manager"><span class="nav-number">1.1.1.</span> <span class="nav-text">LVM(Logical volume Manager)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LVM四个基本概念"><span class="nav-number">1.2.</span> <span class="nav-text">LVM四个基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LVM工作过程"><span class="nav-number">1.3.</span> <span class="nav-text">LVM工作过程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LVM逻辑卷的基本操作"><span class="nav-number">2.</span> <span class="nav-text">LVM逻辑卷的基本操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建LVM"><span class="nav-number">2.1.</span> <span class="nav-text">创建LVM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看LVM"><span class="nav-number">2.2.</span> <span class="nav-text">查看LVM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除LVM"><span class="nav-number">2.3.</span> <span class="nav-text">删除LVM</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LVM逻辑卷的拉伸与缩小"><span class="nav-number">3.</span> <span class="nav-text">LVM逻辑卷的拉伸与缩小</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#拉伸一个逻辑卷"><span class="nav-number">3.1.</span> <span class="nav-text">拉伸一个逻辑卷</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拉伸一个卷组"><span class="nav-number">3.2.</span> <span class="nav-text">拉伸一个卷组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缩小一个逻辑卷"><span class="nav-number">3.3.</span> <span class="nav-text">缩小一个逻辑卷</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缩小卷组"><span class="nav-number">3.4.</span> <span class="nav-text">缩小卷组</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux高级权限管理-ACL"><span class="nav-number">4.</span> <span class="nav-text">Linux高级权限管理-ACL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#传统权限模型的缺点"><span class="nav-number">4.1.</span> <span class="nav-text">传统权限模型的缺点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ACL"><span class="nav-number">4.2.</span> <span class="nav-text">ACL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例"><span class="nav-number">4.3.</span> <span class="nav-text">实例</span></a></li></ol></li></ol></div>
             
 
           </div>
