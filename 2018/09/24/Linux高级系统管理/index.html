@@ -96,7 +96,11 @@
 <meta property="og:image" content="http://yoursite.com/img/linux/LVM/LVM_5.png">
 <meta property="og:image" content="http://yoursite.com/img/linux/LVM/LVM_6.png">
 <meta property="og:image" content="http://yoursite.com/img/linux/ACL/ACL_1.png">
-<meta property="og:updated_time" content="2018-09-30T15:13:00.102Z">
+<meta property="og:image" content="http://yoursite.com/img/linux/RAID/RAID_0.png">
+<meta property="og:image" content="http://yoursite.com/img/linux/RAID/RAID_1.png">
+<meta property="og:image" content="http://yoursite.com/img/linux/RAID/RAID_5.png">
+<meta property="og:image" content="http://yoursite.com/img/linux/RAID/RAID_6.png">
+<meta property="og:updated_time" content="2018-09-30T15:56:47.012Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux高级系统管理">
 <meta name="twitter:description" content="LVM逻辑卷基本概念传统磁盘管理的问题当磁盘分区不够用时无法扩展其大小，只能通过添加硬盘、创建新的分区来扩充空间，但是新加进来的硬盘是作为独立文件系统存在的，原有的文件系统并没有得到扩充，上层应用很多时候只能访问一个文件系统。只能让现有磁盘下线，在将原始磁盘数据导入。 LVM(Logical volume Manager)逻辑卷管理通过将底层物理硬盘抽象封装起来，以逻辑卷的形式展现给上层系统，逻辑">
@@ -507,10 +511,10 @@
 </table>
 <p>硬盘是绝大多数计算机性能的瓶颈</p>
 <h3 id="RAID"><a href="#RAID" class="headerlink" title="RAID"></a>RAID</h3><p>现代硬盘的缺陷：IO性能极弱、稳定性极差<br>RAID(Redundant Array of Independent Disks)廉价磁盘冗余阵列技术是通过多磁盘并行运行来提高计算机存储IO性能。<br>RAID分为很多种类，称之为RAID级别，现代RAID共有类，常用的有以下四类：<br>RAID 0        读写性能<br>RAID 1        读写性能、冗余性<br>RAID 5        读写性能、冗余性(1块硬盘)<br>RAID 6        读写性能、冗余性(2块硬盘)</p>
-<h3 id="RAID-0"><a href="#RAID-0" class="headerlink" title="RAID 0"></a>RAID 0</h3><p>RAID0使用最少2块硬盘，在读写时，将数据分开读写到多块硬盘的方式来提高性能。<br><img src="" alt=""><br>空间利用率：所有硬盘空间之和<br>性能         ：所有硬盘速度之和<br>冗余能力     ：无</p>
-<h3 id="RAID-1"><a href="#RAID-1" class="headerlink" title="RAID 1"></a>RAID 1</h3><p>RAID1使用最少2块硬盘，在读写数据时，将数据复制写道多块硬盘。在读写数据时，已提供冗余性。同时从多块硬盘读取数据，以提高读性能。<br><img src="" alt=""><br>空间利用率：所有硬盘中最小的一块<br>性能         ：读性能为所有硬盘速度之和，写性能会有所减弱<br>冗余能力     ：只要有一块硬盘正常，数据就正常</p>
-<h3 id="RAID-5"><a href="#RAID-5" class="headerlink" title="RAID 5"></a>RAID 5</h3><p>RAID5至少使用3块硬盘，RAID5余RAID0类似，读写数据的时候会将数据分布式的读写在所有硬盘上，但是在写数据的时候会对数据进行奇偶校验运算，将校验信息同时保存在硬盘上，校验信息可以进行数据恢复使用。<br><img src="" alt=""><br>空间利用率：1-1/n<br>性能         ：读取性能接近RAID0，写性能较RAID0弱一些<br>冗余能力     ：可接受一块硬盘损坏</p>
-<h3 id="RAID-6"><a href="#RAID-6" class="headerlink" title="RAID 6"></a>RAID 6</h3><p>RAID6最少使用4块硬盘，RAID6与RAID5类似，读写数据的时候会将数据风不是的读写在所有的硬盘上，并保存奇偶校验信息，但是会比RAID5多保存一份校验信息，所以冗余性较RAID5有所提升。<br><img src="" alt=""><br>空间利用率：1-2/n<br>性能         ：读写性能接近RAID5，写性能比RAID5还要弱一点<br>冗余能力     ：可接受2块硬盘损坏</p>
+<h3 id="RAID-0"><a href="#RAID-0" class="headerlink" title="RAID 0"></a>RAID 0</h3><p>RAID0使用最少2块硬盘，在读写时，将数据分开读写到多块硬盘的方式来提高性能。<br><img src="/img/linux/RAID/RAID_0.png" alt=""><br>空间利用率：所有硬盘空间之和<br>性能         ：所有硬盘速度之和<br>冗余能力     ：无</p>
+<h3 id="RAID-1"><a href="#RAID-1" class="headerlink" title="RAID 1"></a>RAID 1</h3><p>RAID1使用最少2块硬盘，在读写数据时，将数据复制写道多块硬盘。在读写数据时，已提供冗余性。同时从多块硬盘读取数据，以提高读性能。<br><img src="/img/linux/RAID/RAID_1.png" alt=""><br>空间利用率：所有硬盘中最小的一块<br>性能         ：读性能为所有硬盘速度之和，写性能会有所减弱<br>冗余能力     ：只要有一块硬盘正常，数据就正常</p>
+<h3 id="RAID-5"><a href="#RAID-5" class="headerlink" title="RAID 5"></a>RAID 5</h3><p>RAID5至少使用3块硬盘，RAID5余RAID0类似，读写数据的时候会将数据分布式的读写在所有硬盘上，但是在写数据的时候会对数据进行奇偶校验运算，将校验信息同时保存在硬盘上，校验信息可以进行数据恢复使用。<br><img src="/img/linux/RAID/RAID_5.png" alt=""><br>空间利用率：1-1/n<br>性能         ：读取性能接近RAID0，写性能较RAID0弱一些<br>冗余能力     ：可接受一块硬盘损坏</p>
+<h3 id="RAID-6"><a href="#RAID-6" class="headerlink" title="RAID 6"></a>RAID 6</h3><p>RAID6最少使用4块硬盘，RAID6与RAID5类似，读写数据的时候会将数据风不是的读写在所有的硬盘上，并保存奇偶校验信息，但是会比RAID5多保存一份校验信息，所以冗余性较RAID5有所提升。<br><img src="/img/linux/RAID/RAID_6.png" alt=""><br>空间利用率：1-2/n<br>性能         ：读写性能接近RAID5，写性能比RAID5还要弱一点<br>冗余能力     ：可接受2块硬盘损坏</p>
 <h3 id="RAID实现"><a href="#RAID实现" class="headerlink" title="RAID实现"></a>RAID实现</h3><p>RAID的实现方式有两种：<br>·软件RAID<br>通过系统功能或RAID软件实现RAID，没有独立的硬件和接口，需要占用一定的系统资源(CPU、硬盘接口速度)，并且受操作系统稳定性影响<br>·硬件RAID<br>通过独立的RAID硬件卡实现，有些主板集成了RAID硬件，有些需要购买独立的RAID硬件卡，硬件RAID实现不需要占用其他硬件资源，稳定性和速度都比软件RAID要强。</p>
 
       
