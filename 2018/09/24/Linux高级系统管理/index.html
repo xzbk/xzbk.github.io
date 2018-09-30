@@ -96,7 +96,7 @@
 <meta property="og:image" content="http://yoursite.com/img/linux/LVM/LVM_5.png">
 <meta property="og:image" content="http://yoursite.com/img/linux/LVM/LVM_6.png">
 <meta property="og:image" content="http://yoursite.com/img/linux/ACL/ACL_1.png">
-<meta property="og:updated_time" content="2018-09-30T11:28:03.695Z">
+<meta property="og:updated_time" content="2018-09-30T15:13:00.102Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux高级系统管理">
 <meta name="twitter:description" content="LVM逻辑卷基本概念传统磁盘管理的问题当磁盘分区不够用时无法扩展其大小，只能通过添加硬盘、创建新的分区来扩充空间，但是新加进来的硬盘是作为独立文件系统存在的，原有的文件系统并没有得到扩充，上层应用很多时候只能访问一个文件系统。只能让现有磁盘下线，在将原始磁盘数据导入。 LVM(Logical volume Manager)逻辑卷管理通过将底层物理硬盘抽象封装起来，以逻辑卷的形式展现给上层系统，逻辑">
@@ -450,8 +450,62 @@
 <p>针对一个组进行ACL设置或修改<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setfacl -m g:groupname:rwx linux</span><br></pre></td></tr></table></figure></p>
 <p>删除一个ACL设置<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
 <p><strong>注意：</strong>挂载文件使用ACL权限时需要开启ACL权限设置<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount -o acl /dev/sda1 /mnt</span><br></pre></td></tr></table></figure></p>
-<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>假设Linux用户、组如下:<br>| 组 |用户|<br>| :-: | :-: |<br>| training | nash_su,bob |<br>| market | alice,john |<br>| manage | steve,david |<br>| boss | snake |<br>现要求为各部门、员工建立相应的工作文件夹，要求如下：<br>·所有目录、文件保存在统一的文件夹下<br>·每个部门拥有一个独立文件夹<br>·不同部门之间不可访问各自文件夹<br>·每个员工所在部门文件夹下拥有一个所属文件夹<br>·同部门不同员工之间可以查看各自文件夹内容、但不可修改，用户仅能修改自己的内容<br>·boss组的用户对所有文件均有访问权限(o–&gt;rx)，但无修改权限</p>
-<h2 id="RAID原理基础"><a href="#RAID原理基础" class="headerlink" title="RAID原理基础"></a>RAID原理基础</h2><h3 id="传统磁盘的劣势"><a href="#传统磁盘的劣势" class="headerlink" title="传统磁盘的劣势"></a>传统磁盘的劣势</h3><p>影响计算机性能的组件一般包括：CPU、主板总线IO、内存IO、硬盘IO、网卡IO。现代处理器性能已经很高了，但是计算机整体IO性能较弱，严重影响了计算机性能。<br>现代计算机总线、内存的速度可以达到5G每秒，甚至更高。但是硬盘IO往往较低:<br>| 硬盘类型 | 速度 |<br>| :-: | :-: |<br>| SATA | &lt;150M/s |<br>| SCSI | &lt;200M/s |<br>| SAS | 200M/s左右 |<br>| SSD | 500M/S左右 |<br>硬盘是绝大多数计算机性能的瓶颈</p>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>假设Linux用户、组如下:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">组</th>
+<th style="text-align:center">用户</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">training</td>
+<td style="text-align:center">nash_su,bob</td>
+</tr>
+<tr>
+<td style="text-align:center">market</td>
+<td style="text-align:center">alice,john</td>
+</tr>
+<tr>
+<td style="text-align:center">manage</td>
+<td style="text-align:center">steve,david</td>
+</tr>
+<tr>
+<td style="text-align:center">boss</td>
+<td style="text-align:center">snake</td>
+</tr>
+</tbody>
+</table>
+<p>现要求为各部门、员工建立相应的工作文件夹，要求如下：<br>·所有目录、文件保存在统一的文件夹下<br>·每个部门拥有一个独立文件夹<br>·不同部门之间不可访问各自文件夹<br>·每个员工所在部门文件夹下拥有一个所属文件夹<br>·同部门不同员工之间可以查看各自文件夹内容、但不可修改，用户仅能修改自己的内容<br>·boss组的用户对所有文件均有访问权限(o–&gt;rx)，但无修改权限</p>
+<h2 id="RAID原理基础"><a href="#RAID原理基础" class="headerlink" title="RAID原理基础"></a>RAID原理基础</h2><h3 id="传统磁盘的劣势"><a href="#传统磁盘的劣势" class="headerlink" title="传统磁盘的劣势"></a>传统磁盘的劣势</h3><p>影响计算机性能的组件一般包括：CPU、主板总线IO、内存IO、硬盘IO、网卡IO。现代处理器性能已经很高了，但是计算机整体IO性能较弱，严重影响了计算机性能。<br>现代计算机总线、内存的速度可以达到5G每秒，甚至更高。但是硬盘IO往往较低:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">硬盘类型</th>
+<th style="text-align:center">速度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">SATA</td>
+<td style="text-align:center">&lt;150M/s</td>
+</tr>
+<tr>
+<td style="text-align:center">SCSI</td>
+<td style="text-align:center">&lt;200M/s</td>
+</tr>
+<tr>
+<td style="text-align:center">SAS</td>
+<td style="text-align:center">200M/s左右</td>
+</tr>
+<tr>
+<td style="text-align:center">SSD</td>
+<td style="text-align:center">500M/S左右</td>
+</tr>
+</tbody>
+</table>
+<p>硬盘是绝大多数计算机性能的瓶颈</p>
 <h3 id="RAID"><a href="#RAID" class="headerlink" title="RAID"></a>RAID</h3><p>现代硬盘的缺陷：IO性能极弱、稳定性极差<br>RAID(Redundant Array of Independent Disks)廉价磁盘冗余阵列技术是通过多磁盘并行运行来提高计算机存储IO性能。<br>RAID分为很多种类，称之为RAID级别，现代RAID共有类，常用的有以下四类：<br>RAID 0        读写性能<br>RAID 1        读写性能、冗余性<br>RAID 5        读写性能、冗余性(1块硬盘)<br>RAID 6        读写性能、冗余性(2块硬盘)</p>
 <h3 id="RAID-0"><a href="#RAID-0" class="headerlink" title="RAID 0"></a>RAID 0</h3><p>RAID0使用最少2块硬盘，在读写时，将数据分开读写到多块硬盘的方式来提高性能。<br><img src="" alt=""><br>空间利用率：所有硬盘空间之和<br>性能         ：所有硬盘速度之和<br>冗余能力     ：无</p>
 <h3 id="RAID-1"><a href="#RAID-1" class="headerlink" title="RAID 1"></a>RAID 1</h3><p>RAID1使用最少2块硬盘，在读写数据时，将数据复制写道多块硬盘。在读写数据时，已提供冗余性。同时从多块硬盘读取数据，以提高读性能。<br><img src="" alt=""><br>空间利用率：所有硬盘中最小的一块<br>性能         ：读性能为所有硬盘速度之和，写性能会有所减弱<br>冗余能力     ：只要有一块硬盘正常，数据就正常</p>
