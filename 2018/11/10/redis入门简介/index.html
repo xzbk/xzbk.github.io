@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="helloword," />
+  <meta name="keywords" content="redis," />
 
 
 
@@ -79,18 +79,28 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
-<meta name="keywords" content="helloword">
+<meta name="description" content="API的使用和理解通用命令keys [pattern]命令:遍历所有key(可实用类似于正则的模式进行匹配)12345keys [pattern]keys *keys hellokeys hell*keys hell? dbsize命令:算出key的总数1dbsize exists key命令:检查key是否存在(存在返回1，不存在返回0)12exists keyexists hello del">
+<meta name="keywords" content="redis">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Beginer&#39;s Temple">
-<meta property="og:url" content="http://yoursite.com/2018/04/04/Beginer-s-Temple/index.html">
+<meta property="og:title" content="redis入门简介">
+<meta property="og:url" content="http://yoursite.com/2018/11/10/redis入门简介/index.html">
 <meta property="og:site_name" content="Xiao Z">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="API的使用和理解通用命令keys [pattern]命令:遍历所有key(可实用类似于正则的模式进行匹配)12345keys [pattern]keys *keys hellokeys hell*keys hell? dbsize命令:算出key的总数1dbsize exists key命令:检查key是否存在(存在返回1，不存在返回0)12exists keyexists hello del">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-14T06:22:29.411Z">
+<meta property="og:image" content="http://yoursite.com/img/redis/structure1.png">
+<meta property="og:image" content="http://yoursite.com/img/redis/structure2.png">
+<meta property="og:image" content="http://yoursite.com/img/redis/single_thread.png">
+<meta property="og:image" content="http://yoursite.com/img/redis/thread1.png">
+<meta property="og:image" content="http://yoursite.com/img/redis/thread2.png">
+<meta property="og:image" content="http://yoursite.com/img/redis/get1.png">
+<meta property="og:image" content="http://yoursite.com/img/redis/getn.png">
+<meta property="og:image" content="http://yoursite.com/img/redis/memory.png.png">
+<meta property="og:image" content="http://yoursite.com/img/redis/pseudo.png">
+<meta property="og:updated_time" content="2018-11-10T14:57:37.054Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Beginer&#39;s Temple">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="redis入门简介">
+<meta name="twitter:description" content="API的使用和理解通用命令keys [pattern]命令:遍历所有key(可实用类似于正则的模式进行匹配)12345keys [pattern]keys *keys hellokeys hell*keys hell? dbsize命令:算出key的总数1dbsize exists key命令:检查key是否存在(存在返回1，不存在返回0)12exists keyexists hello del">
+<meta name="twitter:image" content="http://yoursite.com/img/redis/structure1.png">
 
 
 
@@ -120,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/04/04/Beginer-s-Temple/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/11/10/redis入门简介/"/>
 
 
 
 
 
-  <title>Beginer's Temple | Xiao Z</title>
+  <title>redis入门简介 | Xiao Z</title>
   
 
 
@@ -301,7 +311,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/04/Beginer-s-Temple/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/10/redis入门简介/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Xiao Z">
@@ -318,7 +328,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Beginer's Temple</h1>
+          <h1 class="post-title" itemprop="name headline">redis入门简介</h1>
         
 
         <div class="post-meta">
@@ -330,8 +340,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-04T17:59:47+08:00">
-                2018-04-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-10T21:23:09+08:00">
+                2018-11-10
               </time>
             
 
@@ -353,8 +363,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/入门/" itemprop="url" rel="index">
-                    <span itemprop="name">入门</span>
+                  <a href="/categories/redis/" itemprop="url" rel="index">
+                    <span itemprop="name">redis</span>
                   </a>
                 </span>
 
@@ -372,8 +382,8 @@
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/2018/04/04/Beginer-s-Temple/#SOHUCS" itemprop="discussionUrl">
-                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2018/04/04/Beginer-s-Temple/" itemprop="commentsCount"></span>
+                <a href="/2018/11/10/redis入门简介/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2018/11/10/redis入门简介/" itemprop="commentsCount"></span>
                 </a>
               
             
@@ -401,41 +411,33 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-<h3 id="create-a-table"><a href="#create-a-table" class="headerlink" title="create a table"></a>create a table</h3><table>
-<thead>
-<tr>
-<th>参数</th>
-<th>详细解释</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>-l</td>
-<td>use a long listing format</td>
-<td>以长列表方式显示（显示出文件/文件夹详细信息）</td>
-</tr>
-<tr>
-<td>-t</td>
-<td>sort by modification time</td>
-<td>按照修改时间排序（默认最近被修改的文件/文件夹排在最前面）</td>
-</tr>
-<tr>
-<td>-r</td>
-<td>reverse order while sorting</td>
-<td>逆序排列</td>
-</tr>
-</tbody>
-</table>
+        <h2 id="API的使用和理解"><a href="#API的使用和理解" class="headerlink" title="API的使用和理解"></a>API的使用和理解</h2><h3 id="通用命令"><a href="#通用命令" class="headerlink" title="通用命令"></a>通用命令</h3><p><strong><code>keys [pattern]</code>命令:</strong>遍历所有key(可实用类似于正则的模式进行匹配)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">keys [pattern]</span><br><span class="line">keys *</span><br><span class="line">keys hello</span><br><span class="line">keys hell*</span><br><span class="line">keys hell?</span><br></pre></td></tr></table></figure></p>
+<p><strong><code>dbsize</code>命令:</strong>算出key的总数<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dbsize</span><br></pre></td></tr></table></figure></p>
+<p><strong><code>exists key</code>命令:</strong>检查key是否存在(存在返回1，不存在返回0)<br><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">exists</span> key</span><br><span class="line"><span class="built_in">exists</span> hello</span><br></pre></td></tr></table></figure></p>
+<p><strong><code>del key1</code>命令:</strong>删除指定的key-value(可以同时删除多个键值对)<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">del</span> key1 key2</span><br><span class="line"><span class="selector-tag">del</span> hello</span><br></pre></td></tr></table></figure></p>
+<p><strong><code>expire key seconds</code>命令</strong>:设置key在seconds后过期<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">expire <span class="type">key</span> seconds</span><br><span class="line">expire hello <span class="number">20</span></span><br></pre></td></tr></table></figure></p>
+<p><strong><code>ttl key</code></strong>命令:可以查看key剩余的过期时间<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ttl key</span><br><span class="line">ttl hello</span><br></pre></td></tr></table></figure></p>
+<p><strong><code>persist key</code>命令:</strong>去掉key的过期时间设置<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">persist key</span><br><span class="line">persist hello</span><br></pre></td></tr></table></figure></p>
+<p><strong><code>type key</code>命令:</strong> 返回key的类型<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">type</span> key</span><br><span class="line"><span class="built_in">type</span> hello</span><br></pre></td></tr></table></figure></p>
+<h3 id="数据结构和内部编码"><a href="#数据结构和内部编码" class="headerlink" title="数据结构和内部编码"></a>数据结构和内部编码</h3><p><img src="/img/redis/structure1.png" alt=""><br><img src="/img/redis/structure2.png" alt=""></p>
+<h3 id="单线程"><a href="#单线程" class="headerlink" title="单线程"></a>单线程</h3><p><code>redis</code>为单线程，一个瞬间只会执行一个命令<br><img src="/img/redis/single_thread.png" alt=""><br><img src="/img/redis/thread1.png" alt=""><br><img src="/img/redis/thread2.png" alt=""></p>
+<h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3><p><strong><code>incr key</code>命令:</strong>key会自增1，如果key不存在，自增厚get(key)=1<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">incr key</span><br><span class="line">incr count</span><br></pre></td></tr></table></figure></p>
+<p><strong><code>decr key</code>命令:</strong>key会自减1，如果key不存在，自减后get(key)=-1<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">decr key</span><br><span class="line">decr count</span><br></pre></td></tr></table></figure></p>
+<p><strong><code>incrby key k</code>命令:</strong>key自增k，如果key不存在，自增后get(key)=key<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">incrby key k</span><br><span class="line">incrby count 3</span><br></pre></td></tr></table></figure></p>
+<p><strong><code>decr key k</code>命令:</strong>key自减k，如果key不存在，自减后get(key)=-k<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">decr key k</span><br><span class="line">decr count 3</span><br></pre></td></tr></table></figure></p>
+<p><strong><code>set key value</code>命令:</strong>不管key是否存在，都设置key<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> key value</span><br><span class="line"><span class="built_in">set</span> count 3</span><br></pre></td></tr></table></figure></p>
+<p><strong><code>setnx key value</code>命令:</strong>key不存在，才设置key<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">setnx key value</span><br><span class="line">setnx count 3</span><br></pre></td></tr></table></figure></p>
+<p><strong><code>set key value xx</code>命令:</strong>key存在才设置<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> key value xx</span><br><span class="line"><span class="built_in">set</span> count 3 xx</span><br></pre></td></tr></table></figure></p>
+<p><strong><code>mset key1 val1 key 2 val2</code>命令:</strong>批量设置kv<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mset k1 v1 k2 v2</span><br><span class="line">mset hello word java good</span><br></pre></td></tr></table></figure></p>
+<p><strong><code>mget key1 key2 key3 ...</code>命令:</strong>批量获取key<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mget k1 k2 k3</span><br><span class="line">mget hello java</span><br></pre></td></tr></table></figure></p>
+<p><img src="/img/redis/get1.png" alt=""><br><img src="/img/redis/getn.png" alt=""><br><strong><code>getset key newvalue</code>命令:</strong>设置新key值并返回旧值<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">getset key newvalue</span><br><span class="line">getset hello word</span><br></pre></td></tr></table></figure></p>
+<p><strong><code>append key value</code>命令:</strong>将新value追加到旧value<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">append key value</span><br><span class="line">append hello word</span><br></pre></td></tr></table></figure></p>
+<p><strong><code>strlen key</code>命令:</strong>返回字符串的长度(注意中文)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">strlen key</span><br><span class="line">strlen hello</span><br></pre></td></tr></table></figure></p>
+<p>补充命令(不常用):</p>
+<p><strong><code>incrbyfloat key value</code>命令:</strong>增加key对应的值value<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">incrbyfloat key value</span><br><span class="line">incrbyfloat count 2.2</span><br></pre></td></tr></table></figure></p>
+<p><strong><code>getrange key start end</code>命令:</strong>获取字符串指定下表的所有值<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">getrange key start end</span><br><span class="line">getrange hello 1 3</span><br></pre></td></tr></table></figure></p>
+<p><strong><code>setrange key index value</code></strong>设置指定下标后插入value<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">setrange key index value</span><br><span class="line">setrange hello 2 ol</span><br></pre></td></tr></table></figure></p>
+<p><strong>例：</strong><br>缓存视频的基本信息(数据源在mysql中)伪代码<br><img src="/img/redis/memory.png.png" alt=""><br>伪代码<br><img src="/img/redis/pseudo.png" alt=""></p>
 
       
     </div>
@@ -453,7 +455,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/helloword/" rel="tag"># helloword</a>
+            <a href="/tags/redis/" rel="tag"># redis</a>
           
         </div>
       
@@ -466,8 +468,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/04/hexo-yila添加文章阅读量统计/" rel="next" title="hexo yila添加文章阅读量统计">
-                <i class="fa fa-chevron-left"></i> hexo yila添加文章阅读量统计
+              <a href="/2018/11/05/svn简单使用/" rel="next" title="svn简单使用">
+                <i class="fa fa-chevron-left"></i> svn简单使用
               </a>
             
           </div>
@@ -475,10 +477,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/04/05/hexo-yilia主题添加背景音乐播放器/" rel="prev" title="hexo yilia主题添加背景音乐播放器">
-                hexo yilia主题添加背景音乐播放器 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -689,7 +687,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#create-a-table"><span class="nav-number">1.5.</span> <span class="nav-text">create a table</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#API的使用和理解"><span class="nav-number">1.</span> <span class="nav-text">API的使用和理解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#通用命令"><span class="nav-number">1.1.</span> <span class="nav-text">通用命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据结构和内部编码"><span class="nav-number">1.2.</span> <span class="nav-text">数据结构和内部编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单线程"><span class="nav-number">1.3.</span> <span class="nav-text">单线程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串"><span class="nav-number">1.4.</span> <span class="nav-text">字符串</span></a></li></ol></li></ol></div>
             
 
           </div>
