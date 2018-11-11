@@ -98,7 +98,13 @@
 <meta property="og:image" content="http://yoursite.com/img/redis/pseudo.png">
 <meta property="og:image" content="http://yoursite.com/img/redis/hash_struct.png">
 <meta property="og:image" content="http://yoursite.com/img/redis/character.png">
-<meta property="og:updated_time" content="2018-11-11T01:04:41.391Z">
+<meta property="og:image" content="http://yoursite.com/img/redis/hashcomp_0.png">
+<meta property="og:image" content="http://yoursite.com/img/redis/hashcomp_1.png">
+<meta property="og:image" content="http://yoursite.com/img/redis/hashcomp_2.png">
+<meta property="og:image" content="http://yoursite.com/img/redis/hashcomp_3.png">
+<meta property="og:image" content="http://yoursite.com/img/redis/hash.png">
+<meta property="og:image" content="http://yoursite.com/img/redis/hash_ext.png">
+<meta property="og:updated_time" content="2018-11-11T15:23:00.819Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="redis入门简介">
 <meta name="twitter:description" content="API的使用和理解通用命令keys [pattern]命令:遍历所有key(可实用类似于正则的模式进行匹配)12345keys [pattern]keys *keys hellokeys hell*keys hell? dbsize命令:算出key的总数1dbsize exists key命令:检查key是否存在(存在返回1，不存在返回0)12exists keyexists hello del">
@@ -447,6 +453,10 @@
 <p><strong><code>hlen key</code>命令:</strong>获取hash key field的数量<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hlen user:1:info</span><br><span class="line">hlen my</span><br></pre></td></tr></table></figure></p>
 <p><strong><code>hmset key field1 value1 field2 value2</code>命令:</strong>批量设置hash key的一批field value<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hmset user:2:info name lisi age 23</span><br><span class="line">hmset my name wj age 20</span><br></pre></td></tr></table></figure></p>
 <p><strong><code>hmget key field1 field2</code>命令:</strong>批量获取hash key的一批field对应的值<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hmget user:2:info name age</span><br><span class="line">hmget my name age</span><br></pre></td></tr></table></figure></p>
+<p><strong><code>hgetall key</code>命令:</strong>返回hash key所对应所有的field和value<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hgetall user:2:info </span><br><span class="line">hgetall my</span><br></pre></td></tr></table></figure></p>
+<p><strong><code>hvals key</code>命令:</strong>返回hash key所对应所有field的value<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hvals user:2:info</span><br><span class="line">hvals my</span><br></pre></td></tr></table></figure></p>
+<p><strong><code>hkeys key</code>命令:</strong>返回hash key对应所有的field<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hkeys user:2:info</span><br><span class="line">hkeys my</span><br></pre></td></tr></table></figure></p>
+<p><img src="/img/redis/hashcomp_0.png" alt=""><br><img src="/img/redis/hashcomp_1.png" alt=""><br><img src="/img/redis/hashcomp_2.png" alt=""><br><img src="/img/redis/hashcomp_3.png" alt=""><br><img src="/img/redis/hash.png" alt=""><br><img src="/img/redis/hash_ext.png" alt=""></p>
 
       
     </div>
