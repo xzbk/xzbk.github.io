@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Mybatis中#与$的区别]]></title>
+    <url>%2F2020%2F05%2F21%2FMybatis%E4%B8%AD-%E4%B8%8E-%E7%9A%84%E5%8C%BA%E5%88%AB%2F</url>
+    <content type="text"><![CDATA[MyBatis中使用parameterType向SQL语句传参，parameterType支持的类型可以是基本类型int,String,HashMap和java自定义类型。在SQL中引用这些参数的时候，可以使用两种方式：12#&#123;parameterName&#125;$&#123;parameterName&#125; 首先，我们说一下这两种引用参数时的区别，使用#{parameterName}引用参数的时候，Mybatis会把这个参数认为是一个字符串，并自动加上&#39;&#39;，例如传入参数是“Smith”，那么在下面SQL中：1Select * from emp where name = #&#123;employeeName&#125; 使用的时候就会转换为：1Select * from emp where name = 'Smith'; 同时使用${parameterName}的时候在下面SQL中1Select * from emp where name = $&#123;employeeName&#125; 就会直接转换为：1Select * from emp where name = Smith 简单说#{}是经过预编译的,是安全的。而${}是未经过预编译的,仅仅是取变量的值,是非安全的,存在SQL注入。总结：#{} 这种取值是编译好SQL语句再取值${} 这种是取值以后再去编译SQL语句]]></content>
+      <categories>
+        <category>Mybatis</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[JavaWeb学习线路]]></title>
     <url>%2F2019%2F01%2F07%2FJavaWeb%E5%AD%A6%E4%B9%A0%E7%BA%BF%E8%B7%AF%2F</url>
     <content type="text"><![CDATA[Javaweb系统学习路线：]]></content>
