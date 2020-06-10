@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[数据库的四种连接]]></title>
+    <url>%2F2020%2F06%2F10%2F%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%9B%9B%E7%A7%8D%E8%BF%9E%E6%8E%A5%2F</url>
+    <content type="text"><![CDATA[基本定义left join(左连接)： 返回包括左表中的所有记录和右表中连接字段相等的记录。right join(右连接)： 返回包括右表中的所有记录和左表中连接字段相等的记录。inner join(等值连接或者叫内连接)： 只返回两个表中连接字段相等的行。full join(全外连接)： 返回左右表中所有的记录和左右表中连接字段相等的记录。 举例1234567891011121314151617-- A表 id name 1 小王 2 小李 3 小刘 -- B表 id A_id job 1 2 老师 2 4 程序员 内连接： 只有2张表匹配的行才能显示12345select a.name,b.job from A a inner join B b on a.id=b.A_id-- 只能得到一条记录 小李 老师 左连接： 左边的表不加限制123456789select a.name,b.job from A a left join B b on a.id=b.A_id -- 三条记录 小王 null 小李 老师 小刘 null 右连接： 右边的表不加限制1234567select a.name,b.job from A a right join B b on a.id=b.A_id -- 两条记录 小李 老师 null 程序员 全外连接： 左右2张表都不加限制1234567891011select a.name,b.job from A a full join B b on a.id=b.A_id -- 四条数据 小王 null 小李 老师 小刘 null null 程序员 注： 在sql中l外连接包括左连接（left join ）和右连接（right join），全外连接（full join），等值连接（inner join）又叫内连接。]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[Mybatis中#与$的区别]]></title>
     <url>%2F2020%2F05%2F21%2FMybatis%E4%B8%AD-%E4%B8%8E-%E7%9A%84%E5%8C%BA%E5%88%AB%2F</url>
     <content type="text"><![CDATA[MyBatis中使用parameterType向SQL语句传参，parameterType支持的类型可以是基本类型int,String,HashMap和java自定义类型。在SQL中引用这些参数的时候，可以使用两种方式：12#&#123;parameterName&#125;$&#123;parameterName&#125; 首先，我们说一下这两种引用参数时的区别，使用#{parameterName}引用参数的时候，Mybatis会把这个参数认为是一个字符串，并自动加上&#39;&#39;，例如传入参数是“Smith”，那么在下面SQL中：1Select * from emp where name = #&#123;employeeName&#125; 使用的时候就会转换为：1Select * from emp where name = 'Smith'; 同时使用${parameterName}的时候在下面SQL中1Select * from emp where name = $&#123;employeeName&#125; 就会直接转换为：1Select * from emp where name = Smith 简单说#{}是经过预编译的,是安全的。而${}是未经过预编译的,仅仅是取变量的值,是非安全的,存在SQL注入。总结：#{} 这种取值是编译好SQL语句再取值${} 这种是取值以后再去编译SQL语句]]></content>
